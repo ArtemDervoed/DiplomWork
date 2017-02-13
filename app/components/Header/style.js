@@ -11,6 +11,7 @@ export const WrapperHeader = styled.header`
   width: 100%;
   max-width: 1903px;
   min-width: 1024px;
+  background-color: #fafafa;
 `;
 
 export const HeaderLogo = styled.span`
