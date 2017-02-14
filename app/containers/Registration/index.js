@@ -11,13 +11,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import { Section, H1 } from './style.js';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
+import { registration } from './actions.js';
 
 const style = {
   margin: 12,
 };
-injectTapEventPlugin();
+
 const styles = {
     headline: {
     fontSize: 24,
@@ -31,76 +31,115 @@ export class Registration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'b',
+      value: 'student',
     };
   }
-
+  onSubmitTeacher() {
+    this.props.dispatch(registration({
+      role: this.state.value,
+      name: this.refs.teachersName.input.value,
+      email:  this.refs.teachersEmail.input.value,
+      phoneNumber: this.refs.teachersPhoneNumber.input.value,
+      scienceDegree: this.refs.teachersScienceDegree.input.value,
+      universityId: this.refs.teachersUniversity.input.value,
+      password: this.refs.teachersPassword.input.value,
+      passwordConfirmation: this.refs.teachersPasswordConfirmation.input.value,
+    })
+  )};
+  onSubmitStud() {
+    console.log(this.props);
+    this.props.dispatch(registration({
+      role: this.state.value,
+      name: this.refs.studentsName.input.value,
+      email:  this.refs.studentsEmail.input.value,
+      password: this.refs.studentsPassword.input.value,
+      passwordConfirmation: this.refs.studentsPasswordConfirmation.input.value,
+    })
+  )};
   handleChange = (value) => {
     this.setState({
       value: value,
     });
-    console.log('click');
   };
   render() {
     return (
       <div>
         <Header/>
         <Section>
-          <H1>Создать учетную запись</H1>
-          <br />
           <MuiThemeProvider>
             <Tabs
               value={this.state.value}
               onChange={this.handleChange}>
-              <Tab label="Зарегистрироваться как преподаватель" value="a" >
+              <Tab label="Зарегистрироваться как преподаватель" value="teacher" >
               <div className="text-field">
               <H1>Введите свои данные</H1>
               <TextField
+                ref="teachersName"
                 hintText="Имя пользователя"
-              /><br />
+                floatingLabelText="Имя пользователя" />
               <br />
               <TextField
+                ref="teachersEmail"
                 hintText="Электронная почта"
+                floatingLabelText="Электронная почта"
               /><br />
               <TextField
+                ref="teachersPhoneNumber"
                 hintText="Номер телефона"
+                floatingLabelText="Номер телефона"
               /><br />
               <TextField
+                ref="teachersScienceDegree"
                 hintText="Ученая степень"
+                floatingLabelText="Ученая степень"
               /><br />
               <TextField
+                ref="teachersUniversity"
                 hintText="Университет"
+                floatingLabelText="Университет"
               /><br />
               <TextField
+                ref="teachersPassword"
+                floatingLabelText="Парль"
                 hintText="Парль"
                 type="password"
               /><br />
               <TextField
+                ref="teachersPasswordConfirmation"
+                floatingLabelText="Подтверждение пароля"
                 hintText="Подтверждение пароля"
                 type="password"
               /><br />
-              <RaisedButton label="Зарегистрироваться" primary={true} style={style} />
+              <RaisedButton label="Зарегистрироваться" primary={true} style={style} onClick={this.onSubmitTeacher.bind(this)} />
               </div>
               </Tab>
-              <Tab label="Зарегистрироваться как студент" value="b">
+              <Tab label="Зарегистрироваться как студент" value="student">
                 <div className="text-field">
                 <H1>Введите свои данные</H1>
                 <TextField
+                  ref="studentsName"
+                  floatingLabelText="Имя пользователя"
                   hintText="Имя пользователя"
-                /><br />
+                />
                 <br />
                 <TextField
+                ref="studentsEmail"
                   hintText="Электронная почта"
+                  floatingLabelText="Электронная почта"
                 /><br />
                 <TextField
+                  ref="studentsPassword"
                   hintText="Парль"
+                  floatingLabelText="Парль"
                   type="password"
                 /><br />
                 <TextField
+                  ref="studentsPasswordConfirmation"
                   hintText="Подтверждение пароля"
+                  floatingLabelText="Подтверждение пароля"
                   type="password"
                 /><br />
-                <RaisedButton label="Зарегистрироваться" primary={true} style={style} />
+                <RaisedButton label="Зарегистрироваться" primary={true} style={style} onClick={this.onSubmitStud.bind(this)} />
                 </div>
               </Tab>
             </Tabs>
@@ -110,9 +149,6 @@ export class Registration extends React.Component {
     );
   }
 }
-// <div className="text-field">
-
-// </div>
 
 Registration.propTypes = {
   dispatch: PropTypes.func.isRequired,

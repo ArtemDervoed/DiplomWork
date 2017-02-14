@@ -19,7 +19,7 @@ export const HeaderLogo = styled.span`
   font-size: 36px;
   & > a {
     font-family: LatoBold;
-    color: black;
+    color: rgba(0,0,0,0.35);
     text-decoration: none;
   }
 `;
@@ -30,7 +30,7 @@ export const HeaderButton = styled.span`
   margin-right: 20px;
   & > a {
     text-decoration: none;
-    color: black;
+    color: rgba(0,0,0,0.35);
     transition: .5s;
   }
   & > a:hover {

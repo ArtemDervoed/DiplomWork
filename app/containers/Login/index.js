@@ -9,43 +9,111 @@ import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import {Link} from 'react-router';
 import { login } from './actions.js';
-import { Form, Button, Row, Label, H1} from './style.js'
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import { Section, H1 } from './style.js';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import RaisedButton from 'material-ui/RaisedButton';
+const style = {
+  margin: 12,
+};
+const styles = {
+    headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+};
+const textareaStyle = {
+    width:400,
+};
 export class Login extends React.Component {
   constructor() {
     super();
-    this.role = '';
+    this.state = {
+      value: 'student',
+    };
+    this.role = this.state.value;
     this.email =  '';
     this.password = '';
   }
-  onSubmit(event) {
-    event.preventDefault();
-    if (this.refs.teacher.checked) {
-      this.role = 'teacher'
-    }
-    if (this.refs.user.checked) {
-      this.role = 'user'
-    }
+
+  handleChange = (value) => {
+    this.setState({
+      value: value,
+    });
+  };
+  onSubmitTeacher(event) {
     this.props.dispatch(login({
-      role: this.role,
-      email: this.refs.email.value,
-      password: this.refs.password.value,
+      role: this.state.value,
+      email: this.refs.emailTeacher.input.value,
+      password: this.refs.passwordTeacher.input.value,
+    })
+  );}
+  onSubmitStud(event) {
+    this.props.dispatch(login({
+      role: this.state.value,
+      email: this.refs.emailStud.input.value,
+      password: this.refs.passwordStud.input.value,
     })
   );}
   render() {
     return (
       <div>
         <Header/>
-        <Form>
-        <H1>Войти в учетную запись</H1>
-          <input type="text" ref="email" name="email" placeholder="Логин"/>
-          <input type="password" ref="password" name="password" placeholder="Пароль"/>
-          <Row>
-            <Label htmlFor="teacher">Учитель:<input id="teacher" type="radio" ref="teacher" value="user" name="role"/></Label>
-            <Label htmlFor="user">Ученик:<input id="user" type="radio" ref="user" value="user" name="role"/></Label>
-          </Row>
-          <Button type="submit" onClick={this.onSubmit.bind(this)}>Войти</Button>
-        </Form>
+        <Section>
+          <MuiThemeProvider>
+            <Tabs value={this.state.value} onChange={this.handleChange} >
+              <Tab label="Войти как преподаватель" value="teacher" >
+              <div className="text-field">
+              <H1>Войти</H1>
+              <TextField
+                fullWidth={true}
+                hintText="Электронная почта"
+                ref="emailTeacher"
+                floatingLabelText="Электронная почта"
+              /><br />
+              <TextField
+                fullWidth={true}
+                hintText="Парль"
+                type="password"
+                floatingLabelText="Пароль"
+                ref="passwordTeacher"
+              /><br />
+              <RaisedButton
+                onClick={this.onSubmitTeacher.bind(this)}
+                label="Войти"
+                primary={true}
+                style={style} />
+              </div>
+              </Tab>
+              <Tab label="Войти как студент" value="student">
+                <div className="text-field">
+                <H1>Войти</H1>
+                <TextField
+                  fullWidth={true}
+                  hintText="Электронная почта"
+                  ref="emailStud"
+                  floatingLabelText="Электронная почта"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  hintText="Парль"
+                  type="password"
+                  floatingLabelText="Пароль"
+                  ref="passwordStud"
+                /><br />
+                <RaisedButton
+                  onClick={this.onSubmitStud.bind(this)}
+                  label="Войти"
+                  primary={true}
+                  style={style} />
+                </div>
+              </Tab>
+            </Tabs>
+          </MuiThemeProvider>
+        </Section>
       </div>
     );
   }

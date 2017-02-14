@@ -3,13 +3,55 @@
  * Registration actions
  *
  */
-
+import fetch from 'isomorphic-fetch';
+import {push} from 'react-router-redux';
+import {browserHistory} from 'react-router';
+const domen = 'https://serene-hamlet-19929.herokuapp.com/';
 import {
-  DEFAULT_ACTION,
+  SUBMIT
 } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const registration = response => dispatch => {
+  let data = null;
+  console.log(response);
+  let fullDomen = domen;
+  if (response.role === 'teacher') {
+    data = JSON.stringify({
+      name: response.name,
+      email: response.email,
+      password: response.password,
+      password_confirmation: response.passwordConfirmation,
+      phone_number: response.phoneNumber,
+      email: response.email,
+      science_degree: response.scienceDegree,
+      university_id: response.universityId
+    });
+    fullDomen+='api/teachers';
+  }
+  if (response.role === 'student') {
+    data = JSON.stringify({
+      name: response.name,
+      email: response.email,
+      password: response.password,
+      password_confirmation: response.passwordConfirmation,
+    });
+    fullDomen+='api/students';
+  }
+  return fetch(fullDomen, {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: data,
+  })
+  .then(response => response.json())
+  .then(json => {
+    dispatch({
+      type: SUBMIT,
+      successfull: true,
+    });
+    browserHistory.push('/');
+  });
+};

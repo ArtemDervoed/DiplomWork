@@ -7,20 +7,18 @@ import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  SUBMIT,
 } from './constants';
 
-const initialState = fromJS({});
-
-function registrationReducer(state = initialState, action) {
+function submit(state = { successfull: false,}, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case SUBMIT:
+      return {...state, successfull: action.successfull};
     default:
       return state;
   }
 }
 export default combineReducers({
   routing: routerReducer,
-  registrationReducer,
+  submit,
 });

@@ -17,6 +17,7 @@ export const login = response => dispatch => {
     email: response.email,
     password: response.password,
   });
+  console.log(data);
   return fetch(`${domen}/api/login`, {
     method: 'post',
     credentials: 'include',
@@ -28,6 +29,7 @@ export const login = response => dispatch => {
   })
   .then(response => response.json())
   .then(json => {
+    console.log(json);
     localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
     dispatch({
       type: LOGIN,

@@ -17,10 +17,11 @@ import 'file-loader?name=[name].[ext]!./.htaccess';
 import {store} from './store';
 import { translationMessages } from './i18n';
 import './global-styles';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const initialState = {};
 const history = syncHistoryWithStore(browserHistory, store);
-
+injectTapEventPlugin();
 ReactDOM.render(
   <Provider store= {store}>
     <Router history={history}>

@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/Registration/DEFAULT_ACTION';
+export const SUBMIT = 'app/Registration/SUBMIT';
