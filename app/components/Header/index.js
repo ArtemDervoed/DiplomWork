@@ -1,37 +1,87 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect}	from	'react-redux';
-import {Link} from 'react-router';
-import {WrapperHeader, HeaderLogo, HeaderButton} from './style.js'
-import {logout} from './actions.js';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import FlatButton from 'material-ui/FlatButton';
+import Toggle from 'material-ui/Toggle';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import { logout, login, registration } from './actions.js';
+import { Div } from './style.js';
 
-class Header extends React.Component {
-  logoutUser() {
-    this.props.dispatch(logout());
-  }
+class Login extends Component {
+  static muiName = 'FlatButton';
   render() {
-    let navBar;
-    if (this.props.auth.isAuthenticated) {
-      navBar =
-        <div>
-          <HeaderButton><Link to={`/user`}>{this.props.auth.mail}</Link> </HeaderButton>
-          <HeaderButton><a onClick={this.logoutUser.bind(this)}>Выйти</a> </HeaderButton>
-        </div>
-      ;
-    } else {
-      navBar =
-        <div>
-          <HeaderButton><Link to={`/registration`}>Зарегистрироваться</Link> </HeaderButton>
-          <HeaderButton><Link to={`/login`}>Войти</Link> </HeaderButton>
-        </div>
-    }
     return (
-      <WrapperHeader>
-        <HeaderLogo><Link to={`/`}>black&white</Link></HeaderLogo>
-        {navBar}
-      </WrapperHeader>
+      <FlatButton {...this.props} label="Войти"/>
     );
   }
 }
+class Registration extends Component {
+  static muiName = 'FlatButton';
+  render() {
+    return (
+      <FlatButton {...this.props} label="Зарегистрироваться"/>
+    );
+  }
+}
+class Logout extends Component {
+  static muiName = 'FlatButton';
+  render() {
+    return (
+      <FlatButton {...this.props} label="Выйти"/>
+    );
+  }
+}
+
+class Header extends Component {
+  state = {
+    logged: {logged: JSON.parse(localStorage.getItem('auth_token')) !== null},
+  };
+
+  componentWillMount() {
+    this.setState({logged: JSON.parse(localStorage.getItem('auth_token')) !== null});
+  }
+  componentDidMount() {
+    this.setState({logged: JSON.parse(localStorage.getItem('auth_token')) !== null});
+  }
+
+  logoutUser() {
+    this.props.dispatch(logout());
+  }
+
+  loginUser() {
+    this.props.dispatch(login());
+  }
+  registrationUser() {
+    this.props.dispatch(registration());
+  }
+
+  render() {
+    let navBar = null;
+    if (JSON.parse(localStorage.getItem('auth_token')) !== null) {
+      navBar = <Logout onClick={this.logoutUser.bind(this)}/>
+    }
+    else {
+      navBar = <Div>
+        <Login onClick={this.loginUser.bind(this)}/>
+        <Registration onClick={this.registrationUser.bind(this)}/>
+      </Div>
+    }
+    return (
+      <div>
+        <AppBar
+          title="BLACK&WHITE"
+          iconElementLeft={<div></div>}
+          iconElementRight={navBar}
+        />
+      </div>
+    );
+  }
+}
+
 const	mapStateToProps	=	(state, ownProps)	=> {
   return {...state};
 };

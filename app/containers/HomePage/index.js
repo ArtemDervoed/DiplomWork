@@ -15,10 +15,15 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Wrapper from './style.js'
 import Header from 'components/Header/index'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 class HomePage extends React.PureComponent {
   render() {
     return (
-        <Header/>
+    <MuiThemeProvider>
+      <Header/>
+    </MuiThemeProvider>
     );
   }
 }

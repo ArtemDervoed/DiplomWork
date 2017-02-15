@@ -16,10 +16,6 @@ const auth = (state = {
   switch (action.type) {
     case LOGOUT:
       return {...state, isAuthenticated: action.isAuthenticated};
-    case LOGIN:
-      return {...state, isAuthenticated: action.isAuthenticated};
-    case REGISTRATION:
-      return {...state, isAuthenticated: action.isAuthenticated};
     default:
       return state;
   }

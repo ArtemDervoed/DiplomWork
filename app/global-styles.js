@@ -27,10 +27,10 @@ injectGlobal`
   }
 
   body {
-    font-family: Lato;
+
   }
   body.fontLoaded {
-    font-family: Lato;
+
   }
 
   #app {

@@ -8,6 +8,8 @@ import 'sanitize.css/sanitize.css';
 import HomePage from 'containers/HomePage/index.js';
 import Registration from 'containers/Registration/index.js';
 import Login from 'containers/Login/index.js';
+import Error from 'containers/Error/index.js';
+import Successful from 'containers/Successful/index.js';
 import App from 'containers/App/index.js';
 import LanguageProvider from 'containers/LanguageProvider';
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -26,23 +28,26 @@ ReactDOM.render(
   <Provider store= {store}>
     <Router history={history}>
       <Route path="/" component={HomePage} />
-      <Route path="/login" component={Login} />
-      <Route path="/registration" component={Registration} />
+      <Route path="/login" component={Login}/>
+      <Route path="/login/error" component={Error}/>
+      <Route path="registration" component={Registration}/>
+      <Route path="/registration/error" component={Error}/>
+      <Route path="/registration/successful" component={Successful}/>
     </Router>
   </Provider>,
   document.getElementById('app')
 );
-//
-// // Hot reloadable translation json files
-// if (module.hot) {
-//   // modules.hot.accept does not accept dynamic dependencies,
-//   // have to be constants at compile-time
-//   module.hot.accept('./i18n', () => {
-//     render(translationMessages);
-//   });
-// }
-//
-// // Chunked polyfill for browsers without Intl support
+
+// Hot reloadable translation json files
+if (module.hot) {
+  // modules.hot.accept does not accept dynamic dependencies,
+  // have to be constants at compile-time
+  module.hot.accept('./i18n', () => {
+    render(translationMessages);
+  });
+}
+
+// Chunked polyfill for browsers without Intl support
 // if (!window.Intl) {
 //   (new Promise((resolve) => {
 //     resolve(import('intl'));

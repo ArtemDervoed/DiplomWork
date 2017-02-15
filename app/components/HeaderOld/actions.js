@@ -9,8 +9,7 @@ import {browserHistory} from 'react-router';
 
 import {
   LOGOUT,
-  LOGIN,
-  REGISTRATION
+  LOGIN
 } from './constants';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 export const logout = () => dispatch => {
@@ -20,18 +19,4 @@ export const logout = () => dispatch => {
     isAuthenticated: false,
   });
   browserHistory.push('/');
-};
-export const login = () => dispatch => {
-  dispatch({
-    type: LOGIN,
-    isAuthenticated: false,
-  });
-  browserHistory.push('/login');
-};
-export const registration = () => dispatch => {
-  dispatch({
-    type: REGISTRATION,
-    isAuthenticated: false,
-  });
-  browserHistory.push('/registration');
 };

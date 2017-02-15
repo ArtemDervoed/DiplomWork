@@ -64,7 +64,9 @@ export class Registration extends React.Component {
   render() {
     return (
       <div>
+      <MuiThemeProvider>
         <Header/>
+      </MuiThemeProvider>
         <Section>
           <MuiThemeProvider>
             <Tabs
@@ -74,37 +76,44 @@ export class Registration extends React.Component {
               <div className="text-field">
               <H1>Введите свои данные</H1>
               <TextField
+                fullWidth={true}
                 ref="teachersName"
                 hintText="Имя пользователя"
                 floatingLabelText="Имя пользователя" />
               <br />
               <TextField
+                fullWidth={true}
                 ref="teachersEmail"
                 hintText="Электронная почта"
                 floatingLabelText="Электронная почта"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPhoneNumber"
                 hintText="Номер телефона"
                 floatingLabelText="Номер телефона"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersScienceDegree"
                 hintText="Ученая степень"
                 floatingLabelText="Ученая степень"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersUniversity"
                 hintText="Университет"
                 floatingLabelText="Университет"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPassword"
                 floatingLabelText="Парль"
                 hintText="Парль"
                 type="password"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPasswordConfirmation"
                 floatingLabelText="Подтверждение пароля"
                 hintText="Подтверждение пароля"
@@ -117,23 +126,27 @@ export class Registration extends React.Component {
                 <div className="text-field">
                 <H1>Введите свои данные</H1>
                 <TextField
+                  fullWidth={true}
                   ref="studentsName"
                   floatingLabelText="Имя пользователя"
                   hintText="Имя пользователя"
                 />
                 <br />
                 <TextField
+                  fullWidth={true}
                 ref="studentsEmail"
                   hintText="Электронная почта"
                   floatingLabelText="Электронная почта"
                 /><br />
                 <TextField
+                  fullWidth={true}
                   ref="studentsPassword"
                   hintText="Парль"
                   floatingLabelText="Парль"
                   type="password"
                 /><br />
                 <TextField
+                  fullWidth={true}
                   ref="studentsPasswordConfirmation"
                   hintText="Подтверждение пароля"
                   floatingLabelText="Подтверждение пароля"

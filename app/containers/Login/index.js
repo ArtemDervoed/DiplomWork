@@ -32,7 +32,7 @@ export class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 'student',
+      value: 'user',
     };
     this.role = this.state.value;
     this.email =  '';
@@ -61,9 +61,12 @@ export class Login extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
+        <MuiThemeProvider>
+          <Header/>
+        </MuiThemeProvider>
         <Section>
           <MuiThemeProvider>
+
             <Tabs value={this.state.value} onChange={this.handleChange} >
               <Tab label="Войти как преподаватель" value="teacher" >
               <div className="text-field">
@@ -88,7 +91,7 @@ export class Login extends React.Component {
                 style={style} />
               </div>
               </Tab>
-              <Tab label="Войти как студент" value="student">
+              <Tab label="Войти как студент" value="user">
                 <div className="text-field">
                 <H1>Войти</H1>
                 <TextField
