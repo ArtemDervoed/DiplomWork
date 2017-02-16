@@ -8,6 +8,7 @@ import 'sanitize.css/sanitize.css';
 import HomePage from 'containers/HomePage/index.js';
 import Registration from 'containers/Registration/index.js';
 import Login from 'containers/Login/index.js';
+import User from 'containers/User/index.js';
 import Error from 'containers/Error/index.js';
 import Successful from 'containers/Successful/index.js';
 import App from 'containers/App/index.js';
@@ -27,12 +28,13 @@ injectTapEventPlugin();
 ReactDOM.render(
   <Provider store= {store}>
     <Router history={history}>
-      <Route path="/" component={HomePage} />
+      <Route path="/" component={HomePage}/>
       <Route path="/login" component={Login}/>
       <Route path="/login/error" component={Error}/>
-      <Route path="registration" component={Registration}/>
+      <Route path="/registration" component={Registration}/>
       <Route path="/registration/error" component={Error}/>
       <Route path="/registration/successful" component={Successful}/>
+      <Route path="/user" component={User}/>
     </Router>
   </Provider>,
   document.getElementById('app')

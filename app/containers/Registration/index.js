@@ -68,13 +68,13 @@ export class Registration extends React.Component {
         <Header/>
       </MuiThemeProvider>
         <Section>
+          <H1>Введите свои данные</H1>
           <MuiThemeProvider>
             <Tabs
               value={this.state.value}
               onChange={this.handleChange}>
               <Tab label="Зарегистрироваться как преподаватель" value="teacher" >
               <div className="text-field">
-              <H1>Введите свои данные</H1>
               <TextField
                 fullWidth={true}
                 ref="teachersName"
@@ -124,7 +124,6 @@ export class Registration extends React.Component {
               </Tab>
               <Tab label="Зарегистрироваться как студент" value="student">
                 <div className="text-field">
-                <H1>Введите свои данные</H1>
                 <TextField
                   fullWidth={true}
                   ref="studentsName"

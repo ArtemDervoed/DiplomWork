@@ -65,12 +65,11 @@ export class Login extends React.Component {
           <Header/>
         </MuiThemeProvider>
         <Section>
+        <H1>Войти</H1>
           <MuiThemeProvider>
-
             <Tabs value={this.state.value} onChange={this.handleChange} >
               <Tab label="Войти как преподаватель" value="teacher" >
               <div className="text-field">
-              <H1>Войти</H1>
               <TextField
                 fullWidth={true}
                 hintText="Электронная почта"
@@ -93,7 +92,6 @@ export class Login extends React.Component {
               </Tab>
               <Tab label="Войти как студент" value="user">
                 <div className="text-field">
-                <H1>Войти</H1>
                 <TextField
                   fullWidth={true}
                   hintText="Электронная почта"

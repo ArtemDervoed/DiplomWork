@@ -21,5 +21,5 @@ export const H1 = styled.h1`
   font-family: LatoBold;
   color: rgba(0,0,0,0.45);
   text-align: center;
-  margin-bottom: -10px;
+  margin-top: 0px;
 `;

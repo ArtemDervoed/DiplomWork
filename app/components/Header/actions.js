@@ -15,6 +15,7 @@ import {
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 export const logout = () => dispatch => {
   localStorage.removeItem('auth_token');
+  localStorage.removeItem('user');
   dispatch({
     type: LOGOUT,
     isAuthenticated: false,
@@ -26,12 +27,12 @@ export const login = () => dispatch => {
     type: LOGIN,
     isAuthenticated: false,
   });
-  browserHistory.push('/login');
+  browserHistory.push('login');
 };
 export const registration = () => dispatch => {
   dispatch({
     type: REGISTRATION,
     isAuthenticated: false,
   });
-  browserHistory.push('/registration');
+  browserHistory.push('registration');
 };
