@@ -12,5 +12,9 @@ export const Div = styled.div`
 }
 `;
 export const Label = styled.label`
-font-size:24px;
+font-size:16px;
+cursor:pointer;
+`;
+export const Span = styled.span`
+font-size:12px;
 `;

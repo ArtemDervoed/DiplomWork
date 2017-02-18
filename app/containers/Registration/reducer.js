@@ -1,16 +1,8 @@
-/*
- *
- * Registration reducer
- *
- */
-import {routerReducer} from 'react-router-redux';
-import {combineReducers} from 'redux';
-import { fromJS } from 'immutable';
 import {
   SUBMIT,
 } from './constants';
 
-function submit(state = { successfull: false,}, action) {
+export const submit = (state = { successfull: false }, action) => {
   switch (action.type) {
     case SUBMIT:
       return {...state, successfull: action.successfull};
@@ -18,7 +10,3 @@ function submit(state = { successfull: false,}, action) {
       return state;
   }
 }
-export default combineReducers({
-  routing: routerReducer,
-  submit,
-});

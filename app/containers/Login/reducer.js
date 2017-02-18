@@ -1,27 +1,15 @@
-/*
- *
- * Login reducer
- *
- */
-import {routerReducer} from 'react-router-redux';
-import {combineReducers} from 'redux';
 import {
-  LOGIN,
+  SEND_LOGIN,
 } from './constants';
 
-function loginReducer(state = {
+export const sendLogin = (state = {
   isAuthenticated: false,
   mail:'',
-}, action) {
+}, action) => {
   switch (action.type) {
-    case LOGIN:
-      return {...state, isAuthenticated: action.isAuthenticated};
+    case SEND_LOGIN:
+      return {...state, role: action.role};
     default:
       return state;
   }
 }
-
-export default combineReducers({
-  routing: routerReducer,
-  loginReducer,
-});

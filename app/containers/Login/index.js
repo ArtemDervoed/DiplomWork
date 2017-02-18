@@ -32,7 +32,7 @@ export class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 'user',
+      value: 'student',
     };
     this.role = this.state.value;
     this.email =  '';
@@ -90,7 +90,7 @@ export class Login extends React.Component {
                 style={style} />
               </div>
               </Tab>
-              <Tab label="Войти как студент" value="user">
+              <Tab label="Войти как студент" value="student">
                 <div className="text-field">
                 <TextField
                   fullWidth={true}

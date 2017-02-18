@@ -10,7 +10,8 @@ import {browserHistory} from 'react-router';
 import {
   LOGOUT,
   LOGIN,
-  REGISTRATION
+  REGISTRATION,
+  GO_TO_USER
 } from './constants';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 export const logout = () => dispatch => {
@@ -36,3 +37,10 @@ export const registration = () => dispatch => {
   });
   browserHistory.push('registration');
 };
+export const goToUserRoom = () => dispatch =>{
+  dispatch({
+    type: GO_TO_USER,
+  });
+  browserHistory.push('user');
+
+}

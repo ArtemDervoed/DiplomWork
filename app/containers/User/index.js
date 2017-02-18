@@ -14,6 +14,13 @@ import UserInfo from 'components/UserInfo/index.js';
 // import { registration } from './actions.js';
 
 export class User extends React.Component {
+  constructor() {
+    super();
+    this.userUnfo = {
+      userName:'llolkekcheburek',
+      email:'228lol@mail.ru' 
+    };
+  }
   render() {
     return (
       <div>
@@ -22,8 +29,7 @@ export class User extends React.Component {
       </MuiThemeProvider>
         <Section>
           <H1>Личный кабинет</H1>
-          <UserInfo header="Имя пользователя" data="User Userowich" />
-          <UserInfo header="email" data="User@mail.ru" />
+          <UserInfo userUnfo={this.userUnfo} />
         </Section>
       </div>
     );
@@ -35,9 +41,5 @@ export class User extends React.Component {
 const	mapStateToProps	=	state	=> ({
   ...state,
 });
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+
+export default connect(mapStateToProps)(User);

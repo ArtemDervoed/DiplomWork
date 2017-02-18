@@ -1,6 +1,2 @@
-/*
- *
- * Login constants
- *
- */
- export const LOGIN = 'LOGIN';
+  export const USER_NAME = 'USER_NAME'
+  export const EMAIL = 'EMAIL'

@@ -3,4 +3,4 @@
  * Login constants
  *
  */
- export const LOGIN = 'LOGIN';
+ export const SEND_LOGIN = 'SEND_LOGIN';

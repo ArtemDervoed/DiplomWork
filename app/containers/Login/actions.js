@@ -8,7 +8,7 @@ import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 import {
-  LOGIN
+  SEND_LOGIN
 } from './constants';
 
 export const login = response => dispatch => {
@@ -36,8 +36,8 @@ export const login = response => dispatch => {
       localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
       localStorage.setItem('user', JSON.stringify(response.role));
       dispatch({
-        type: LOGIN,
-        isAuthenticated: true,
+        type: SEND_LOGIN,
+        role: response.role,
       });
       browserHistory.push('/');
     } else {

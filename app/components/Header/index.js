@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import { logout, login, registration } from './actions.js';
+import { logout, login, registration, goToUserRoom } from './actions.js';
 import { Div } from './style.js';
 
 class Login extends Component {
@@ -35,7 +35,14 @@ class Logout extends Component {
     );
   }
 }
-
+class User extends Component {
+  static muiName = 'User';
+  render() {
+    return (
+      <FlatButton {...this.props} label="Личный кабинет"/>
+    );
+  }
+}
 class Header extends Component {
   state = {
     logged: {logged: JSON.parse(localStorage.getItem('auth_token')) !== null},
@@ -58,11 +65,17 @@ class Header extends Component {
   registrationUser() {
     this.props.dispatch(registration());
   }
+  goToUser() {
+    this.props.dispatch(goToUserRoom());
+  }
 
   render() {
     let navBar = null;
     if (JSON.parse(localStorage.getItem('auth_token')) !== null) {
-      navBar = <Logout onClick={this.logoutUser.bind(this)}/>
+      navBar = <Div>
+                 <Logout onClick={this.logoutUser.bind(this)}/>
+                 <User onClick={this.goToUser.bind(this)}/>
+               </Div>
     }
     else {
       navBar = <Div>
