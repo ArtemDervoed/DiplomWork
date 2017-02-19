@@ -3,7 +3,7 @@ import {
   EMAIL,
 } from './constants';
 
-export const edit = (state = {
+export const student = (state = {
   userName:'lol',
   email:'lol@mail.ru',
 }, action) => {

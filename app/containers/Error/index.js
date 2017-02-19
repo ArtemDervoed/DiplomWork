@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -33,6 +34,7 @@ export class Error extends React.Component {
         <MuiThemeProvider>
           <Paper style={style} zDepth={3}>Error</Paper>
         </MuiThemeProvider>
+        <Footer/>
       </div>
     );
   }

@@ -6,7 +6,8 @@ import { fromJS } from 'immutable';
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 import {authorization} from 'components/header/reducer.js'
-import {edit} from 'components/UserInfo/reducer.js'
+import {student} from 'components/Student/reducer.js'
+import {teacher} from 'components/Teacher/reducer.js'
 import {sendLogin} from 'containers/Login/reducer.js'
 import {submit} from 'containers/Registration/reducer.js'
 
@@ -15,5 +16,6 @@ export default combineReducers({
   authorization,
   sendLogin,
   submit,
-  edit,
+  student,
+  teacher
 });

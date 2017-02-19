@@ -7,10 +7,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Section, H1 } from './style.js';
 import RaisedButton from 'material-ui/RaisedButton';
-import UserInfo from 'components/UserInfo/index.js';
+import Student from 'components/Student/index.js';
+import Teacher from 'components/Teacher/index.js';
 // import { registration } from './actions.js';
 
 export class User extends React.Component {
@@ -18,10 +20,19 @@ export class User extends React.Component {
     super();
     this.userUnfo = {
       userName:'llolkekcheburek',
-      email:'228lol@mail.ru' 
+      email:'228lol@mail.ru',
+      phoneNumber:'88005553535'
     };
   }
   render() {
+    let user = null;
+    if (JSON.parse(localStorage.getItem('user')) === 'student') {
+      user = <Student userUnfo={this.userUnfo}/>
+    }
+    if (JSON.parse(localStorage.getItem('user')) === 'teacher') {
+      user = <Teacher userUnfo={this.userUnfo}/>
+    }
+    console.log(user);
     return (
       <div>
       <MuiThemeProvider>
@@ -29,8 +40,9 @@ export class User extends React.Component {
       </MuiThemeProvider>
         <Section>
           <H1>Личный кабинет</H1>
-          <UserInfo userUnfo={this.userUnfo} />
+          {user}
         </Section>
+        <Footer/>
       </div>
     );
   }

@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import {Link} from 'react-router';
 import { login } from './actions.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -115,6 +116,7 @@ export class Login extends React.Component {
             </Tabs>
           </MuiThemeProvider>
         </Section>
+        <Footer/>
       </div>
     );
   }

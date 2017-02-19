@@ -6,6 +6,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -23,6 +24,7 @@ export class Successful extends React.Component {
             Все ок
           </MuiThemeProvider>
         </Section>
+        <Footer/>
       </div>
     );
   }

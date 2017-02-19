@@ -7,7 +7,7 @@ import { userName, email } from './actions.js';
 const style = {
   margin: 12,
 };
-export class UserInfo extends React.Component {
+export class Student extends React.Component {
   applyUserName(newVale) {
     this.dispatch(userName(newVale));
   }
@@ -21,13 +21,13 @@ export class UserInfo extends React.Component {
         <MuiThemeProvider>
           <InfoRow
             header="Имя пользователя"
-            data={this.props.edit.userName}
+            data={this.props.student.userName}
             applyNewValue={this.applyUserName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Email"
-            data={this.props.edit.email}
+            data={this.props.student.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
       </div>
@@ -39,4 +39,4 @@ const	mapStateToProps	=	state	=> ({
   ...state,
 });
 
-export default connect(mapStateToProps)(UserInfo);
+export default connect(mapStateToProps)(Student);

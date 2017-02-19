@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import { Section, H1 } from './style.js';
@@ -157,6 +158,7 @@ export class Registration extends React.Component {
             </Tabs>
           </MuiThemeProvider>
         </Section>
+        <Footer/>
       </div>
     );
   }
