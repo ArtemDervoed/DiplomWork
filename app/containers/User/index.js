@@ -1,9 +1,3 @@
-/*
- *
- * User info
- *
- */
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
@@ -32,7 +26,6 @@ export class User extends React.Component {
     if (JSON.parse(localStorage.getItem('user')) === 'teacher') {
       user = <Teacher userUnfo={this.userUnfo}/>
     }
-    console.log(user);
     return (
       <div>
       <MuiThemeProvider>

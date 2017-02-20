@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import InfoRow from 'components/InfoRow/index.js';
 import { userName, email } from './actions.js';
+import { H3 } from './style.js';
 const style = {
   margin: 12,
 };
@@ -15,9 +16,9 @@ export class Student extends React.Component {
     this.dispatch(email(newVale));
   }
   render() {
-    console.log(this);
     return (
       <div>
+        <H3>Информация о пользовтеле:</H3>
         <MuiThemeProvider>
           <InfoRow
             header="Имя пользователя"
