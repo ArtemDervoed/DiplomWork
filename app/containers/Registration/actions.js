@@ -12,9 +12,9 @@ import {
 } from './constants';
 
 export const registration = response => dispatch => {
-  let data = null;
-  console.log(response);
+  let data = '';
   let fullDomen = domen;
+  let status = null;
   if (response.role === 'teacher') {
     data = JSON.stringify({
       name: response.name,
@@ -46,12 +46,18 @@ export const registration = response => dispatch => {
     },
     body: data,
   })
-  .then(response => response.json())
+  .then(response => {
+    status = response.status;
+    return response.json()
+  })
   .then(json => {
-    dispatch({
-      type: SUBMIT,
-      successfull: true,
-    });
-    browserHistory.push('/');
+    if (status === 200) {
+      dispatch({
+        type: SUBMIT,
+      });
+      browserHistory.push('registration/successfull');
+    } else {
+      browserHistory.push('registration/error');
+    }
   });
 };

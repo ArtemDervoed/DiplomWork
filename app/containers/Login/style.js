@@ -9,6 +9,7 @@ export const Section = styled.div`
   padding:25px;
   padding-left:50px;
   padding-right:50px;
+  box-shadow: 5px 10px 15px rgba(0,0,0,0.3);
   .text-field {
     display: flex;
     flex-direction: column;
@@ -20,5 +21,5 @@ export const H1 = styled.h1`
   font-family: LatoBold;
   color: rgba(0,0,0,0.45);
   text-align: center;
-  margin-bottom: -10px;
+  margin-top: 0px;
 `;

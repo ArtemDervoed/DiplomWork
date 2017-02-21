@@ -5,20 +5,17 @@
 import { fromJS } from 'immutable';
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
+import {authorization} from 'components/header/reducer.js'
+import {student} from 'components/Student/reducer.js'
+import {teacher} from 'components/Teacher/reducer.js'
+import {sendLogin} from 'containers/Login/reducer.js'
+import {submit} from 'containers/Registration/reducer.js'
 
-const auth = (state = {
-  isAuthenticated: false,
-}, action) => {
-  switch (action.type) {
-    case 'LOGOUT':
-      return {...state, isAuthenticated: action.isAuthenticated};
-    case 'LOGIN':
-      return {...state, isAuthenticated: action.isAuthenticated};
-    default:
-      return state;
-  }
-};
 export default combineReducers({
   routing: routerReducer,
-  auth,
+  authorization,
+  sendLogin,
+  submit,
+  student,
+  teacher
 });

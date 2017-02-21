@@ -1,27 +1,23 @@
-/*
- *
- * Login reducer
- *
- */
-import {routerReducer} from 'react-router-redux';
-import {combineReducers} from 'redux';
 import {
   LOGOUT,
+  LOGIN,
+  REGISTRATION,
+  GO_TO_USER
 } from './constants';
 
-const auth = (state = {
+export const authorization = (state = {
   isAuthenticated: false,
-  mail:'',
 }, action) => {
   switch (action.type) {
     case LOGOUT:
       return {...state, isAuthenticated: action.isAuthenticated};
+    case LOGIN:
+      return {...state, isAuthenticated: action.isAuthenticated};
+    case REGISTRATION:
+      return {...state, isAuthenticated: action.isAuthenticated};
+    case GO_TO_USER:
+      return state;
     default:
       return state;
   }
 };
-
-export default combineReducers({
-  routing: routerReducer,
-  auth,
-});

@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import { Section, H1 } from './style.js';
@@ -64,47 +65,56 @@ export class Registration extends React.Component {
   render() {
     return (
       <div>
+      <MuiThemeProvider>
         <Header/>
+      </MuiThemeProvider>
         <Section>
+          <H1>Введите свои данные</H1>
           <MuiThemeProvider>
             <Tabs
               value={this.state.value}
               onChange={this.handleChange}>
               <Tab label="Зарегистрироваться как преподаватель" value="teacher" >
               <div className="text-field">
-              <H1>Введите свои данные</H1>
               <TextField
+                fullWidth={true}
                 ref="teachersName"
                 hintText="Имя пользователя"
                 floatingLabelText="Имя пользователя" />
               <br />
               <TextField
+                fullWidth={true}
                 ref="teachersEmail"
                 hintText="Электронная почта"
                 floatingLabelText="Электронная почта"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPhoneNumber"
                 hintText="Номер телефона"
                 floatingLabelText="Номер телефона"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersScienceDegree"
                 hintText="Ученая степень"
                 floatingLabelText="Ученая степень"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersUniversity"
                 hintText="Университет"
                 floatingLabelText="Университет"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPassword"
                 floatingLabelText="Парль"
                 hintText="Парль"
                 type="password"
               /><br />
               <TextField
+                fullWidth={true}
                 ref="teachersPasswordConfirmation"
                 floatingLabelText="Подтверждение пароля"
                 hintText="Подтверждение пароля"
@@ -115,25 +125,28 @@ export class Registration extends React.Component {
               </Tab>
               <Tab label="Зарегистрироваться как студент" value="student">
                 <div className="text-field">
-                <H1>Введите свои данные</H1>
                 <TextField
+                  fullWidth={true}
                   ref="studentsName"
                   floatingLabelText="Имя пользователя"
                   hintText="Имя пользователя"
                 />
                 <br />
                 <TextField
+                  fullWidth={true}
                 ref="studentsEmail"
                   hintText="Электронная почта"
                   floatingLabelText="Электронная почта"
                 /><br />
                 <TextField
+                  fullWidth={true}
                   ref="studentsPassword"
                   hintText="Парль"
                   floatingLabelText="Парль"
                   type="password"
                 /><br />
                 <TextField
+                  fullWidth={true}
                   ref="studentsPasswordConfirmation"
                   hintText="Подтверждение пароля"
                   floatingLabelText="Подтверждение пароля"
@@ -145,6 +158,7 @@ export class Registration extends React.Component {
             </Tabs>
           </MuiThemeProvider>
         </Section>
+        <Footer/>
       </div>
     );
   }

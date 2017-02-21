@@ -8,16 +8,16 @@ import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 import {
-  LOGIN
+  SEND_LOGIN
 } from './constants';
 
 export const login = response => dispatch => {
+  let status = null;
   const data = JSON.stringify({
     role: response.role,
     email: response.email,
     password: response.password,
   });
-  console.log(data);
   return fetch(`${domen}/api/login`, {
     method: 'post',
     credentials: 'include',
@@ -27,14 +27,21 @@ export const login = response => dispatch => {
     },
     body: data,
   })
-  .then(response => response.json())
+  .then(response => {
+    status = response.status;
+    return response.json()
+  })
   .then(json => {
-    console.log(json);
-    localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
-    dispatch({
-      type: LOGIN,
-      isAuthenticated: JSON.parse(localStorage.getItem('auth_token')) !== undefined || '',
-    });
-    browserHistory.push('/');
+    if (status === 200) {
+      localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
+      localStorage.setItem('user', JSON.stringify(response.role));
+      dispatch({
+        type: SEND_LOGIN,
+        role: response.role,
+      });
+      browserHistory.push('/');
+    } else {
+      browserHistory.push('/login/error');
+    }
   });
 };

@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 import {Link} from 'react-router';
 import { login } from './actions.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -61,13 +62,15 @@ export class Login extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
+        <MuiThemeProvider>
+          <Header/>
+        </MuiThemeProvider>
         <Section>
+        <H1>Войти</H1>
           <MuiThemeProvider>
             <Tabs value={this.state.value} onChange={this.handleChange} >
               <Tab label="Войти как преподаватель" value="teacher" >
               <div className="text-field">
-              <H1>Войти</H1>
               <TextField
                 fullWidth={true}
                 hintText="Электронная почта"
@@ -90,7 +93,6 @@ export class Login extends React.Component {
               </Tab>
               <Tab label="Войти как студент" value="student">
                 <div className="text-field">
-                <H1>Войти</H1>
                 <TextField
                   fullWidth={true}
                   hintText="Электронная почта"
@@ -114,6 +116,7 @@ export class Login extends React.Component {
             </Tabs>
           </MuiThemeProvider>
         </Section>
+        <Footer/>
       </div>
     );
   }

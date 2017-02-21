@@ -24,24 +24,20 @@ injectGlobal`
   body {
     height: 100%;
     width: 100%;
+    max-width:1920px;
+    margin: 0 auto;
   }
 
   body {
-    font-family: Lato;
+
   }
   body.fontLoaded {
-    font-family: Lato;
+
   }
 
   #app {
     background-color: white;
     min-height: 100%;
     min-width: 100%;
-  }
-
-  p,
-  label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
   }
 `;
