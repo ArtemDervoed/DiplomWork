@@ -33,7 +33,7 @@ class HomePage extends React.PureComponent {
     );
   }
 }
-    //
+
 const	mapStateToProps	=	(state, ownProps)	=> {
   return {...state};
 };

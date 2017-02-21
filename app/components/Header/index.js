@@ -10,6 +10,14 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { logout, login, registration, goToUserRoom } from './actions.js';
 import { Div } from './style.js';
+const style = {
+  height: 52,
+}
+const titleStyle = {
+  margin: 0,
+  height: 'inherit',
+  lineHeight: '55px',
+}
 
 class Login extends Component {
   static muiName = 'FlatButton';
@@ -86,6 +94,8 @@ class Header extends Component {
     return (
       <div>
         <AppBar
+          style = {style}
+          titleStyle={titleStyle}
           title="BLACK&WHITE"
           iconElementLeft={<div></div>}
           iconElementRight={navBar}

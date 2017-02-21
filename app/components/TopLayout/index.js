@@ -7,7 +7,7 @@ const style = {
   margin: 12,
   height: 50,
   width: 250,
-  marginTop: 90,
+  marginTop: 40,
   marginLeft: 150,
   backgroundColor: 'rgba(0,0,0,.5)'
 };

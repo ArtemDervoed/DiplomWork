@@ -15,6 +15,9 @@ export const Div = styled.div`
 export const H1 = styled.h1`
   color: white;
   position: relative;
-  top: 100px;
+  top: 50px;
   left: 150px;
+  width: 400px;
+  font-size: 42px;
+
 `;
