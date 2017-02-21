@@ -4,14 +4,13 @@ import bgi from './home-bg-01.png';
 export const Section = styled.section`
   background: url(${bgi});
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center;
   background-size: cover
   height: 560px;
   padding: 40px;
 `;
 export const Div = styled.div`
-
-`;
+  `;
 export const H1 = styled.h1`
   color: white;
   position: relative;
@@ -19,5 +18,4 @@ export const H1 = styled.h1`
   left: 150px;
   width: 400px;
   font-size: 42px;
-
 `;

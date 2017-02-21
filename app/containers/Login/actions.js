@@ -33,6 +33,7 @@ export const login = response => dispatch => {
   })
   .then(json => {
     if (status === 200) {
+      console.log(json);
       localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
       localStorage.setItem('user', JSON.stringify(response.role));
       dispatch({
