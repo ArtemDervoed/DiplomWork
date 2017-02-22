@@ -38,6 +38,6 @@ injectGlobal`
   #app {
     background-color: white;
     min-height: 100%;
-    min-width: 100%;
+    min-width: 1024px;
   }
 `;

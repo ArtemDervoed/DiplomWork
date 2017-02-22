@@ -8,9 +8,12 @@ export const Section = styled.section`
   position: relative;
   left: 0;
   top: 0;
+  @media screen and (max-width: 1024px) {
+    padding-bottom: 500px;
 `;
 export const Div_container = styled.div`
   min-width: 1024px;
+  min-height: 500px;
   background: url(${bgi});
   background-repeat: no-repeat;
   background-position: center;
