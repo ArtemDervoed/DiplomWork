@@ -1,9 +1,3 @@
-/*
- *
- * Registration
- *
- */
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
@@ -53,6 +47,7 @@ export class Registration extends React.Component {
       role: this.state.value,
       name: this.refs.studentsName.input.value,
       email:  this.refs.studentsEmail.input.value,
+      groupe:  this.refs.studentsGroupe.input.value,
       password: this.refs.studentsPassword.input.value,
       passwordConfirmation: this.refs.studentsPasswordConfirmation.input.value,
     })
@@ -140,9 +135,15 @@ export class Registration extends React.Component {
                 /><br />
                 <TextField
                   fullWidth={true}
+                ref="studentsGroupe"
+                  hintText="Группа"
+                  floatingLabelText="Группа"
+                /><br />
+                <TextField
+                  fullWidth={true}
                   ref="studentsPassword"
-                  hintText="Парль"
-                  floatingLabelText="Парль"
+                  hintText="Пароль"
+                  floatingLabelText="Пароль"
                   type="password"
                 /><br />
                 <TextField

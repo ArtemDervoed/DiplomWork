@@ -3,7 +3,7 @@ import styled  from 'styled-components';
 
 export const Div = styled.div`
   background-color: #202020;
-  height: 200px;
+  height: 250px;
   font-size: 16px;
   text-align: center;
   color: white;

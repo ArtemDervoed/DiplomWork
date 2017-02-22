@@ -1,1 +1,1 @@
-web: node index.js
+web: nom run start:build
