@@ -19,6 +19,7 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
+
   },
 };
 

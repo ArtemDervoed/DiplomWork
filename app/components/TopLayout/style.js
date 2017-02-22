@@ -3,12 +3,14 @@ import styled  from 'styled-components';
 import bgi from './home-bg-01.png';
 export const Section = styled.section`
   width: 100%;
+  min-width: 1024px;
   padding-bottom: 50%;
   position: relative;
   left: 0;
   top: 0;
 `;
 export const Div_container = styled.div`
+  min-width: 1024px;
   background: url(${bgi});
   background-repeat: no-repeat;
   background-position: center;

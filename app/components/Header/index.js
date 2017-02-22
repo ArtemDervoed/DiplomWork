@@ -12,6 +12,7 @@ import { logout, login, registration, goToUserRoom } from './actions.js';
 import { Div } from './style.js';
 const style = {
   height: 52,
+  minWidth: 1024,
 }
 const titleStyle = {
   margin: 0,

@@ -3,6 +3,7 @@ import styled  from 'styled-components';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 export const Section = styled.div`
+  min-width: 1024px;
   width: 900px;
   margin: 50px auto;
   background-color: rgba(0,0,0,0.05);
