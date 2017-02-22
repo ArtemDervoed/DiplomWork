@@ -3,7 +3,8 @@ import {
   EMAIL,
   PHONE_NUMBER,
   SCIENCE_DEGREE,
-  UNIVERSITY
+  UNIVERSITY,
+  UPDATE
 } from './constants';
 
 export const teacher = (state = {
@@ -24,6 +25,8 @@ export const teacher = (state = {
       return {...state, scienceDegree: action.scienceDegree};
     case UNIVERSITY:
       return {...state, university: action.university};
+    case UPDATE:
+      return state;
     default:
       return state;
   }

@@ -2,11 +2,18 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, phoneNumber, scienceDegree, university } from './actions.js';
+import { userName, email, phoneNumber, scienceDegree, university, update } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
+};
+const buttonStyle = {
+  margin: 12,
+  height: 50,
+  width: 250,
+  backgroundColor: 'rgba(0,0,0,.1)'
 };
 export class Teacher extends React.Component {
   applyUserName(newVale) {
@@ -17,6 +24,9 @@ export class Teacher extends React.Component {
   }
   applyPhoneNumber(newVale) {
     this.dispatch(phoneNumber(newVale));
+  }
+  applyUodate(newVale) {
+    this.props.dispatch(update(newVale));
   }
   applyScienceDegree(newVale) {
     this.dispatch(scienceDegree(newVale));
@@ -57,6 +67,19 @@ export class Teacher extends React.Component {
             header="Университет"
             data={this.props.teacher.university}
             applyNewValue={this.applyUniversity}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <div>
+            <FlatButton
+              label="Сохранить"
+              secondary={false}
+              style={buttonStyle}
+              onClick={this.applyUodate.bind(this)}/>
+            <FlatButton
+              label="Отмена"
+              secondary={false}
+              style={buttonStyle}/>
+          </div>
         </MuiThemeProvider>
       </div>
     );

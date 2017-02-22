@@ -3,7 +3,8 @@ import {
   EMAIL,
   PHONE_NUMBER,
   SCIENCE_DEGREE,
-  UNIVERSITY
+  UNIVERSITY,
+  UPDATE
 } from './constants';
 export const userName = response => dispatch => {
   return dispatch({type: USER_NAME, userName: response })
@@ -19,4 +20,8 @@ export const scienceDegree = response => dispatch => {
 };
 export const university = response => dispatch => {
   return dispatch({type: UNIVERSITY, university: response })
+};
+export const update = response => dispatch => {
+  console.log(this);
+  return dispatch({type: UPDATE})
 };

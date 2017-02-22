@@ -32,6 +32,7 @@ export const registration = response => dispatch => {
     data = JSON.stringify({
       name: response.name,
       email: response.email,
+      groupe: response.groupe,
       password: response.password,
       password_confirmation: response.passwordConfirmation,
     });

@@ -3,10 +3,12 @@ import styled  from 'styled-components';
 
 export const Section = styled.div`
   width: 600px;
-  margin: 50px auto;
+  height: 100%;
+  margin: 100px auto;
+  margin-bottom: 120px;
   background-color: rgba(0,0,0,0.05);
   border-radius: 5px;
-  padding:25px;
+  padding:50px;
   padding-left:50px;
   padding-right:50px;
   box-shadow: 5px 10px 15px rgba(0,0,0,0.3);
