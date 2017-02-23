@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email } from './actions.js';
+import { userName, email, group } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -23,6 +23,12 @@ export class Student extends React.Component {
   applyEmail(newVale) {
     this.dispatch(email(newVale));
   }
+  applyGroup(newVale) {
+    this.dispatch(group(newVale));
+  }
+  applyUpdate(newVale) {
+    this.props.dispatch(update(newVale));
+  }
   render() {
     return (
       <div>
@@ -38,6 +44,25 @@ export class Student extends React.Component {
             header="Email"
             data={this.props.student.email}
             applyNewValue={this.applyEmail}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <InfoRow
+            header="Группа"
+            data={this.props.student.group}
+            applyNewValue={this.applyGroup}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <div>
+            <FlatButton
+              label="Сохранить"
+              secondary={true}
+              style={buttonStyle}
+              onClick={this.applyUpdate.bind(this)}/>
+            <FlatButton
+              label="Отмена"
+              secondary={false}
+              style={buttonStyle}/>
+          </div>
         </MuiThemeProvider>
       </div>
     );

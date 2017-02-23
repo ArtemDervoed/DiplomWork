@@ -3,7 +3,7 @@ import styled  from 'styled-components';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 export const Section = styled.div`
-  width: 900px;
+  width: 90%;
   margin: 50px auto;
   background-color: rgba(0,0,0,0.05);
   border-radius: 5px;
@@ -23,4 +23,18 @@ export const H1 = styled.h1`
   color: rgba(0,0,0,0.45);
   text-align: center;
   margin-top: 0px;
+`;
+export const Content = styled.div`
+  font-family: LatoBold;
+  color: rgba(0,0,0,0.45);
+  text-align: left;
+  display: flex;
+  margin-top: 0px;
+  div:first-child {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  div:last-child {
+    flex-grow: 1;
+  }
 `;

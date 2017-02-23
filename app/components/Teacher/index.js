@@ -25,7 +25,7 @@ export class Teacher extends React.Component {
   applyPhoneNumber(newVale) {
     this.dispatch(phoneNumber(newVale));
   }
-  applyUodate(newVale) {
+  applyUpdate(newVale) {
     this.props.dispatch(update(newVale));
   }
   applyScienceDegree(newVale) {
@@ -74,7 +74,7 @@ export class Teacher extends React.Component {
               label="Сохранить"
               secondary={false}
               style={buttonStyle}
-              onClick={this.applyUodate.bind(this)}/>
+              onClick={this.applyUpdate.bind(this)}/>
             <FlatButton
               label="Отмена"
               secondary={false}
