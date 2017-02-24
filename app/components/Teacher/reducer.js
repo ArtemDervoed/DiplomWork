@@ -10,10 +10,8 @@ import {
 export const teacher = (state = {
   userName:'lol',
   email:'lol@mail.ru',
-  phoneNumber: '88005553535',
-  scienceDegree: 'THE BATYA',
-  university: '1',
-}, action) => {
+  group: 'ИВТ1303',
+  update: '' }, action) => {
   switch (action.type) {
     case USER_NAME:
       return {...state, userName: action.userName};
@@ -26,7 +24,7 @@ export const teacher = (state = {
     case UNIVERSITY:
       return {...state, university: action.university};
     case UPDATE:
-      return state;
+      return {...state, update: action.payload};
     default:
       return state;
   }

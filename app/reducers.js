@@ -9,13 +9,13 @@ import {authorization} from 'components/header/reducer.js'
 import {student} from 'components/Student/reducer.js'
 import {teacher} from 'components/Teacher/reducer.js'
 import {sendLogin} from 'containers/Login/reducer.js'
-import {submit} from 'containers/Registration/reducer.js'
+import {registration} from 'containers/Registration/reducer.js'
 
 export default combineReducers({
   routing: routerReducer,
   authorization,
   sendLogin,
-  submit,
+  registration,
   student,
   teacher
 });

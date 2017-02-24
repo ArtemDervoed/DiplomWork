@@ -27,12 +27,8 @@ injectGlobal`
     max-width:1920px;
     margin: 0 auto;
   }
-
-  body {
-
-  }
   body.fontLoaded {
-
+    font-family: Lato;
   }
 
   #app {

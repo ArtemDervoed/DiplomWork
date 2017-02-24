@@ -2,13 +2,17 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
+import DropDownMenuList from 'components/DropDownMenu/index';
+import TopImgLine from 'components/TopImgLine/index.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import { Section, H1 } from './style.js';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import RaisedButton from 'material-ui/RaisedButton';
-import { registration } from './actions.js';
-
+import { registration, fetchUniversities } from './actions.js';
+import Subheader from 'material-ui/Subheader';
 const style = {
   margin: 12,
 };
@@ -22,13 +26,19 @@ const styles = {
 
   },
 };
-
 export class Registration extends React.Component {
   constructor(props) {
     super(props);
+    this.group = 0;
     this.state = {
       value: 'student',
+      group: null
     };
+    this.universities = [];
+  }
+  componentDidMount() {
+    this.props.dispatch(fetchUniversities());
+    // this.universities = this.props.registration.universities;
   }
   onSubmitTeacher() {
     this.props.dispatch(registration({
@@ -43,12 +53,12 @@ export class Registration extends React.Component {
     })
   )};
   onSubmitStud() {
-    console.log(this.props);
+    console.log(this.refs.studentsGroup);
     this.props.dispatch(registration({
       role: this.state.value,
       name: this.refs.studentsName.input.value,
       email:  this.refs.studentsEmail.input.value,
-      groupe:  this.refs.studentsGroupe.input.value,
+      group:  this.state.group,
       password: this.refs.studentsPassword.input.value,
       passwordConfirmation: this.refs.studentsPasswordConfirmation.input.value,
     })
@@ -58,6 +68,12 @@ export class Registration extends React.Component {
       value: value,
     });
   };
+  injectValue(value) {
+    console.log(value);
+    this.setState({
+      group: value,
+    });
+  }
   render() {
     return (
       <div>
@@ -65,7 +81,7 @@ export class Registration extends React.Component {
         <Header/>
       </MuiThemeProvider>
         <Section>
-          <H1>Введите свои данные</H1>
+        <H1>Введите свои данные</H1>
           <MuiThemeProvider>
             <Tabs
               value={this.state.value}
@@ -130,16 +146,12 @@ export class Registration extends React.Component {
                 <br />
                 <TextField
                   fullWidth={true}
-                ref="studentsEmail"
+                  ref="studentsEmail"
                   hintText="Электронная почта"
                   floatingLabelText="Электронная почта"
                 /><br />
-                <TextField
-                  fullWidth={true}
-                ref="studentsGroupe"
-                  hintText="Группа"
-                  floatingLabelText="Группа"
-                /><br />
+                <DropDownMenuList injectValue={this.injectValue.bind(this)} ref="studentsGroup" header="Группа" data={this.props.registration.groups} />
+                <br />
                 <TextField
                   fullWidth={true}
                   ref="studentsPassword"
@@ -178,11 +190,5 @@ function mapDispatchToProps(dispatch) {
     dispatch,
   };
 }
-// <form method="POST" action="https://serene-hamlet-19929.herokuapp.com/api/users" >
-//   <input type="text" name="name" placeholder="Имя" />
-//   <input type="text" name="email" placeholder="Мыло" />
-//   <input type="password" name="password" placeholder="password" />
-//   <input type="password" name="password_confirmation" placeholder="password again" />
-//   <input type="submit" value="Отправить"/>
-// </form>
+
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

@@ -15,7 +15,7 @@ export const Section = styled.div`
   .text-field {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     font-family: Lato;
   }
 `;

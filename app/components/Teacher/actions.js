@@ -22,6 +22,13 @@ export const university = response => dispatch => {
   return dispatch({type: UNIVERSITY, university: response })
 };
 export const update = response => dispatch => {
-  console.log(this);
-  return dispatch({type: UPDATE})
+  let userId = JSON.parse(localStorage.getItem('user_id'));
+  return fetch('https://serene-hamlet-19929.herokuapp.com/api/teachers/' + userId, {
+    method: 'Get',
+    headers: {
+       Authorization: "Token Awc3jmMcQn1xUMfln2SqwQ==",
+    },
+  })
+    .then(response => response.json())
+    .then(json => dispatch({type: UPDATE, payload: json}));
 };

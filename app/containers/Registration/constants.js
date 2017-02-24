@@ -4,4 +4,5 @@
  *
  */
 
-export const SUBMIT = 'app/Registration/SUBMIT';
+export const SUBMIT = 'SUBMIT';
+export const FETCH_UNIVERSITIES = 'FETCH_UNIVERSITIES';

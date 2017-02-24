@@ -34,6 +34,9 @@ export class Teacher extends React.Component {
   applyUniversity(newVale) {
     this.dispatch(university(newVale));
   }
+  componentDidMount() {
+    this.props.dispatch(update());
+  }
   render() {
     return (
       <div>
@@ -41,13 +44,13 @@ export class Teacher extends React.Component {
         <MuiThemeProvider>
           <InfoRow
             header="Имя пользователя"
-            data={this.props.teacher.userName}
+            data={this.props.teacher.update.name}
             applyNewValue={this.applyUserName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Email"
-            data={this.props.teacher.email}
+            data={this.props.teacher.update.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
         <MuiThemeProvider>

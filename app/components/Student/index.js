@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, group } from './actions.js';
+import { userName, email, group, update } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -27,7 +27,11 @@ export class Student extends React.Component {
     this.dispatch(group(newVale));
   }
   applyUpdate(newVale) {
-    this.props.dispatch(update(newVale));
+    this.props.dispatch(update());
+  }
+  componentDidMount() {
+    this.props.dispatch(update());
+    // this.universities = this.props.registration.universities;
   }
   render() {
     return (
@@ -36,13 +40,13 @@ export class Student extends React.Component {
         <MuiThemeProvider>
           <InfoRow
             header="Имя пользователя"
-            data={this.props.student.userName}
+            data={this.props.student.update.name}
             applyNewValue={this.applyUserName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Email"
-            data={this.props.student.email}
+            data={this.props.student.update.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
