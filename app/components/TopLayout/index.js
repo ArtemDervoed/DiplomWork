@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
-import {connect}	from	'react-redux';
+import React, { Component } from 'react';
+import { connect }	from	'react-redux';
 import { Section, Div_container,Div_content, H1 } from './style.js';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { toSubjects } from './actions';
+
 const style = {
   marginTop: 40,
   height: 70,
@@ -11,6 +13,9 @@ const style = {
 };
 
 class TopLayout extends Component {
+  onRedirect() {
+    this.props.dispatch(toSubjects());
+  }
   render() {
     return (
       <Section>
@@ -21,9 +26,10 @@ class TopLayout extends Component {
             </H1>
             <MuiThemeProvider>
                <FlatButton
-               icon={<h2>Начать</h2>}
-               secondary={true}
-               style={style}
+               onClick={ this.onRedirect.bind(this) }
+               icon={ <h2>Начать</h2> }
+               secondary={ true }
+               style={ style }
                hoverColor="rgba(0,0,0,.3)"
                backgroundColor="rgba(0,0,0,.5)"/>
             </MuiThemeProvider>

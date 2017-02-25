@@ -11,6 +11,7 @@ import Registration from 'containers/Registration/index.js';
 import Login from 'containers/Login/index.js';
 import User from 'containers/User/index.js';
 import Error from 'containers/Error/index.js';
+import Subjects from 'containers/Subjects/index.js';
 import Successful from 'containers/Successful/index.js';
 import App from 'containers/App/index.js';
 import LanguageProvider from 'containers/LanguageProvider';
@@ -36,6 +37,7 @@ ReactDOM.render(
       <Route path="/registration/error" component={Error}/>
       <Route path="/registration/successful" component={Successful}/>
       <Route path="/user" component={User}/>
+      <Route path="/subjects" component={Subjects}/>
     </Router>
   </Provider>,
   document.getElementById('app')

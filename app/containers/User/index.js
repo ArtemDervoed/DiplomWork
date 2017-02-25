@@ -75,13 +75,16 @@ class User extends React.Component {
   render() {
     let user = null;
     let inputData = null;
+    let header = '';
     if (JSON.parse(localStorage.getItem('user')) === 'student') {
       user = <Student userUnfo={this.userUnfo}/>
       inputData = subjects;
+      header ='Предметы'
     }
     if (JSON.parse(localStorage.getItem('user')) === 'teacher') {
       user = <Teacher userUnfo={this.userUnfo}/>
       inputData = groups;
+      header ='Группы'
     }
     return (
       <div>
@@ -91,7 +94,7 @@ class User extends React.Component {
         <Section >
           <H1>Личный кабинет</H1>
           <Content>
-            <DataList onItemClick={this.handleOpen.bind(this)} data={inputData} />
+            <DataList header={header} onItemClick={this.handleOpen.bind(this)} data={inputData} />
             {user}
           </Content>
           <SideList state={this.state.open} close={this.handleClose.bind(this)}/>

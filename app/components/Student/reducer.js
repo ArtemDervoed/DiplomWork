@@ -2,7 +2,8 @@ import {
   USER_NAME,
   EMAIL,
   GROUP,
-  UPDATE
+  UPDATE,
+  REDIRECT_HOME
 } from './constants';
 
 export const student = (state = {
@@ -20,6 +21,8 @@ export const student = (state = {
       return {...state, group: action.group};
     case UPDATE:
       return {...state, update: action.payload};
+    case REDIRECT_HOME:
+      return { ...state };
     default:
       return state;
   }

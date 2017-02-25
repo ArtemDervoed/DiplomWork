@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, phoneNumber, scienceDegree, university, update } from './actions.js';
+import { userName, email, phoneNumber, scienceDegree, university, update, redirectHome } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -26,13 +26,10 @@ export class Teacher extends React.Component {
     this.dispatch(phoneNumber(newVale));
   }
   applyUpdate(newVale) {
-    this.props.dispatch(update(newVale));
+    this.props.dispatch(redirectHome());
   }
   applyScienceDegree(newVale) {
     this.dispatch(scienceDegree(newVale));
-  }
-  applyUniversity(newVale) {
-    this.dispatch(university(newVale));
   }
   componentDidMount() {
     this.props.dispatch(update());
@@ -64,12 +61,6 @@ export class Teacher extends React.Component {
             header="Ученая степень"
             data={this.props.teacher.scienceDegree}
             applyNewValue={this.applyScienceDegree}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            header="Университет"
-            data={this.props.teacher.university}
-            applyNewValue={this.applyUniversity}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <div>

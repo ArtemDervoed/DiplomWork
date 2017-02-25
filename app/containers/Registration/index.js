@@ -47,7 +47,6 @@ export class Registration extends React.Component {
       email:  this.refs.teachersEmail.input.value,
       phoneNumber: this.refs.teachersPhoneNumber.input.value,
       scienceDegree: this.refs.teachersScienceDegree.input.value,
-      universityId: this.refs.teachersUniversity.input.value,
       password: this.refs.teachersPassword.input.value,
       passwordConfirmation: this.refs.teachersPasswordConfirmation.input.value,
     })
@@ -111,12 +110,6 @@ export class Registration extends React.Component {
                 ref="teachersScienceDegree"
                 hintText="Ученая степень"
                 floatingLabelText="Ученая степень"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersUniversity"
-                hintText="Университет"
-                floatingLabelText="Университет"
               /><br />
               <TextField
                 fullWidth={true}

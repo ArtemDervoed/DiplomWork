@@ -32,8 +32,7 @@ export const login = response => dispatch => {
     return response.json()
   })
   .then(json => {
-    if (status === 200) {
-      localStorage.setItem('is_authenticated', JSON.stringify(true));
+    if (status === 200) { 
       localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
       localStorage.setItem('user', JSON.stringify(response.role));
       localStorage.setItem('user_id', JSON.stringify(json.user_id));

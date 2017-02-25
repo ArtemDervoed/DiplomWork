@@ -18,6 +18,7 @@ export const logout = () => dispatch => {
   localStorage.removeItem('auth_token');
   localStorage.removeItem('user');
   localStorage.removeItem('user_id');
+  localStorage.removeItem('is_authenticated');
   dispatch({
     type: LOGOUT,
     isAuthenticated: false,

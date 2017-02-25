@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, group, update } from './actions.js';
+import { userName, email, group, update, redirectHome } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -27,7 +27,7 @@ export class Student extends React.Component {
     this.dispatch(group(newVale));
   }
   applyUpdate(newVale) {
-    this.props.dispatch(update());
+    this.props.dispatch(redirectHome());
   }
   componentDidMount() {
     this.props.dispatch(update());

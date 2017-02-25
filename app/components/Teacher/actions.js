@@ -4,8 +4,11 @@ import {
   PHONE_NUMBER,
   SCIENCE_DEGREE,
   UNIVERSITY,
-  UPDATE
+  UPDATE,
+  REDIRECT_HOME
 } from './constants';
+import { browserHistory } from 'react-router';
+
 export const userName = response => dispatch => {
   return dispatch({type: USER_NAME, userName: response })
 };
@@ -18,8 +21,9 @@ export const phoneNumber = response => dispatch => {
 export const scienceDegree = response => dispatch => {
   return dispatch({type: SCIENCE_DEGREE, scienceDegree: response })
 };
-export const university = response => dispatch => {
-  return dispatch({type: UNIVERSITY, university: response })
+export const redirectHome = response => dispatch => {
+  browserHistory.push('/');
+  return dispatch({ type: REDIRECT_HOME })
 };
 export const update = response => dispatch => {
   let userId = JSON.parse(localStorage.getItem('user_id'));
@@ -30,5 +34,7 @@ export const update = response => dispatch => {
     },
   })
     .then(response => response.json())
-    .then(json => dispatch({type: UPDATE, payload: json}));
+    .then(json => {
+      dispatch({ type: UPDATE, payload: json })
+    });
 };

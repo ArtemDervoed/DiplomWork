@@ -18,7 +18,7 @@ class DataList extends React.Component {
     return(
       <MuiThemeProvider>
         <List>
-          <Subheader><H3>Предметы:</H3></Subheader> {
+          <Subheader><H3>{this.props.header}</H3></Subheader> {
           this.props.data.map((subject) => {
             return <ListItem onClick={this.props.onItemClick} key={subject.key} primaryText={subject.primaryText} leftIcon={subject.leftIcon}  />
           })

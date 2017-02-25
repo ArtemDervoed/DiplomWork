@@ -2,8 +2,11 @@ import {
   USER_NAME,
   EMAIL,
   GROUP,
-  UPDATE
+  UPDATE,
+  REDIRECT_HOME
 } from './constants';
+import { browserHistory } from 'react-router';
+
 export const userName = response => dispatch => {
   return dispatch({type: USER_NAME, userName: response })
 };
@@ -12,6 +15,10 @@ export const email = response => dispatch => {
 };
 export const group = response => dispatch => {
   return dispatch({type: GROUP, group: response })
+};
+export const redirectHome = response => dispatch => {
+  browserHistory.push('/');
+  return dispatch({ type: REDIRECT_HOME })
 };
 export const update = response => dispatch => {
   let userId = JSON.parse(localStorage.getItem('user_id'));
