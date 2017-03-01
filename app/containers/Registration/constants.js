@@ -5,4 +5,4 @@
  */
 
 export const SUBMIT = 'SUBMIT';
-export const FETCH_UNIVERSITIES = 'FETCH_UNIVERSITIES';
+export const FETCH_GROUPS = 'FETCH_GROUPS';

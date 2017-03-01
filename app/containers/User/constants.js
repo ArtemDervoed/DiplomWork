@@ -1,6 +1,2 @@
-/*
- *
- * Login constants
- *
- */
- export const EDIT = 'EDIT';
+export const EDIT = 'EDIT';
+export const FETCH_TEACHER = 'FETCH_TEACHER';

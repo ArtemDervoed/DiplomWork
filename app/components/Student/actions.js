@@ -1,8 +1,9 @@
 import {
-  USER_NAME,
+  FIRST_NAME,
+  LAST_NAME,
   EMAIL,
   GROUP,
-  UPDATE,
+  FETCH_STUDENT,
   REDIRECT_HOME
 } from './constants';
 import { browserHistory } from 'react-router';
@@ -20,15 +21,21 @@ export const redirectHome = response => dispatch => {
   browserHistory.push('/');
   return dispatch({ type: REDIRECT_HOME })
 };
-export const update = response => dispatch => {
+export const fetchStudent = response => dispatch => {
   let userId = JSON.parse(localStorage.getItem('user_id'));
-  console.log(userId);
+  let token = JSON.parse(localStorage.getItem('auth_token'));
   return fetch('https://serene-hamlet-19929.herokuapp.com/api/students/' + userId, {
     method: 'Get',
     headers: {
-       Authorization: "Token Awc3jmMcQn1xUMfln2SqwQ==",
+       Authorization: 'Token ' + token,
     },
   })
     .then(response => response.json())
-    .then(json => dispatch({type: UPDATE, payload: json}));
+    .then(json => {
+      dispatch({
+        type: FETCH_STUDENT,
+        email: json.email,
+        firstName: json.first_name,
+        lastName: json.last_name,})
+    });
 };

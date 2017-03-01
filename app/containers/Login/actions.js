@@ -8,9 +8,13 @@ import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 import {
-  SEND_LOGIN
+  SEND_LOGIN,
+  REDIRECT_TO_HOME
 } from './constants';
-
+export const redirectToHome = response => dispatch => {
+  browserHistory.push('/');
+  return { type: REDIRECT_TO_HOME }
+}
 export const login = response => dispatch => {
   let status = null;
   const data = JSON.stringify({

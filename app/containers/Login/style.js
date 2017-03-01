@@ -17,6 +17,7 @@ export const Section = styled.div`
     flex-direction: column;
     align-items: center;
     font-family: Lato;
+    margin-bottom: 20px;
   }
 `;
 export const H1 = styled.h1`

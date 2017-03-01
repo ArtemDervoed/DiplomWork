@@ -38,12 +38,12 @@ export class Registration extends React.Component {
   }
   componentDidMount() {
     this.props.dispatch(fetchUniversities());
-    // this.universities = this.props.registration.universities;
   }
   onSubmitTeacher() {
     this.props.dispatch(registration({
       role: this.state.value,
-      name: this.refs.teachersName.input.value,
+      firstName: this.refs.teachersName.input.value,
+      lastName: this.refs.teachersLastName.input.value,
       email:  this.refs.teachersEmail.input.value,
       phoneNumber: this.refs.teachersPhoneNumber.input.value,
       scienceDegree: this.refs.teachersScienceDegree.input.value,
@@ -52,10 +52,10 @@ export class Registration extends React.Component {
     })
   )};
   onSubmitStud() {
-    console.log(this.refs.studentsGroup);
     this.props.dispatch(registration({
       role: this.state.value,
-      name: this.refs.studentsName.input.value,
+      firstName: this.refs.studentsName.input.value,
+      lastName: this.refs.studentsLastName.input.value,
       email:  this.refs.studentsEmail.input.value,
       group:  this.state.group,
       password: this.refs.studentsPassword.input.value,
@@ -89,9 +89,15 @@ export class Registration extends React.Component {
               <div className="text-field">
               <TextField
                 fullWidth={true}
+                ref="teachersLastName"
+                hintText="Фамилия"
+                floatingLabelText="Фамилия"
+              /><br />
+              <TextField
+                fullWidth={true}
                 ref="teachersName"
-                hintText="Имя пользователя"
-                floatingLabelText="Имя пользователя" />
+                hintText="Имя"
+                floatingLabelText="Имя" />
               <br />
               <TextField
                 fullWidth={true}
@@ -132,9 +138,15 @@ export class Registration extends React.Component {
                 <div className="text-field">
                 <TextField
                   fullWidth={true}
+                  ref="studentsLastName"
+                  hintText="Фамилия"
+                  floatingLabelText="Фамилия"
+                /><br />
+                <TextField
+                  fullWidth={true}
                   ref="studentsName"
-                  floatingLabelText="Имя пользователя"
-                  hintText="Имя пользователя"
+                  floatingLabelText="Имя"
+                  hintText="Имя"
                 />
                 <br />
                 <TextField
@@ -143,7 +155,12 @@ export class Registration extends React.Component {
                   hintText="Электронная почта"
                   floatingLabelText="Электронная почта"
                 /><br />
-                <DropDownMenuList injectValue={this.injectValue.bind(this)} ref="studentsGroup" header="Группа" data={this.props.registration.groups} />
+                <DropDownMenuList
+                  injectValue={this.injectValue.bind(this)}
+                  ref="studentsGroup"
+                  header="Группа"
+                  data={this.props.registration.groups}
+                  />
                 <br />
                 <TextField
                   fullWidth={true}

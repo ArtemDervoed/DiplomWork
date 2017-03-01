@@ -4,8 +4,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, phoneNumber, scienceDegree, university, update, redirectHome } from './actions.js';
+import { userName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome } from './actions.js';
 import { H3 } from './style.js';
+import StudentsTable from 'components/StudentsTable/index.js';
 const style = {
   margin: 12,
 };
@@ -15,39 +16,41 @@ const buttonStyle = {
   width: 250,
   backgroundColor: 'rgba(0,0,0,.1)'
 };
+
 export class Teacher extends React.Component {
   applyUserName(newVale) {
     this.dispatch(userName(newVale));
   }
+
   applyEmail(newVale) {
     this.dispatch(email(newVale));
   }
+
   applyPhoneNumber(newVale) {
     this.dispatch(phoneNumber(newVale));
   }
-  applyUpdate(newVale) {
-    this.props.dispatch(redirectHome());
-  }
+
   applyScienceDegree(newVale) {
     this.dispatch(scienceDegree(newVale));
   }
   componentDidMount() {
-    this.props.dispatch(update());
+    this.props.dispatch(fetchTeacher())
   }
   render() {
+    console.log('render', this);
     return (
       <div>
         <H3>Информация о пользовтеле:</H3>
         <MuiThemeProvider>
           <InfoRow
             header="Имя пользователя"
-            data={this.props.teacher.update.name}
+            data={this.props.teacher.userName}
             applyNewValue={this.applyUserName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Email"
-            data={this.props.teacher.update.email}
+            data={this.props.teacher.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
@@ -68,13 +71,14 @@ export class Teacher extends React.Component {
               label="Сохранить"
               secondary={false}
               style={buttonStyle}
-              onClick={this.applyUpdate.bind(this)}/>
+              />
             <FlatButton
               label="Отмена"
               secondary={false}
               style={buttonStyle}/>
           </div>
         </MuiThemeProvider>
+        <StudentsTable/>
       </div>
     );
   }

@@ -8,7 +8,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Student from 'components/Student/index.js';
 import Teacher from 'components/Teacher/index.js';
 import DataList from 'components/List/index.js';
-import SideList from 'components/SideList/index.js';
 import ContentSend from 'material-ui/svg-icons/content/send';
 // import { registration } from './actions.js';
 const subjects = [
@@ -60,10 +59,11 @@ class User extends React.Component {
     super();
     this.state = {open: false};
     this.sideListState = false;
-    this.userUnfo = {
+    this.userInfo = {
       userName:'llolkekcheburek',
       email:'228lol@mail.ru',
-      phoneNumber:'88005553535'
+      phoneNumber:'88005553535',
+      scienceDegree:'88005553535'
     };
   }
   handleOpen() {
@@ -77,12 +77,12 @@ class User extends React.Component {
     let inputData = null;
     let header = '';
     if (JSON.parse(localStorage.getItem('user')) === 'student') {
-      user = <Student userUnfo={this.userUnfo}/>
+      user = <Student userInfo={this.userInfo}/>
       inputData = subjects;
       header ='Предметы'
     }
     if (JSON.parse(localStorage.getItem('user')) === 'teacher') {
-      user = <Teacher userUnfo={this.userUnfo}/>
+      user = <Teacher userInfo={this.userInfo}/>
       inputData = groups;
       header ='Группы'
     }
@@ -97,7 +97,6 @@ class User extends React.Component {
             <DataList header={header} onItemClick={this.handleOpen.bind(this)} data={inputData} />
             {user}
           </Content>
-          <SideList state={this.state.open} close={this.handleClose.bind(this)}/>
         </Section>
         <Footer/>
       </div>

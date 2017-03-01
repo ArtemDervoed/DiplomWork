@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, group, update, redirectHome } from './actions.js';
+import { lastName, firstName, email, group, fetchStudent, redirectHome } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -17,8 +17,11 @@ const buttonStyle = {
   backgroundColor: 'rgba(0,0,0,.1)'
 };
 export class Student extends React.Component {
-  applyUserName(newVale) {
-    this.dispatch(userName(newVale));
+  applyFirstName(newVale) {
+    this.dispatch(firstName(newVale));
+  }
+  applyLastName(newVale) {
+    this.dispatch(lastName(newVale));
   }
   applyEmail(newVale) {
     this.dispatch(email(newVale));
@@ -30,31 +33,32 @@ export class Student extends React.Component {
     this.props.dispatch(redirectHome());
   }
   componentDidMount() {
-    this.props.dispatch(update());
-    // this.universities = this.props.registration.universities;
+    this.props.dispatch(fetchStudent());
   }
   render() {
+    console.log(this);
     return (
       <div>
         <H3>Информация о пользовтеле:</H3>
         <MuiThemeProvider>
           <InfoRow
-            header="Имя пользователя"
-            data={this.props.student.update.name}
+            header="Имя"
+            data={this.props.student.firstName}
+            applyNewValue={this.applyUserName}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <InfoRow
+            header="Фамилия"
+            data={this.props.student.lastName}
             applyNewValue={this.applyUserName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Email"
-            data={this.props.student.update.email}
+            data={this.props.student.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            header="Группа"
-            data={this.props.student.group}
-            applyNewValue={this.applyGroup}/>
-        </MuiThemeProvider>
+
         <MuiThemeProvider>
           <div>
             <FlatButton

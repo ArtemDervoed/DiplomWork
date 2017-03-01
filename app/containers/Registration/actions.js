@@ -9,15 +9,15 @@ import {browserHistory} from 'react-router';
 const domen = 'https://serene-hamlet-19929.herokuapp.com/';
 import {
   SUBMIT,
-  FETCH_UNIVERSITIES
+  FETCH_GROUPS
 } from './constants';
 
 export const fetchUniversities = response => dispatch => {
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/universities/4/groups', {
+  return fetch('https://serene-hamlet-19929.herokuapp.com/api/groups', {
     method: 'Get',
   })
     .then(response => response.json())
-    .then(json => dispatch({type: FETCH_UNIVERSITIES, payload: json}));
+    .then(json => dispatch({type: FETCH_GROUPS, payload: json}));
 };
 
 export const registration = response => dispatch => {
@@ -26,7 +26,8 @@ export const registration = response => dispatch => {
   let status = null;
   if (response.role === 'teacher') {
     data = JSON.stringify({
-      name: response.name,
+      first_name: response.firstName,
+      last_name: response.lastName,
       email: response.email,
       password: response.password,
       password_confirmation: response.passwordConfirmation,
@@ -39,13 +40,13 @@ export const registration = response => dispatch => {
   }
   if (response.role === 'student') {
     data = JSON.stringify({
-      name: response.name,
+      first_name: response.firstName,
+      last_name: response.lastName,
       email: response.email,
       group_id: response.group,
       password: response.password,
       password_confirmation: response.passwordConfirmation,
     });
-    console.log(data);
     fullDomen+='api/students';
   }
   return fetch(fullDomen, {
@@ -58,17 +59,14 @@ export const registration = response => dispatch => {
     body: data,
   })
   .then(response => {
-    status = response.status;
-    return response.json()
-  })
-  .then(json => {
-    if (status === 200) {
+    console.log(response);
+    if (response.status === 201) {
       dispatch({
         type: SUBMIT,
       });
-      browserHistory.push('registration/successfull');
+      browserHistory.push('/');
     } else {
       browserHistory.push('registration/error');
     }
-  });
+  })
 };

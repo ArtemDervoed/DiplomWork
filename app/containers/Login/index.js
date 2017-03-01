@@ -1,20 +1,14 @@
-/*
- *
- * Login
- *
- */
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import {Link} from 'react-router';
-import { login } from './actions.js';
+import { login, redirectToHome } from './actions.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
 import { Section, H1 } from './style.js';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextFieldInput from 'components/TextField/index.js'
 const style = {
   margin: 12,
 };
@@ -34,10 +28,9 @@ export class Login extends React.Component {
     super();
     this.state = {
       value: 'student',
+      email: '',
+      password: ''
     };
-    this.role = this.state.value;
-    this.email =  '';
-    this.password = '';
   }
 
   handleChange = (value) => {
@@ -45,20 +38,27 @@ export class Login extends React.Component {
       value: value,
     });
   };
-  onSubmitTeacher(event) {
+  onChangeEmail(event, value) {
+    this.setState({
+      email: value,
+    });
+  }
+  onChangePassword(event, value) {
+    this.setState({
+      password: value,
+    });
+  }
+  onSubmit(event) {
     this.props.dispatch(login({
       role: this.state.value,
-      email: this.refs.emailTeacher.input.value,
-      password: this.refs.passwordTeacher.input.value,
+      email: this.state.email,
+      password: this.state.password,
     })
   );}
-  onSubmitStud(event) {
-    this.props.dispatch(login({
-      role: this.state.value,
-      email: this.refs.emailStud.input.value,
-      password: this.refs.passwordStud.input.value,
-    })
-  );}
+  onToHome() {
+    this.props.dispatch(redirectToHome());
+  }
+
   render() {
     return (
       <div>
@@ -69,51 +69,30 @@ export class Login extends React.Component {
         <H1>Войти</H1>
           <MuiThemeProvider>
             <Tabs value={this.state.value} onChange={this.handleChange} >
-              <Tab label="Войти как преподаватель" value="teacher" >
-              <div className="text-field">
-              <TextField
-                fullWidth={true}
-                hintText="Электронная почта"
-                ref="emailTeacher"
-                floatingLabelText="Электронная почта"
-              /><br />
-              <TextField
-                fullWidth={true}
-                hintText="Парль"
-                type="password"
-                floatingLabelText="Пароль"
-                ref="passwordTeacher"
-              /><br />
-              <RaisedButton
-                onClick={this.onSubmitTeacher.bind(this)}
-                label="Войти"
-                primary={true}
-                style={style} />
-              </div>
-              </Tab>
-              <Tab label="Войти как студент" value="student">
-                <div className="text-field">
-                <TextField
-                  fullWidth={true}
-                  hintText="Электронная почта"
-                  ref="emailStud"
-                  floatingLabelText="Электронная почта"
-                /><br />
-                <TextField
-                  fullWidth={true}
-                  hintText="Парль"
-                  type="password"
-                  floatingLabelText="Пароль"
-                  ref="passwordStud"
-                /><br />
-                <RaisedButton
-                  onClick={this.onSubmitStud.bind(this)}
-                  label="Войти"
-                  primary={true}
-                  style={style} />
-                </div>
-              </Tab>
+              <Tab label="Войти как преподаватель" value="teacher" />
+              <Tab label="Войти как студент" value="student" />
             </Tabs>
+          </MuiThemeProvider>
+          <div className="text-field">
+            <TextFieldInput
+              fullWidth={true}
+              hintText="Электронная почта"
+              floatingLabelText="Электронная почта"
+              onChange={this.onChangeEmail.bind(this)}
+            /> <br/>
+            <TextFieldInput
+              fullWidth={true}
+              hintText="Пароль"
+              floatingLabelText="Пароль"
+              type="password"
+              onChange={this.onChangePassword.bind(this)}
+            />
+          </div>
+          <MuiThemeProvider>
+            <RaisedButton label="Войти" primary={true} style={style} onClick={this.onSubmit.bind(this)} />
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <RaisedButton label="Назад" primary={true} style={style} onClick={this.onToHome.bind(this)}/>
           </MuiThemeProvider>
         </Section>
         <Footer/>

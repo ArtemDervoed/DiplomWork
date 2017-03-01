@@ -4,7 +4,7 @@ import {
   PHONE_NUMBER,
   SCIENCE_DEGREE,
   UNIVERSITY,
-  UPDATE,
+  FETCH_TEACHER,
   REDIRECT_HOME
 } from './constants';
 import { browserHistory } from 'react-router';
@@ -25,16 +25,22 @@ export const redirectHome = response => dispatch => {
   browserHistory.push('/');
   return dispatch({ type: REDIRECT_HOME })
 };
-export const update = response => dispatch => {
+export const fetchTeacher = response => dispatch => {
   let userId = JSON.parse(localStorage.getItem('user_id'));
+  let token = JSON.parse(localStorage.getItem('auth_token'));
   return fetch('https://serene-hamlet-19929.herokuapp.com/api/teachers/' + userId, {
     method: 'Get',
     headers: {
-       Authorization: "Token Awc3jmMcQn1xUMfln2SqwQ==",
+       Authorization: 'Token ' + token,
     },
   })
     .then(response => response.json())
     .then(json => {
-      dispatch({ type: UPDATE, payload: json })
+      dispatch({
+        type: FETCH_TEACHER,
+        email: json.email,
+        name: json.name,
+        phoneNumber: json.phone_number,
+        scienceDegree: json.science_degree })
     });
 };

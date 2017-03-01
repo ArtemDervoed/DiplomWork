@@ -1,6 +1,6 @@
 import {
   SUBMIT,
-  FETCH_UNIVERSITIES
+  FETCH_GROUPS
 } from './constants';
 
 export const registration = (state = {
@@ -9,7 +9,7 @@ export const registration = (state = {
   switch (action.type) {
     case SUBMIT:
       return {...state, successfull: action.successfull};
-    case FETCH_UNIVERSITIES:
+    case FETCH_GROUPS:
       return {...state, groups: action.payload.groups};
     default:
       return state;
