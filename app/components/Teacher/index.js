@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { userName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome } from './actions.js';
+import { firstName, lastName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome } from './actions.js';
 import { H3 } from './style.js';
 import StudentsTable from 'components/StudentsTable/index.js';
 const style = {
@@ -18,10 +18,12 @@ const buttonStyle = {
 };
 
 export class Teacher extends React.Component {
-  applyUserName(newVale) {
-    this.dispatch(userName(newVale));
+  applyFirstName(newVale) {
+    this.dispatch(firstName(newVale));
   }
-
+  applyLastName(newVale) {
+    this.dispatch(lastName(newVale));
+  }
   applyEmail(newVale) {
     this.dispatch(email(newVale));
   }
@@ -43,9 +45,15 @@ export class Teacher extends React.Component {
         <H3>Информация о пользовтеле:</H3>
         <MuiThemeProvider>
           <InfoRow
-            header="Имя пользователя"
-            data={this.props.teacher.userName}
-            applyNewValue={this.applyUserName}/>
+            header="Имя"
+            data={this.props.teacher.firstName}
+            applyNewValue={this.applyFirstName}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <InfoRow
+            header="Фамилия"
+            data={this.props.teacher.lastName}
+            applyNewValue={this.applyLastName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow

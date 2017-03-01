@@ -1,4 +1,5 @@
-export const USER_NAME = 'USER_NAME'
+export const FIRST_NAME = 'FIRST_NAME';
+export const LAST_NAME = 'LAST_NAME';
 export const EMAIL = 'EMAIL'
 export const PHONE_NUMBER = 'PHONE_NUMBER'
 export const SCIENCE_DEGREE = 'SCIENCE_DEGREE'

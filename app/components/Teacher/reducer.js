@@ -1,5 +1,6 @@
 import {
-  USER_NAME,
+  FIRST_NAME,
+  LAST_NAME,
   EMAIL,
   PHONE_NUMBER,
   SCIENCE_DEGREE,
@@ -8,13 +9,16 @@ import {
 } from './constants';
 
 export const teacher = (state = {
-  userName:'',
+  firstName:'',
+  lastName:'',
   email:'',
   scienceDegree: '',
   phoneNumber: '' }, action) => {
   switch (action.type) {
-    case USER_NAME:
-      return { ...state, userName: action.userName };
+    case FIRST_NAME:
+      return {...state, firstName: action.firstName};
+    case LAST_NAME:
+      return {...state, lastName: action.lastName};
     case EMAIL:
       return { ...state, email: action.email };
     case PHONE_NUMBER:
@@ -23,7 +27,8 @@ export const teacher = (state = {
       return { ...state, scienceDegree: action.scienceDegree };
     case FETCH_TEACHER:
       return {...state,
-        userName: action.name,
+        firstName: action.firstName,
+        lastName: action.lastName,
         email: action.email,
         phoneNumber: action.phoneNumber,
         scienceDegree: action.scienceDegree, };

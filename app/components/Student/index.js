@@ -44,13 +44,13 @@ export class Student extends React.Component {
           <InfoRow
             header="Имя"
             data={this.props.student.firstName}
-            applyNewValue={this.applyUserName}/>
+            applyNewValue={this.applyFirstName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
             header="Фамилия"
             data={this.props.student.lastName}
-            applyNewValue={this.applyUserName}/>
+            applyNewValue={this.applyLastName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow

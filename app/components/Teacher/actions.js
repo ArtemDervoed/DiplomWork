@@ -1,5 +1,6 @@
 import {
-  USER_NAME,
+  FIRST_NAME,
+  LAST_NAME,
   EMAIL,
   PHONE_NUMBER,
   SCIENCE_DEGREE,
@@ -39,7 +40,8 @@ export const fetchTeacher = response => dispatch => {
       dispatch({
         type: FETCH_TEACHER,
         email: json.email,
-        name: json.name,
+        firstName: json.first_name,
+        lastName: json.last_name,
         phoneNumber: json.phone_number,
         scienceDegree: json.science_degree })
     });
