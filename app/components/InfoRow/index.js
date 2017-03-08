@@ -48,7 +48,7 @@ export class InfoRow extends React.Component {
           </MuiThemeProvider>
           <MuiThemeProvider>
             <Dialog
-              title="Изменить имя пользователя"
+              title={this.props.title}
               actions={actions}
               modal={false}
               open={this.state.open}
@@ -56,9 +56,9 @@ export class InfoRow extends React.Component {
             >
             <TextField
               fullWidth={true}
-              hintText="Новое имя пользователя"
+              hintText={this.props.hintText}
               ref="data"
-              floatingLabelText="Новое имя пользователя"
+              floatingLabelText={this.props.floatingLabelText}
               />
             </Dialog>
           </MuiThemeProvider>

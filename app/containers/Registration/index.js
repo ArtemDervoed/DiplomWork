@@ -17,15 +17,6 @@ const style = {
   margin: 12,
 };
 
-const styles = {
-    headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-
-  },
-};
 export class Registration extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +59,6 @@ export class Registration extends React.Component {
     });
   };
   injectValue(value) {
-    console.log(value);
     this.setState({
       group: value,
     });
@@ -80,12 +70,12 @@ export class Registration extends React.Component {
         <Header/>
       </MuiThemeProvider>
         <Section>
-        <H1>Введите свои данные</H1>
+        <H1>Зарегистрироваться</H1>
           <MuiThemeProvider>
             <Tabs
               value={this.state.value}
               onChange={this.handleChange}>
-              <Tab label="Зарегистрироваться как преподаватель" value="teacher" >
+              <Tab label="Как преподаватель" value="teacher" >
               <div className="text-field">
               <TextField
                 fullWidth={true}
@@ -120,8 +110,8 @@ export class Registration extends React.Component {
               <TextField
                 fullWidth={true}
                 ref="teachersPassword"
-                floatingLabelText="Парль"
-                hintText="Парль"
+                floatingLabelText="Пароль"
+                hintText="Пароль"
                 type="password"
               /><br />
               <TextField
@@ -134,7 +124,7 @@ export class Registration extends React.Component {
               <RaisedButton label="Зарегистрироваться" primary={true} style={style} onClick={this.onSubmitTeacher.bind(this)} />
               </div>
               </Tab>
-              <Tab label="Зарегистрироваться как студент" value="student">
+              <Tab label="Как студент" value="student">
                 <div className="text-field">
                 <TextField
                   fullWidth={true}

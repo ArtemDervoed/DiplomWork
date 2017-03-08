@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
 import { lastName, firstName, email, group, fetchStudent, redirectHome } from './actions.js';
 import { H3 } from './style.js';
@@ -14,7 +13,7 @@ const buttonStyle = {
   height: 50,
   width: 250,
   color: 'white',
-  backgroundColor: 'rgba(0,0,0,.1)'
+  backgroundColor: 'rgb(0, 188, 212)'
 };
 export class Student extends React.Component {
   applyFirstName(newVale) {
@@ -61,12 +60,12 @@ export class Student extends React.Component {
 
         <MuiThemeProvider>
           <div>
-            <FlatButton
+            <RaisedButton
               label="Сохранить"
               secondary={true}
               style={buttonStyle}
               onClick={this.applyUpdate.bind(this)}/>
-            <FlatButton
+            <RaisedButton
               label="Отмена"
               secondary={false}
               style={buttonStyle}/>

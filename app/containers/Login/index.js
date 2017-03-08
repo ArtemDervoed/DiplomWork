@@ -29,7 +29,8 @@ export class Login extends React.Component {
     this.state = {
       value: 'student',
       email: '',
-      password: ''
+      password: '',
+      valid: false,
     };
   }
 
@@ -43,6 +44,7 @@ export class Login extends React.Component {
       email: value,
     });
   }
+
   onChangePassword(event, value) {
     this.setState({
       password: value,
@@ -69,8 +71,8 @@ export class Login extends React.Component {
         <H1>Войти</H1>
           <MuiThemeProvider>
             <Tabs value={this.state.value} onChange={this.handleChange} >
-              <Tab label="Войти как преподаватель" value="teacher" />
-              <Tab label="Войти как студент" value="student" />
+              <Tab label="Как преподаватель" value="teacher" />
+              <Tab label="Как студент" value="student" />
             </Tabs>
           </MuiThemeProvider>
           <div className="text-field">

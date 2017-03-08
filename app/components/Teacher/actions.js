@@ -10,8 +10,11 @@ import {
 } from './constants';
 import { browserHistory } from 'react-router';
 
-export const userName = response => dispatch => {
-  return dispatch({type: USER_NAME, userName: response })
+export const firstName = response => dispatch => {
+  return dispatch({type: FIRST_NAME, firstName: response })
+};
+export const lastName = response => dispatch => {
+  return dispatch({type: LAST_NAME, lastName: response })
 };
 export const email = response => dispatch => {
   return dispatch({type: EMAIL, email: response })

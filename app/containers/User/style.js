@@ -1,6 +1,5 @@
 import React from 'react';
 import styled  from 'styled-components';
-import {Tabs, Tab} from 'material-ui/Tabs';
 
 export const Section = styled.div`
   width: 90%;
@@ -27,14 +26,13 @@ export const H1 = styled.h1`
 export const Content = styled.div`
   font-family: LatoBold;
   color: rgba(0,0,0,0.45);
-  text-align: left;
   display: flex;
   margin-top: 0px;
-  div:first-child {
-    flex-grow: 1;
-    margin-right: 10px;
-  }
-  div:last-child {
-    flex-grow: 1;
-  }
 `;
+export const LeftCol = styled.div`
+  width: 35%;
+  margin-right: 5%;
+`
+export const RightCol = styled.div`
+  width: 50%;
+`

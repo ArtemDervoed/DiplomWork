@@ -111,6 +111,14 @@ class StudentsTable extends React.Component {
             selectable={this.state.selectable}
             multiSelectable={this.state.multiSelectable}
           >
+            <TableHeader>
+              <TableRow>
+                <TableHeaderColumn>ID</TableHeaderColumn>
+                <TableHeaderColumn>Имя</TableHeaderColumn>
+                <TableHeaderColumn>Фамилия</TableHeaderColumn>
+                <TableHeaderColumn>Status</TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
             <TableBody
               displayRowCheckbox={this.state.showCheckboxes}
               deselectOnClickaway={this.state.deselectOnClickaway}

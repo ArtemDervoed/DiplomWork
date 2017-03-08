@@ -10,6 +10,7 @@ import HomePage from 'containers/HomePage/index.js';
 import Registration from 'containers/Registration/index.js';
 import Login from 'containers/Login/index.js';
 import User from 'containers/User/index.js';
+import Stand from 'containers/Stand/index.js';
 import Error from 'containers/Error/index.js';
 import Subjects from 'containers/Subjects/index.js';
 import Successful from 'containers/Successful/index.js';
@@ -38,6 +39,7 @@ ReactDOM.render(
       <Route path="/registration/successful" component={Successful}/>
       <Route path="/user" component={User}/>
       <Route path="/subjects" component={Subjects}/>
+      <Route path="/stand" component={Stand}/>
     </Router>
   </Provider>,
   document.getElementById('app')
