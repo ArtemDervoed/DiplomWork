@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import Adder from 'components/Adder/index';
+import Register from 'components/Register/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
-import { AdderBlock, Subscrible, Div } from './style';
+import { AdderBlock, Subscrible, Registers, Div } from './style';
 const style = {
   minHeight: 500,
   width: '99%',
@@ -35,7 +36,11 @@ class Stand extends React.Component {
               </Div>
               <Subscrible>{'Аппаратное управление'}</Subscrible>
             </AdderBlock>
-
+            <Registers>
+              <Register name="A"/>
+              <Register name="B"/>
+              <Register name="C"/>
+            </Registers>
           </Paper>
         </MuiThemeProvider>
         <Footer/>

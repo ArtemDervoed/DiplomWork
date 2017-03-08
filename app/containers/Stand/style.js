@@ -9,6 +9,10 @@ export const Div = styled.div`
   display: flex;
   justify-content: space-around;
 `;
+export const Registers = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 export const Subscrible = styled.span`
   font-size: 16px;
 `;

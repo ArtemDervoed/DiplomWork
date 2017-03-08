@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import TO_SUBJECTS from './constants';
 export const toSubjects = response => dispatch => {
   if (localStorage.getItem('is_authenticated')) {
-    browserHistory.push('/subjects');
+    browserHistory.push('/stand');
   } else {
     browserHistory.push('/login');
   }
