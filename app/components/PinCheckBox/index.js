@@ -15,13 +15,13 @@ const styles = {
   },
 };
 class PinCheckBox extends React.Component {
-
   render() {
     return (
        <div style={styles.block}>
         <MuiThemeProvider>
           <Checkbox
             label={this.props.label}
+            checked={this.props.checked}
             style={styles.checkbox}
             iconStyle={styles.icon}
             disabled={this.props.disabled}
@@ -38,10 +38,5 @@ const	mapStateToProps	=	state	=> ({
   ...state,
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PinCheckBox);
+export default connect(mapStateToProps)(PinCheckBox);

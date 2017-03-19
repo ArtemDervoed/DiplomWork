@@ -5,7 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 
 class Register extends React.Component {
-
   render() {
     return (
       <Div>
@@ -15,14 +14,30 @@ class Register extends React.Component {
             <PinCheckBox label='V'/>
           </SubDiv>
           <SubDiv>
-            <PinCheckBox label='0'/>
-            <PinCheckBox label='1'/>
-            <PinCheckBox label='2'/>
-            <PinCheckBox label='3'/>
-            <PinCheckBox label='4'/>
-            <PinCheckBox label='5'/>
-            <PinCheckBox label='6'/>
-            <PinCheckBox label='7'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var0} label='0'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var1} label='1'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var2} label='2'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var3} label='3'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var4} label='4'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var5} label='5'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var6} label='6'/>
+            <PinCheckBox
+              disabled={true}
+              checked={this.props.value.var7} label='7'/>
           </SubDiv>
           <SubDiv>
             <PinCheckBox label='D'/>
@@ -33,27 +48,35 @@ class Register extends React.Component {
           <SubDiv>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var0}
               label="0"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var1}
               label="1"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var2}
               label="2"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var3}
               label="3"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var4}
               label="4"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var5}
               label="5"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var6}
               label="6"/>
             <PinCheckBox
               disabled={true}
+              checked={this.props.value.var7}
               label="7"/>
           </SubDiv>
         </Col>
@@ -67,10 +90,5 @@ const	mapStateToProps	=	state	=> ({
   ...state,
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps)(Register);
