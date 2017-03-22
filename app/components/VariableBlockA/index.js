@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 import ToggleVar from 'components/Toggle/index';
 
-class VariableBlock extends React.Component {
+class VariableBlockA extends React.Component {
 onToggleRegisterAVariable0() {
   this.props.toggleRegisterAVariable0();
 }
@@ -79,4 +79,4 @@ const	mapStateToProps	=	state	=> ({
 });
 
 
-export default connect(mapStateToProps)(VariableBlock);
+export default connect(mapStateToProps)(VariableBlockA);

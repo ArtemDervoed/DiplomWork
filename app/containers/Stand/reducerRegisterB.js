@@ -23,19 +23,19 @@ export const registerB = (state = {
     case TOGGLE_REGISTER_B_VAR_0:
       return {...state, var0: action.payload};
     case TOGGLE_REGISTER_B_VAR_1:
-      return {...state, var0: action.payload};
+      return {...state, var1: action.payload};
     case TOGGLE_REGISTER_B_VAR_2:
-      return {...state, var0: action.payload};
+      return {...state, var2: action.payload};
     case TOGGLE_REGISTER_B_VAR_3:
-      return {...state, var0: action.payload};
+      return {...state, var3: action.payload};
     case TOGGLE_REGISTER_B_VAR_4:
-      return {...state, var0: action.payload};
+      return {...state, var4: action.payload};
     case TOGGLE_REGISTER_B_VAR_5:
-      return {...state, var0: action.payload};
+      return {...state, var5: action.payload};
     case TOGGLE_REGISTER_B_VAR_6:
-      return {...state, var0: action.payload};
+      return {...state, var6: action.payload};
     case TOGGLE_REGISTER_B_VAR_7:
-      return {...state, var0: action.payload};
+      return {...state, var7: action.payload};
     default:
       return state;
   }

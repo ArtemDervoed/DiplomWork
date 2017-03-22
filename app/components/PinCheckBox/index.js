@@ -26,6 +26,7 @@ class PinCheckBox extends React.Component {
             iconStyle={styles.icon}
             disabled={this.props.disabled}
             labelPosition={this.props.labelPosition}
+            onCheck={this.props.onCheck}
           />
         </MuiThemeProvider>
       </div>

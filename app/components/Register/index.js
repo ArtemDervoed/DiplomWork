@@ -40,7 +40,10 @@ class Register extends React.Component {
               checked={this.props.value.var7} label='7'/>
           </SubDiv>
           <SubDiv>
-            <PinCheckBox label='D'/>
+            <PinCheckBox
+              label='D'
+              checked={true}
+              />
           </SubDiv>
         </Col>
         <Col>{'RG'+this.props.name} </Col>
