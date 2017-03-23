@@ -8,13 +8,10 @@ import { combineReducers } from 'redux';
 import { authorization } from 'components/header/reducer.js';
 import { student } from 'components/Student/reducer.js';
 import { teacher } from 'components/Teacher/reducer.js';
-import { adders } from 'components/AddersBlock/reducer.js';
 import { sendLogin } from 'containers/Login/reducer.js';
-import { registerC } from 'containers/Stand/reducerRegisterC.js';
-import { registerB } from 'containers/Stand/reducerRegisterB.js';
-import { registerA } from 'containers/Stand/reducerRegisterA.js';
 import { topLayout } from 'components/TopLayout/reducer.js';
 import { registration } from 'containers/Registration/reducer.js';
+import { stand } from 'containers/Stand/reducer.js';
 
 export default combineReducers({
   routing: routerReducer,
@@ -23,9 +20,6 @@ export default combineReducers({
   registration,
   student,
   teacher,
+  stand,
   topLayout,
-  registerA,
-  registerB,
-  registerC,
-  adders
 });

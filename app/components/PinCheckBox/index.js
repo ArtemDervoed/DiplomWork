@@ -5,7 +5,6 @@ import Checkbox from 'material-ui/Checkbox';
 
 const styles = {
   block: {
-
   },
   checkbox: {
     margin:0,
@@ -15,25 +14,33 @@ const styles = {
   },
 };
 class PinCheckBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      checked: false,
+    }
+  }
+  handleCheck() {
+    this.setState({checked:!this.state.checked})
+  }
   render() {
     return (
        <div style={styles.block}>
         <MuiThemeProvider>
           <Checkbox
             label={this.props.label}
-            checked={this.props.checked}
+            checked={this.state.checked}
             style={styles.checkbox}
             iconStyle={styles.icon}
             disabled={this.props.disabled}
             labelPosition={this.props.labelPosition}
-            onCheck={this.props.onCheck}
+            onCheck={this.handleCheck.bind(this)}
           />
         </MuiThemeProvider>
       </div>
     );
   }
 }
-
 
 const	mapStateToProps	=	state	=> ({
   ...state,

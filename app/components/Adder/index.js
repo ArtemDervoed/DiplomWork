@@ -8,12 +8,15 @@ class Adder extends React.Component {
   constructor() {
     super();
     this.state = {
+      a:false,
+      b:false,
+      c:false,
       s:false,
       p:false,
     }
   }
   calculate() {
-    let result = this.props.firstOperand + this.props.secondOperand;
+    let result = this.state.a + this.state.b;
     if (result === 0) {
       this.setState({s:false, p:false})
     }
@@ -34,20 +37,22 @@ class Adder extends React.Component {
           <SubDiv>
             <PinCheckBox
             label='A'
-            checked={this.props.firstOperand}
+            checked={this.state.a}
+            onCheck={this.calculate}
             />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
             label='B'
-            checked={this.props.secondOperand}
-
+            checked={this.state.b}
+            onCheck={this.calculate}
             />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
             label='C'
-            onCheck={this.click.bind(this)}
+            checked={this.state.c}
+            onCheck={this.calculate}
           />
           </SubDiv>
         </Col>

@@ -32,8 +32,14 @@ const styles = {
 };
 
 class ToggleVar extends React.Component {
-  onToggleVar() {
-    this.props.onClick();
+  constructor() {
+    super();
+    this.state = {
+      toggled: false,
+    }
+  }
+  handleToggle() {
+    this.setState({toggled:!this.state.toggled})
   }
   render() {
     return (
@@ -47,8 +53,8 @@ class ToggleVar extends React.Component {
               thumbSwitchedStyle={styles.thumbSwitched}
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
-              toggled={this.props.toggled}
-              onToggle={this.onToggleVar.bind(this)}
+              toggled={this.state.toggled}
+              onToggle={this.handleToggle.bind(this)}
             />
           </div>
          </MuiThemeProvider>

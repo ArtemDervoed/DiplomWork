@@ -1,4 +1,7 @@
 import {
+  TOGGLE_REGISTER_A_V0,
+  TOGGLE_REGISTER_A_V1,
+  TOGGLE_REGISTER_A_D,
   TOGGLE_REGISTER_A_VAR_0,
   TOGGLE_REGISTER_A_VAR_1,
   TOGGLE_REGISTER_A_VAR_2,
@@ -7,6 +10,9 @@ import {
   TOGGLE_REGISTER_A_VAR_5,
   TOGGLE_REGISTER_A_VAR_6,
   TOGGLE_REGISTER_A_VAR_7,
+  TOGGLE_REGISTER_B_V0,
+  TOGGLE_REGISTER_B_V1,
+  TOGGLE_REGISTER_B_D,
   TOGGLE_REGISTER_B_VAR_0,
   TOGGLE_REGISTER_B_VAR_1,
   TOGGLE_REGISTER_B_VAR_2,
@@ -15,6 +21,9 @@ import {
   TOGGLE_REGISTER_B_VAR_5,
   TOGGLE_REGISTER_B_VAR_6,
   TOGGLE_REGISTER_B_VAR_7,
+  TOGGLE_REGISTER_C_V0,
+  TOGGLE_REGISTER_C_V1,
+  TOGGLE_REGISTER_C_D,
   TOGGLE_REGISTER_C_VAR_0,
   TOGGLE_REGISTER_C_VAR_1,
   TOGGLE_REGISTER_C_VAR_2,
@@ -27,6 +36,25 @@ import {
 
 // Register A Actions
 
+
+export const toggleRegisterAVarV0 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_A_V0,
+    payload: response,
+  });
+}
+export const toggleRegisterAVarV1 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_A_V1,
+    payload: response,
+  });
+}
+export const toggleRegisterAD = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_A_D,
+    payload: response,
+  });
+}
 export const toggleRegisterAVar0 = response => dispatch =>{
   dispatch({
     type: TOGGLE_REGISTER_A_VAR_0,
@@ -77,7 +105,24 @@ export const toggleRegisterAVar7 = response => dispatch =>{
 }
 
 // Register B Actions
-
+export const toggleRegisterBVarV0 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_B_V0,
+    payload: response,
+  });
+}
+export const toggleRegisterBVarV1 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_B_V1,
+    payload: response,
+  });
+}
+export const toggleRegisterBD = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_B_D,
+    payload: response,
+  });
+}
 export const toggleRegisterBVar0 = response => dispatch =>{
   dispatch({
     type: TOGGLE_REGISTER_B_VAR_0,
@@ -129,7 +174,24 @@ export const toggleRegisterBVar7 = response => dispatch =>{
 
 
 // Register C Actions
-
+export const toggleRegisterCVarV0 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_C_V0,
+    payload: response,
+  });
+}
+export const toggleRegisterCVarV1 = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_C_V1,
+    payload: response,
+  });
+}
+export const toggleRegisterCD = response => dispatch =>{
+  dispatch({
+    type: TOGGLE_REGISTER_C_D,
+    payload: response,
+  });
+}
 export const toggleRegisterCVar0 = response => dispatch =>{
   dispatch({
     type: TOGGLE_REGISTER_C_VAR_0,
