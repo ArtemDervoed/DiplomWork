@@ -11,29 +11,37 @@ class AddersBlock extends React.Component {
       <AdderRow>
         <Div>
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder0}
+            name="adder0"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder1}
+            name="adder1"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder2}
+            name="adder2"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder3}
+            name="adder3"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder4}
+            name="adder4"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder5}
+            name="adder5"
           />
           <Adder
-            clock={true}
+            state={this.props.stand.adders.adder6}
+            name="adder6"
           />
           <Adder
-            clock={true}
-          />          
+            state={this.props.stand.adders.adder7}
+            name="adder7"
+          />
         </Div>
         <Subscrible>{'Аппаратное управление'}</Subscrible>
       </AdderRow>

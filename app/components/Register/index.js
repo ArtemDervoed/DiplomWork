@@ -5,83 +5,102 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 
 class Register extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      input:{
-        d0:false,
-        d1:false,
-        d2:false,
-        d3:false,
-        d4:false,
-        d5:false,
-        d6:false,
-        d7:false,
-      },
-      output: {
-        q0:false,
-        q1:false,
-        q2:false,
-        q3:false,
-        q4:false,
-        q5:false,
-        q6:false,
-        q7:false,
-      },
-      mode:{
-        v1:false,
-        v0:false,
-      },
-      data:false,
-    }
-  }
-
   render() {
     return (
       <Div>
         <Col>
           <SubDiv>
-            <PinCheckBox label='V1'/>
-            <PinCheckBox label='V'/>
+            <PinCheckBox
+            label='V1'
+            checked={this.props.state.mode.v_1}
+            name={this.props.name.toLowerCase()}
+            pinType = "mode"
+            pin = "v_1"
+            parentType="register"
+            />
+            <PinCheckBox
+            label='V'
+            checked={this.props.state.mode.v_0}
+            name={this.props.name.toLowerCase()}
+            pinType = "mode"
+            pin = "v_0"
+            parentType="register"
+            />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
-              checked={this.state.input.d0}
+              checked={this.props.state.input.d_0}
               label='0'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_0"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d1}
+              checked={this.props.state.input.d_1}
               label='1'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_1"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d2}
+              checked={this.props.state.input.d_2}
               label='2'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_2"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d3}
+              checked={this.props.state.input.d_3}
               label='3'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_3"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d4}
+              checked={this.props.state.input.d_4}
               label='4'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_4"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d5}
+              checked={this.props.state.input.d_5}
               label='5'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_5"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d6}
+              checked={this.props.state.input.d_6}
               label='6'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_6"
+              parentType="register"
+              />
             <PinCheckBox
-              checked={this.state.input.d7}
+              checked={this.props.state.input.d_7}
               label='7'
-              onCheck={this.togglePin}/>
+              name={this.props.name.toLowerCase()}
+              pinType = "input"
+              pin = "d_7"
+              parentType="register"
+              />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
               label='D'
-              checked={true}
+              checked={this.props.state.mode.d}
+              name={this.props.name.toLowerCase()}
+              pinType = "mode"
+              pin = "d"
+              parentType="register"
               />
           </SubDiv>
         </Col>
@@ -90,35 +109,35 @@ class Register extends React.Component {
           <SubDiv>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q0}
+              checked={this.props.state.output.q_0}
               label="0"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q1}
+              checked={this.props.state.output.q_1}
               label="1"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q2}
+              checked={this.props.state.output.q_2}
               label="2"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q3}
+              checked={this.props.state.output.q_3}
               label="3"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q4}
+              checked={this.props.state.output.q_4}
               label="4"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q5}
+              checked={this.props.state.output.q_5}
               label="5"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q6}
+              checked={this.props.state.output.q_6}
               label="6"/>
             <PinCheckBox
               disabled={true}
-              checked={this.state.output.q7}
+              checked={this.props.state.output.q_7}
               label="7"/>
           </SubDiv>
         </Col>

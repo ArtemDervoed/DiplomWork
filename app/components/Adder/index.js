@@ -5,31 +5,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 
 class Adder extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      a:false,
-      b:false,
-      c:false,
-      s:false,
-      p:false,
-    }
-  }
-  calculate() {
-    let result = this.state.a + this.state.b;
-    if (result === 0) {
-      this.setState({s:false, p:false})
-    }
-    if (result === 1) {
-      this.setState({s:true, p:false})
-    }
-    if (result === 2) {
-      this.setState({s:false, p:true})
-    }
-  }
-  click() {
-    this.calculate();
-  }
   render() {
     return (
       <Div>
@@ -37,22 +12,31 @@ class Adder extends React.Component {
           <SubDiv>
             <PinCheckBox
             label='A'
-            checked={this.state.a}
-            onCheck={this.calculate}
+            checked={this.props.state.input.a}
+            name={this.props.name.toLowerCase()}
+            pinType = "input"
+            pin = "a"
+            parentType="adder"
             />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
             label='B'
-            checked={this.state.b}
-            onCheck={this.calculate}
+            checked={this.props.state.input.b}
+            name={this.props.name.toLowerCase()}
+            pinType = "input"
+            pin = "b"
+            parentType="adder"
             />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
             label='C'
-            checked={this.state.c}
-            onCheck={this.calculate}
+            checked={this.props.state.input.c}
+            name={this.props.name.toLowerCase()}
+            pinType = "input"
+            pin = "c"
+            parentType="adder"
           />
           </SubDiv>
         </Col>
@@ -60,14 +44,12 @@ class Adder extends React.Component {
         <Col>
           <SubDiv>
             <PinCheckBox
-              checked={this.state.s}
               disabled={true}
               label="S"
               />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
-              checked={this.state.p}
               disabled={true}
               label="P"
               />

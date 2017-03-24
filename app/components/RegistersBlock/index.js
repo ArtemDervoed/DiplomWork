@@ -6,15 +6,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 
 class RegistersBlock extends React.Component {
-  componentWillMount() {
-    console.log(this);
-  }
   render() {
     return (
       <Registers>
-        <Register value={this.props.registerA} name="A"/>
-        <Register value={this.props.registerB} name="B"/>
-        <Register value={this.props.registerC} name="C"/>
+        <Register
+          state={this.props.stand.registers.a}
+          name='A'/>
+        <Register
+          state={this.props.stand.registers.b}
+          name='B'/>
+        <Register
+          state={this.props.stand.registers.c}
+          name='C'/>
       </Registers>
     );
   }

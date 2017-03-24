@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Checkbox from 'material-ui/Checkbox';
+import { changeRegisterState } from 'containers/Stand/actions.js';
+import { changeAdderState } from 'containers/Stand/actions.js';
 
 const styles = {
   block: {
@@ -14,14 +16,29 @@ const styles = {
   },
 };
 class PinCheckBox extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      checked: false,
-    }
-  }
   handleCheck() {
-    this.setState({checked:!this.state.checked})
+    if (this.props.parentType === 'register') {
+      this.props.dispatch(changeRegisterState({
+        name:this.props.name,
+        part: {
+          name: this.props.pinType.toLowerCase(),
+          pin: this.props.pin.toLowerCase(),
+          value:!this.props.checked,
+        },
+      }));
+    }
+
+    if (this.props.parentType === 'adder') {
+      this.props.dispatch(changeAdderState({
+        name:this.props.name,
+        part: {
+          name: this.props.pinType.toLowerCase(),
+          pin: this.props.pin.toLowerCase(),
+          value:!this.props.checked,
+        },
+      }));
+    }
+
   }
   render() {
     return (
@@ -29,7 +46,7 @@ class PinCheckBox extends React.Component {
         <MuiThemeProvider>
           <Checkbox
             label={this.props.label}
-            checked={this.state.checked}
+            checked={this.props.checked}
             style={styles.checkbox}
             iconStyle={styles.icon}
             disabled={this.props.disabled}
