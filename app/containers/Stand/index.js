@@ -9,7 +9,7 @@ import VariableBlock from 'components/VariableBlock/index';
 import OperationValueBlock from 'components/OperationValueBlock/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
-import { changeAdderState } from 'containers/Stand/actions';
+import { changeRegisterState } from 'containers/Stand/actions';
 import {
   AdderBlock,
   VariablesRow,
@@ -26,18 +26,23 @@ const style = {
 };
 
 class Stand extends React.Component {
-  start() {
-    if (registerAmode === 'save') {
-      // this.props.dispatch(changeAdderState({
-      //   name:'a',
-      //   pinType: 'output'.toLowerCase(),
-      //   pin: 'd_0'.toLowerCase(),
-      //   value:this.props.stand.registers.a.input.d_0,
-      //   }));
+  writeResult() {
+    let result = '';
+    let adders = this.props.stand.adders;
+    for(var key in adders) {
+      if(adders.hasOwnProperty(key)) {
+         result+= +adders[key].output.s;
+      }
     }
-  }
-  calculate() {
-
+    for (var i = 0; i < result.length; i++) {
+      this.props.dispatch(changeRegisterState({
+        name:'c',
+        pinType: 'input',
+        pin: 'd_' + +i,
+        value:(result[i] == 1) ? true:false,
+        }
+      ));
+    }
   }
   render() {
     return (
@@ -53,7 +58,7 @@ class Stand extends React.Component {
             <RaisedButton
               label="Пуск"
               primary={true}
-              onClick={this.calculate.bind(this)}
+              onClick={this.writeResult.bind(this)}
               />
               <VariablesRow>
                 <VariableBlock

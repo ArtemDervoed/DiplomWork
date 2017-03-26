@@ -6,6 +6,7 @@ import {
 } from './constants';
 
 export const changeRegisterState = response => dispatch =>{
+  console.log(response);
   dispatch({
     type: CHANGE_REGISTER_STATE,
     name: response.name,

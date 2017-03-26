@@ -125,9 +125,7 @@ let initialState = {
 export const stand = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_REGISTER_STATE: {
-      console.log(state.registers[action.name].v_0);
       if(state.registers[action.name].mode.v_0 === true && state.registers[action.name].mode.v_1 === true  ) {
-        console.log('write');
         return update(state, { registers: {
             [action.name.toLowerCase()]: {
               [action.pinType]: {
@@ -151,10 +149,18 @@ export const stand = (state = initialState, action) => {
       }
     }
     case CHANGE_ADDER_STATE: {
+      let a = state.adders[action.name.toLowerCase()]['input']['a'];
+      let b = state.adders[action.name.toLowerCase()]['input']['b'];
+      let c = state.adders[action.name.toLowerCase()]['input']['c'];
+
       return update(state, { adders: {
           [action.name.toLowerCase()]: {
             [action.part.name]: {
               [action.part.pin]:{ $set:action.part.value }
+            },
+            ['output']: {
+              ['s']:{ $set:action.part.result.s },
+              ['p']:{ $set:action.part.result.p },
             }
           }
         }
