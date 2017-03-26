@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Div, SubDiv, Col } from './style';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
+import { changeAdderState } from 'containers/Stand/actions.js';
 
 class Adder extends React.Component {
   render() {
@@ -46,12 +47,22 @@ class Adder extends React.Component {
             <PinCheckBox
               disabled={true}
               label="S"
+              checked={this.props.state.output.s}
+              name={this.props.name.toLowerCase()}
+              pinType = "output"
+              pin = "s"
+              parentType="adder"
               />
           </SubDiv>
           <SubDiv>
             <PinCheckBox
               disabled={true}
               label="P"
+              checked={this.props.state.output.p}
+              name={this.props.name.toLowerCase()}
+              pinType = "output"
+              pin = "p"
+              parentType="adder"
               />
           </SubDiv>
         </Col>

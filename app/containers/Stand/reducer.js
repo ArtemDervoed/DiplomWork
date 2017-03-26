@@ -3,11 +3,16 @@ import {
   CHANGE_REGISTER_STATE,
   CHANGE_ADDER_STATE,
   CHANGE_OPERATION_VALUE,
+  CHANGE_VARIABLE
 } from './constants';
 
 let initialState = {
     control: {
 
+    },
+    variables: {
+      a: { v_0:false, v_1:false, v_2:false, v_3:false, v_4:false, v_5:false, v_6:false, v_7:false },
+      b: { v_0:false, v_1:false, v_2:false, v_3:false, v_4:false, v_5:false, v_6:false, v_7:false },
     },
     operationsValue: { val_0: false, val_1: false, val_2: false, val_3: false, },
     registers: {
@@ -130,7 +135,6 @@ export const stand = (state = initialState, action) => {
       });
     }
     case CHANGE_ADDER_STATE: {
-      console.log(action.part.name);
       return update(state, { adders: {
           [action.name.toLowerCase()]: {
             [action.part.name]: {
@@ -140,8 +144,13 @@ export const stand = (state = initialState, action) => {
         }
       });
     }
-    case CHANGE_OPERATION_VALUE: {
-
+    case CHANGE_VARIABLE: {
+      return update(state, { variables: {
+          [action.name.toLowerCase()]: {
+            [action.pin]:{ $set:action.value }
+          }
+        }
+      });
     }
     default:
       return state;

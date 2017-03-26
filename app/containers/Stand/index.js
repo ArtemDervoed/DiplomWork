@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import RaisedButton from 'material-ui/RaisedButton';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import AddersBlock from 'components/AddersBlock/index';
@@ -23,6 +24,26 @@ const style = {
 };
 
 class Stand extends React.Component {
+  calculate() {
+    let a = '';
+    let variableA = this.props.stand.variables.a;
+    for(var key in variableA) {
+        if(variableA.hasOwnProperty(key)) {
+            a+= +variableA[key];
+        }
+    }
+    let b = '';
+    let variableB = this.props.stand.variables.b;
+    for(var key in variableB) {
+        if(variableB.hasOwnProperty(key)) {
+            b+= +variableB[key];
+        }
+    }
+    let result = parseInt(b,2) + parseInt(a,2);
+    let doubleResult = result.toString(2)
+    alert(doubleResult);
+
+  }
   render() {
     return (
       <div>
@@ -34,12 +55,21 @@ class Stand extends React.Component {
             <AddersBlock />
             <RegistersBlock />
             <ConfigureBlock>
+            <RaisedButton
+              label="Пуск"
+              primary={true}
+              onClick={this.calculate.bind(this)}
+              />
               <VariablesRow>
                 <VariableBlock
+                  name="a"
                   header="Регистр А"
+                  state ={this.props.stand.variables.a}
                   />
                 <VariableBlock
                   header="Регистр B"
+                  name="b"
+                  state ={this.props.stand.variables.b}
                   />
               </VariablesRow>
             </ConfigureBlock>

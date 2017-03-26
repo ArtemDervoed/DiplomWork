@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Checkbox from 'material-ui/Checkbox';
-import { changeRegisterState } from 'containers/Stand/actions.js';
-import { changeAdderState } from 'containers/Stand/actions.js';
+import {
+  changeRegisterState,
+  changeAdderState,
+} from 'containers/Stand/actions.js';
 
 const styles = {
   block: {
@@ -38,7 +40,6 @@ class PinCheckBox extends React.Component {
         },
       }));
     }
-
   }
   render() {
     return (
