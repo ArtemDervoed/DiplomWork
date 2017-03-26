@@ -109,35 +109,35 @@ class Register extends React.Component {
           <SubDiv>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_0}
+              checked={this.props.state.output.d_0}
               label="0"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_1}
+              checked={this.props.state.output.d_1}
               label="1"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_2}
+              checked={this.props.state.output.d_2}
               label="2"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_3}
+              checked={this.props.state.output.d_3}
               label="3"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_4}
+              checked={this.props.state.output.d_4}
               label="4"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_5}
+              checked={this.props.state.output.d_5}
               label="5"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_6}
+              checked={this.props.state.output.d_6}
               label="6"/>
             <PinCheckBox
               disabled={true}
-              checked={this.props.state.output.q_7}
+              checked={this.props.state.output.d_7}
               label="7"/>
           </SubDiv>
         </Col>

@@ -4,10 +4,6 @@ import { Div, SubDiv, Col, Label } from './style';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 import Toggle from 'material-ui/Toggle';
-import {
-  changeOperationValue,
-  changeVariable
-} from 'containers/Stand/actions.js';
 
 const styles = {
   block: {
@@ -36,14 +32,17 @@ const styles = {
 };
 
 class ToggleVar extends React.Component {
+  constructor() {
+    super();
+  }
+
   handleToggle() {
-    if (this.props.parentType === 'variables') {
-      this.props.dispatch(changeVariable({
-        name: this.props.pinType.toLowerCase(),
-        pin: this.props.pin.toLowerCase(),
-        value:!this.props.toggled,
-      }));
-    }
+      this.props.toggle(
+      this.props.name,
+      this.props.pinType,
+      this.props.pin,
+      !this.props.toggled
+    );
   }
   render() {
     return (
@@ -57,7 +56,6 @@ class ToggleVar extends React.Component {
               thumbSwitchedStyle={styles.thumbSwitched}
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
-              toggled={this.props.toggled}
               onToggle={this.handleToggle.bind(this)}
             />
           </div>

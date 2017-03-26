@@ -9,6 +9,7 @@ import VariableBlock from 'components/VariableBlock/index';
 import OperationValueBlock from 'components/OperationValueBlock/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
+import { changeAdderState } from 'containers/Stand/actions';
 import {
   AdderBlock,
   VariablesRow,
@@ -16,6 +17,7 @@ import {
   OperationsBlock,
   ConfigureBlock,
 } from './style';
+
 const style = {
   minHeight: 500,
   width: '99%',
@@ -24,24 +26,17 @@ const style = {
 };
 
 class Stand extends React.Component {
+  start() {
+    if (registerAmode === 'save') {
+      // this.props.dispatch(changeAdderState({
+      //   name:'a',
+      //   pinType: 'output'.toLowerCase(),
+      //   pin: 'd_0'.toLowerCase(),
+      //   value:this.props.stand.registers.a.input.d_0,
+      //   }));
+    }
+  }
   calculate() {
-    let a = '';
-    let variableA = this.props.stand.variables.a;
-    for(var key in variableA) {
-        if(variableA.hasOwnProperty(key)) {
-            a+= +variableA[key];
-        }
-    }
-    let b = '';
-    let variableB = this.props.stand.variables.b;
-    for(var key in variableB) {
-        if(variableB.hasOwnProperty(key)) {
-            b+= +variableB[key];
-        }
-    }
-    let result = parseInt(b,2) + parseInt(a,2);
-    let doubleResult = result.toString(2)
-    alert(doubleResult);
 
   }
   render() {
@@ -64,12 +59,10 @@ class Stand extends React.Component {
                 <VariableBlock
                   name="a"
                   header="Регистр А"
-                  state ={this.props.stand.variables.a}
                   />
                 <VariableBlock
                   header="Регистр B"
                   name="b"
-                  state ={this.props.stand.variables.b}
                   />
               </VariablesRow>
             </ConfigureBlock>

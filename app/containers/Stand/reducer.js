@@ -29,14 +29,14 @@ let initialState = {
           d_7: false,
         },
         output: {
-          q_0: false,
-          q_1: false,
-          q_2: false,
-          q_3: false,
-          q_4: false,
-          q_5: false,
-          q_6: false,
-          q_7: false,
+          d_0: false,
+          d_1: false,
+          d_2: false,
+          d_3: false,
+          d_4: false,
+          d_5: false,
+          d_6: false,
+          d_7: false,
         }
       },
       b: {
@@ -52,14 +52,14 @@ let initialState = {
           d_7: false,
         },
         output: {
-          q_0: false,
-          q_1: false,
-          q_2: false,
-          q_3: false,
-          q_4: false,
-          q_5: false,
-          q_6: false,
-          q_7: false,
+          d_0: false,
+          d_1: false,
+          d_2: false,
+          d_3: false,
+          d_4: false,
+          d_5: false,
+          d_6: false,
+          d_7: false,
         }
       },
       c: {
@@ -75,14 +75,14 @@ let initialState = {
           d_7: false,
         },
         output: {
-          q_0: false,
-          q_1: false,
-          q_2: false,
-          q_3: false,
-          q_4: false,
-          q_5: false,
-          q_6: false,
-          q_7: false,
+          d_0: false,
+          d_1: false,
+          d_2: false,
+          d_3: false,
+          d_4: false,
+          d_5: false,
+          d_6: false,
+          d_7: false,
         }
       }
     },
@@ -125,14 +125,30 @@ let initialState = {
 export const stand = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_REGISTER_STATE: {
-      return update(state, { registers: {
-          [action.name.toLowerCase()]: {
-            [action.part.name]: {
-              [action.part.pin]:{ $set:action.part.value }
-            }
+      console.log(state.registers[action.name].v_0);
+      if(state.registers[action.name].mode.v_0 === true && state.registers[action.name].mode.v_1 === true  ) {
+        console.log('write');
+        return update(state, { registers: {
+            [action.name.toLowerCase()]: {
+              [action.pinType]: {
+                [action.pin]:{ $set:action.value },
+              },
+              ['output']: {
+                [action.pin]:{ $set:action.value },
+              },
+            },
           }
-        }
-      });
+        });
+      } else {
+        return update(state, { registers: {
+            [action.name.toLowerCase()]: {
+              [action.pinType]: {
+                [action.pin]:{ $set:action.value },
+              },
+            },
+          }
+        });
+      }
     }
     case CHANGE_ADDER_STATE: {
       return update(state, { adders: {
