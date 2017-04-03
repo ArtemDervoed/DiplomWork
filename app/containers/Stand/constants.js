@@ -6,3 +6,10 @@ export const CHANGE_ADDER_STATE = 'CHANGE_ADDER_STATE';
 export const CHANGE_OPERATION_VALUE = 'CHANGE_OPERATION_VALUE';
 // Variable value
 export const CHANGE_VARIABLE = 'CHANGE_VARIABLE';
+export const OPERATIONS = {
+  SUMM: '1110',
+  NAND: '0110',
+  AND: '1000',
+  OR: '0100',
+  NOTA: '1100'
+}

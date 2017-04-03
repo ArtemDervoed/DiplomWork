@@ -76,53 +76,53 @@ export class Registration extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}>
               <Tab label="Как преподаватель" value="teacher" >
-              <div className="text-field">
-              <TextField
-                fullWidth={true}
-                ref="teachersLastName"
-                hintText="Фамилия"
-                floatingLabelText="Фамилия"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersName"
-                hintText="Имя"
-                floatingLabelText="Имя" />
-              <br />
-              <TextField
-                fullWidth={true}
-                ref="teachersEmail"
-                hintText="Электронная почта"
-                floatingLabelText="Электронная почта"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersPhoneNumber"
-                hintText="Номер телефона"
-                floatingLabelText="Номер телефона"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersScienceDegree"
-                hintText="Ученая степень"
-                floatingLabelText="Ученая степень"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersPassword"
-                floatingLabelText="Пароль"
-                hintText="Пароль"
-                type="password"
-              /><br />
-              <TextField
-                fullWidth={true}
-                ref="teachersPasswordConfirmation"
-                floatingLabelText="Подтверждение пароля"
-                hintText="Подтверждение пароля"
-                type="password"
-              /><br />
-              <RaisedButton label="Зарегистрироваться" primary={true} style={style} onClick={this.onSubmitTeacher.bind(this)} />
-              </div>
+                <div className="text-field">
+                <TextField
+                  fullWidth={true}
+                  ref="teachersLastName"
+                  hintText="Фамилия"
+                  floatingLabelText="Фамилия"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersName"
+                  hintText="Имя"
+                  floatingLabelText="Имя" />
+                <br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersEmail"
+                  hintText="Электронная почта"
+                  floatingLabelText="Электронная почта"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersPhoneNumber"
+                  hintText="Номер телефона"
+                  floatingLabelText="Номер телефона"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersScienceDegree"
+                  hintText="Ученая степень"
+                  floatingLabelText="Ученая степень"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersPassword"
+                  floatingLabelText="Пароль"
+                  hintText="Пароль"
+                  type="password"
+                /><br />
+                <TextField
+                  fullWidth={true}
+                  ref="teachersPasswordConfirmation"
+                  floatingLabelText="Подтверждение пароля"
+                  hintText="Подтверждение пароля"
+                  type="password"
+                /><br />
+                <RaisedButton label="Зарегистрироваться" primary={true} style={style} onClick={this.onSubmitTeacher.bind(this)} />
+                </div>
               </Tab>
               <Tab label="Как студент" value="student">
                 <div className="text-field">

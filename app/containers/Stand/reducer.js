@@ -174,6 +174,12 @@ export const stand = (state = initialState, action) => {
         }
       });
     }
+    case CHANGE_OPERATION_VALUE: {
+      return update(state, { operationsValue: {
+            [action.pin]:{ $set:action.value }
+          }
+      });
+    }
     default:
       return state;
   }

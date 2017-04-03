@@ -38,8 +38,8 @@ class ToggleVar extends React.Component {
 
   handleToggle() {
       this.props.toggle(
-      this.props.name,
-      this.props.pinType,
+      this.props.name || '',
+      this.props.pinType || '',
       this.props.pin,
       !this.props.toggled
     );

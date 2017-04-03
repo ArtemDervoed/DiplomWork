@@ -25,3 +25,10 @@ export const VariablesRow = styled.div`
   align-items: flex-end;
   margin: 10px;
 `;
+export const ChartRow = styled.div`
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 700px;
+  height: 500px;
+`;

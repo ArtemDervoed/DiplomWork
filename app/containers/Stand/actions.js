@@ -6,7 +6,6 @@ import {
 } from './constants';
 
 export const changeRegisterState = response => dispatch =>{
-  console.log(response);
   dispatch({
     type: CHANGE_REGISTER_STATE,
     name: response.name,
@@ -26,7 +25,9 @@ export const changeAdderState = response => dispatch =>{
 export const changeOperationValue = response => dispatch =>{
   dispatch({
     type: CHANGE_OPERATION_VALUE,
-    payload: response,
+    name: response.name,
+    pin: response.pin,
+    value: response.value,
   });
 }
 export const changeVariable = response => dispatch =>{
