@@ -6,6 +6,9 @@ export const CHANGE_ADDER_STATE = 'CHANGE_ADDER_STATE';
 export const CHANGE_OPERATION_VALUE = 'CHANGE_OPERATION_VALUE';
 // Variable value
 export const CHANGE_VARIABLE = 'CHANGE_VARIABLE';
+// Chart value
+export const CHANGE_CHART = 'CHANGE_CHART';
+
 export const OPERATIONS = {
   SUMM: '1110',
   NAND: '0110',

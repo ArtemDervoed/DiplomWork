@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from 'react-redux';
 
 const TextFieldInput = property => {
-  const { hintText, fullWidth, errorText, floatingLabelText, type, onChange } = property;
+  const { hintText, fullWidth, errorText, floatingLabelText, type, onChange, name } = property;
   return (
     <MuiThemeProvider>
       <TextField
@@ -12,6 +12,7 @@ const TextFieldInput = property => {
         errorText={ errorText }
         floatingLabelText={ floatingLabelText }
         type={ type }
+        name ={ name }
         fullWidth={ fullWidth }
         onChange={ onChange }
         />

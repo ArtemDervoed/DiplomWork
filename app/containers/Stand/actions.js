@@ -2,7 +2,8 @@ import {
   CHANGE_REGISTER_STATE,
   CHANGE_ADDER_STATE,
   CHANGE_OPERATION_VALUE,
-  CHANGE_VARIABLE
+  CHANGE_VARIABLE,
+  CHANGE_CHART
 } from './constants';
 
 export const changeRegisterState = response => dispatch =>{
@@ -37,5 +38,11 @@ export const changeVariable = response => dispatch =>{
     pinType: response.pinType,
     pin: response.pin,
     value: response.value,
+  });
+}
+export const changeChart = response => dispatch =>{
+  dispatch({
+    type: CHANGE_CHART,
+    value: response,
   });
 }

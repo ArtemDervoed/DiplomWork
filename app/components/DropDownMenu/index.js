@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class DropDownMenuList extends React.Component {
   constructor(props) {
     super(props);
@@ -15,13 +15,15 @@ class DropDownMenuList extends React.Component {
   }
   render() {
     return (
-      <SelectField floatingLabelText={this.props.header} value={this.state.value} onChange={this.handleChange}>
-      {
-        this.props.data.map((item) => {
-          return <MenuItem key={item.id} primaryText={item.name} value={item.id}  />
-        })
-      }
-      </SelectField>
+      <MuiThemeProvider>
+        <SelectField floatingLabelText={this.props.header} value={this.state.value} onChange={this.handleChange}>
+        {
+          this.props.data.map((item) => {
+            return <MenuItem key={item.id} primaryText={item.name} value={item.id}  />
+          })
+        }
+        </SelectField>
+      </MuiThemeProvider>
     );
   }
 }

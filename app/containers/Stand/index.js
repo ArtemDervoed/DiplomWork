@@ -8,9 +8,14 @@ import RegistersBlock from 'components/RegistersBlock/index';
 import VariableBlock from 'components/VariableBlock/index';
 import Chart from 'components/Chart/index';
 import OperationValueBlock from 'components/OperationValueBlock/index';
+import ControlPanel from 'components/ControlPanel/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
-import { changeRegisterState, changeAdderState } from 'containers/Stand/actions';
+import {
+  changeRegisterState,
+  changeAdderState,
+  changeChart
+} from 'containers/Stand/actions';
 import { OPERATIONS } from './constants';
 import {
   AdderBlock,
@@ -116,6 +121,7 @@ class Stand extends React.Component {
             <AddersBlock />
             <RegistersBlock />
             <ConfigureBlock>
+            <ControlPanel/>
             <OperationValueBlock
               name="operationsValue"
               />
@@ -124,10 +130,8 @@ class Stand extends React.Component {
               primary={true}
               onClick={this.writeResult.bind(this)}
               />
-              <RaisedButton
-                label="Осоцилограф"
-                primary={true}
-                />
+              <Chart signal={this.props.stand.chart}/>
+
               <VariablesRow>
                 <VariableBlock
                   name="a"
@@ -139,9 +143,6 @@ class Stand extends React.Component {
                   />
               </VariablesRow>
             </ConfigureBlock>
-            <ChartRow>
-              <Chart/>
-            </ChartRow>
           </Paper>
         </MuiThemeProvider>
 
@@ -155,6 +156,5 @@ class Stand extends React.Component {
 const	mapStateToProps	=	state	=> ({
   ...state,
 });
-
 
 export default connect(mapStateToProps)(Stand);

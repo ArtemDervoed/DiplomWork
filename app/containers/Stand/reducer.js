@@ -3,13 +3,15 @@ import {
   CHANGE_REGISTER_STATE,
   CHANGE_ADDER_STATE,
   CHANGE_OPERATION_VALUE,
-  CHANGE_VARIABLE
+  CHANGE_VARIABLE,
+  CHANGE_CHART
 } from './constants';
 
 let initialState = {
     control: {
 
     },
+    chart:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
     variables: {
       a: { v_0:false, v_1:false, v_2:false, v_3:false, v_4:false, v_5:false, v_6:false, v_7:false },
       b: { v_0:false, v_1:false, v_2:false, v_3:false, v_4:false, v_5:false, v_6:false, v_7:false },
@@ -172,6 +174,11 @@ export const stand = (state = initialState, action) => {
             [action.pin]:{ $set:action.value }
           }
         }
+      });
+    }
+    case CHANGE_CHART: {
+      return update(state, {
+        chart: { $set:action.value }
       });
     }
     case CHANGE_OPERATION_VALUE: {

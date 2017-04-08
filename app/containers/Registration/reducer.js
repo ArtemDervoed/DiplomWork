@@ -10,7 +10,7 @@ export const registration = (state = {
     case SUBMIT:
       return {...state, successfull: action.successfull};
     case FETCH_GROUPS:
-      return {...state, groups: action.payload.groups};
+      return {...state, groups: action.payload};
     default:
       return state;
   }
