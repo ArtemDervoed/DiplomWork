@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Section, H1, Content, LeftCol, RightCol } from './style.js';
+import { Section, H1, Content } from './style.js';
 import RaisedButton from 'material-ui/RaisedButton';
 import Student from 'components/Student/index.js';
 import Teacher from 'components/Teacher/index.js';
 import DataList from 'components/List/index.js';
-import SubjectsAccordList from 'components/SubjectsAccordList/index.js';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import StudentsTable from 'components/StudentsTable/index.js';
 // import { registration } from './actions.js';
@@ -96,14 +95,8 @@ class User extends React.Component {
         <Section>
           <H1>Личный кабинет</H1>
           <Content>
-            <LeftCol>
-              <SubjectsAccordList/>
-            </LeftCol>
-            <RightCol>
-              {user}
-            </RightCol>
+            {user}
           </Content>
-            <StudentsTable/>
         </Section>
         <Footer/>
       </div>

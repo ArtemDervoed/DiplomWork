@@ -10,7 +10,9 @@ import {
 export const student = (state = {
   firstName:'',
   lastName:'',
+  group: '',
   email:'',
+  studyings: '',
 }, action) => {
   switch (action.type) {
     case FIRST_NAME:
@@ -25,7 +27,10 @@ export const student = (state = {
       return {...state,
         firstName: action.firstName,
         lastName: action.lastName,
-        email: action.email,}
+        email: action.email,
+        group: action.group,
+        studyings: action.studyings,
+      }
     case REDIRECT_HOME:
       return { ...state };
     default:

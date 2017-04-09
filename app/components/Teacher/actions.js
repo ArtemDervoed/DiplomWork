@@ -32,7 +32,7 @@ export const redirectHome = response => dispatch => {
 export const fetchTeacher = response => dispatch => {
   let userId = JSON.parse(localStorage.getItem('user_id'));
   let token = JSON.parse(localStorage.getItem('auth_token'));
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/teachers/' + userId, {
+  return fetch('https://serene-hamlet-19929.herokuapp.com/api/teacher_profile', {
     method: 'Get',
     headers: {
        Authorization: 'Token ' + token,
@@ -47,5 +47,6 @@ export const fetchTeacher = response => dispatch => {
         lastName: json.last_name,
         phoneNumber: json.phone_number,
         scienceDegree: json.science_degree })
+        console.log(json);
     });
 };

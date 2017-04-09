@@ -18,7 +18,9 @@ export class InfoRow extends React.Component {
       this.setState({open: false})
     };
     handleOpen = () => {
-      this.setState({open: true});
+      if (!this.props.noChange) {
+        this.setState({open: true});
+      }    
     };
 
     handleClose = () => {

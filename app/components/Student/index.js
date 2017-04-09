@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { lastName, firstName, email, group, fetchStudent, redirectHome } from './actions.js';
+import SubjectsAccordList from 'components/SubjectsAccordList/index.js';
+import { lastName, firstName, email, fetchStudent, redirectHome } from './actions.js';
 import { H3 } from './style.js';
 const style = {
   margin: 12,
@@ -35,29 +36,45 @@ export class Student extends React.Component {
     this.props.dispatch(fetchStudent());
   }
   render() {
-    console.log(this);
     return (
       <div>
         <H3>Информация о пользовтеле:</H3>
         <MuiThemeProvider>
           <InfoRow
+            title="Новое имя"
+            floatingLabelText="Новое имя"
+            hintText="Новое имя"
             header="Имя"
             data={this.props.student.firstName}
             applyNewValue={this.applyFirstName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
+            title="Новая фамилия"
+            floatingLabelText="Новая фамилия"
+            hintText="Новая фамилия"
             header="Фамилия"
             data={this.props.student.lastName}
             applyNewValue={this.applyLastName}/>
         </MuiThemeProvider>
         <MuiThemeProvider>
           <InfoRow
+            header="Группа"
+            data={this.props.student.group}
+            noChange={true}
+            applyNewValue={this.applyGroup}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider>
+          <InfoRow
+            title="Новый email"
+            floatingLabelText="Новый email"
+            hintText="Новый email"
             header="Email"
             data={this.props.student.email}
             applyNewValue={this.applyEmail}/>
         </MuiThemeProvider>
-
+        <SubjectsAccordList
+          studyings={this.props.student.studyings || []}/>
         <MuiThemeProvider>
           <div>
             <RaisedButton

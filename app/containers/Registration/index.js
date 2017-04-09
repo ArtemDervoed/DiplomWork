@@ -211,7 +211,6 @@ export class Registration extends React.Component {
     if (isValid) {
       this.props.dispatch(registration(user));
     }
-
   }
   onToHome() {
     this.props.dispatch(redirectToHome());

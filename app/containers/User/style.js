@@ -28,11 +28,5 @@ export const Content = styled.div`
   color: rgba(0,0,0,0.45);
   display: flex;
   margin-top: 0px;
+  justify-content: center;
 `;
-export const LeftCol = styled.div`
-  width: 35%;
-  margin-right: 5%;
-`
-export const RightCol = styled.div`
-  width: 50%;
-`

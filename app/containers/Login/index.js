@@ -28,12 +28,54 @@ export class Login extends React.Component {
     super();
     this.state = {
       value: 'student',
-      email: '',
-      password: '',
-      valid: false,
+      email:{value:'', valid:false, errorText:'',},
+      password:{value:'', valid:false, errorText:'',},
     };
   }
+  onChangeField(event, value) {
+    switch (event.target.name) {
+      case 'email': {
+        const mail = /[0-9a-z_]@[0-9a-z_^\.]+\.[a-z]{2,3}$/;
+        if (mail.test(value)) {
+          this.setState({
+            email: {
+              value: value,
+              errorText: '',
+              valid: true,
+            },
+          });
+        } else {
+          this.setState({
+            email: {
+              errorText: 'Не корректный email',
+              valid: false,
+            },
+          });
+        }
+      }; break;
+      case 'password': {
+        if (value.length > 6) {
+          this.setState({
+            password: {
+              value: value,
+              errorText: '',
+              valid: true,
+            },
+          });
+        } else {
+          this.setState({
+            password: {
+              errorText: 'Слишком короткий пароль',
+              valid: false,
+            },
+          });
+        }
+      }; break;
+      default:
+        return state;
+    }
 
+  }
   handleChange = (value) => {
     this.setState({
       value: value,
@@ -51,12 +93,24 @@ export class Login extends React.Component {
     });
   }
   onSubmit(event) {
-    this.props.dispatch(login({
+    let isValid = true;
+    let user = {
       role: this.state.value,
-      email: this.state.email,
-      password: this.state.password,
-    })
-  );}
+      email: (this.state.email.valid) ? this.state.email.value : false,
+      password: (this.state.password.valid) ? this.state.password.value : false,
+    };
+    for (var field in user) {
+      if (user.hasOwnProperty(field)) {
+        if (user[field] === false) {
+          isValid = false
+          alert('Не все поля формы заполнены или заполнены не корректно');
+        }
+      }
+    }
+    if (isValid) {
+      this.props.dispatch(login(user));
+    }
+  }
   onToHome() {
     this.props.dispatch(redirectToHome());
   }
@@ -75,21 +129,25 @@ export class Login extends React.Component {
               <Tab label="Как студент" value="student" />
             </Tabs>
           </MuiThemeProvider>
-          <div className="text-field">
-            <TextFieldInput
-              fullWidth={true}
-              hintText="Электронная почта"
-              floatingLabelText="Электронная почта"
-              onChange={this.onChangeEmail.bind(this)}
-            /> <br/>
-            <TextFieldInput
-              fullWidth={true}
-              hintText="Пароль"
-              floatingLabelText="Пароль"
-              type="password"
-              onChange={this.onChangePassword.bind(this)}
-            />
-          </div>
+            <div className="text-field">
+              <TextFieldInput
+                fullWidth={true}
+                errorText={this.state.email.errorText}
+                hintText="Email"
+                name="email"
+                floatingLabelText="Email"
+                onChange={this.onChangeField.bind(this)}
+              />
+              <TextFieldInput
+                fullWidth={true}
+                errorText={this.state.password.errorText}
+                hintText="Пароль"
+                name="password"
+                floatingLabelText="Пароль"
+                onChange={this.onChangeField.bind(this)}
+                type="password"
+              />
+            </div>
           <MuiThemeProvider>
             <RaisedButton label="Войти" primary={true} style={style} onClick={this.onSubmit.bind(this)} />
           </MuiThemeProvider>

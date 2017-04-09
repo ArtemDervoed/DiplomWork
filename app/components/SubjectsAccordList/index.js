@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {List, ListItem} from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
@@ -9,8 +10,7 @@ import Toggle from 'material-ui/Toggle';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Section, Div_container, Div_content, H1 } from './style.js';
 
-export default class SubjectsAccordList extends React.Component {
-
+class SubjectsAccordList extends React.Component {
   state = {
     open: false,
   };
@@ -26,77 +26,40 @@ export default class SubjectsAccordList extends React.Component {
       open: item.state.open,
     });
   };
+  componentWillUpdate() {
 
+  }
   render() {
+    let studyings = this.props.studyings;
     return (
       <MuiThemeProvider>
         <List>
           <Subheader>Ваши предметы</Subheader>
-          <ListItem
-            primaryText="Организация ЭВМ"
-            secondaryText="Jan 17, 2014"
-            primaryTogglesNestedList={true}
-            nestedItems={[
+          {
+            studyings.map(subject => (
               <ListItem
-                key={1}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={2}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={3}
-                primaryText="Тема №"
-                open={this.state.open}
-                onNestedListToggle={this.handleNestedListToggle}
-              />,
-            ]}
-          />
-          <ListItem
-            primaryText="Операционные системы"
-            secondaryText="Jan 17, 2014"
-            primaryTogglesNestedList={true}
-            nestedItems={[
-              <ListItem
-                key={1}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={2}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={3}
-                primaryText="Тема №"
-                open={this.state.open}
-                onNestedListToggle={this.handleNestedListToggle}
-              />,
-            ]}
-          />
-          <ListItem
-            primaryText="Сети и телекоммуникации"
-            secondaryText="Jan 17, 2014"
-            primaryTogglesNestedList={true}
-            nestedItems={[
-              <ListItem
-                key={1}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={2}
-                primaryText="Тема №"
-              />,
-              <ListItem
-                key={3}
-                primaryText="Тема №"
-                open={this.state.open}
-                onNestedListToggle={this.handleNestedListToggle}
-              />,
-            ]}
-          />
+                key={subject.id}
+                primaryText={subject.subject_name}
+                secondaryText={subject.status}
+                primaryTogglesNestedList={true}
+                nestedItems={ subject.studied_themes.map(theme => (
+                  <ListItem
+                    key={theme.id}
+                    primaryText={theme.theme_name}
+                    secondaryText={theme.status}
+                  />
+                ))
+              }
+              />
+            ))
+          }
         </List>
       </MuiThemeProvider>
     );
   }
 }
+const	mapStateToProps	=	state	=> ({
+  ...state,
+});
+
+export default connect(mapStateToProps)(SubjectsAccordList);
