@@ -6,3 +6,14 @@ button {
   color: white !important;
 }
 `;
+export const Span = styled.span`
+  color: white !important;
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none !important;
+  }
+  a {
+    text-decoration: none !important;
+    color: white !important;
+  }
+`;

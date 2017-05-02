@@ -4,6 +4,8 @@ import { Div, Section, Container } from './style';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ToggleVar from 'components/Toggle/index';
 import { changeRegisterState } from 'containers/Stand/actions';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 
 class Attributs extends React.Component {
   toggleRegisterPin(name,pinType,pin,checked) {
@@ -19,7 +21,8 @@ class Attributs extends React.Component {
     return (
       <Section>
         <Container>
-          <h5>RgA</h5>
+        <Subheader style={{textAlign: 'center',}}>Регистр A</Subheader>
+        <Divider style={{marginBottom:25}} />
           <Div>
             <ToggleVar
               label="V0"
@@ -40,7 +43,8 @@ class Attributs extends React.Component {
           </Div>
         </Container>
         <Container>
-          <h5>RgB</h5>
+          <Subheader style={{textAlign: 'center',}}>Регистр B</Subheader>
+          <Divider style={{marginBottom:25}} />
           <Div>
             <ToggleVar
               label="V0"
@@ -61,7 +65,8 @@ class Attributs extends React.Component {
           </Div>
         </Container>
         <Container>
-          <h5>RgC</h5>
+          <Subheader style={{textAlign: 'center',}}>Регистр C</Subheader>
+          <Divider style={{marginBottom:25}} />
           <Div>
             <ToggleVar
               label="V0"

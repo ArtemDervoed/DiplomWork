@@ -4,17 +4,16 @@ import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchSubjects, fetchSubjectThemes } from './actions';
+// import {  } from './actions';
 
-class Subjects extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchSubjects());
-  }
+class Themes extends React.Component {
   onDiscover(event) {
 
   }
   onExplore(event) {
-  this.props.dispatch(fetchSubjectThemes(event.target.id))
+    console.log(event.target.id);
+    console.log(this);
+    this.props.dispatch(fetchSubjectThemes(event.target.id))
   }
   render() {
     return (
@@ -24,10 +23,10 @@ class Subjects extends React.Component {
         </MuiThemeProvider>
         <MuiThemeProvider>
         <SubjectsList
-          subjects={this.props.subjects.subjects}
+          subjects={this.props.subjects.themes}
           onDiscover={this.onDiscover.bind(this)}
           onExplore={this.onExplore.bind(this)}
-          />
+        />
         </MuiThemeProvider>
         <Footer/>
       </div>
@@ -45,4 +44,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Subjects);
+export default connect(mapStateToProps, mapDispatchToProps)(Themes);

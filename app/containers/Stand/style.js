@@ -15,7 +15,7 @@ export const OperationsBlock = styled.div`
 `;
 export const ConfigureBlock = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   border: 1px solid black;
 `;
 
@@ -24,6 +24,7 @@ export const VariablesRow = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin: 10px;
+  text-align: center;
 `;
 export const ChartRow = styled.div`
   display: flex;

@@ -16,7 +16,8 @@ export const Div_container = styled.div`
   padding-top: 17%;
   padding-left: 10%;
   `;
-  export const Div_content = styled.div`
+  export const Span = styled.span`
+  display: flex;
     `;
 export const H1 = styled.div`
   color: white;

@@ -5,10 +5,12 @@ import Register from 'components/Register/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 import Attributs from 'components/Attributs/index';
+import ALU from 'components/ALU/index';
 class RegistersBlock extends React.Component {
   render() {
     return (
       <Registers>
+      <ALU/>
       <Attributs/>
         <Register
           state={this.props.stand.registers.a}

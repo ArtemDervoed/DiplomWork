@@ -4,11 +4,19 @@ import { Div, AdderRow, Subscrible } from './style';
 import Adder from 'components/Adder/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+
+const style = {
+  textAlign: 'center',
+};
 
 class AddersBlock extends React.Component {
   render() {
     return (
       <AdderRow>
+      <Subheader style={style}>Регистр микрокоманды</Subheader>
+      <Divider style={{marginBottom:25}} />
         <Div>
           <Adder
             state={this.props.stand.adders.adder0}
@@ -43,7 +51,6 @@ class AddersBlock extends React.Component {
             name="adder7"
           />
         </Div>
-        <Subscrible>{'Аппаратное управление'}</Subscrible>
       </AdderRow>
     );
   }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect}	from	'react-redux';
+import {Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -8,8 +9,8 @@ import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import { logout, login, registration, goToUserRoom } from './actions.js';
-import { Div } from './style.js';
+import { logout, login, registration, goToUserRoom, goToHome } from './actions.js';
+import { Div, Span } from './style.js';
 const style = {
   height: 52,
   minWidth: 1024,
@@ -28,6 +29,7 @@ class Login extends Component {
     );
   }
 }
+
 class Registration extends Component {
   static muiName = 'FlatButton';
   render() {
@@ -97,7 +99,7 @@ class Header extends Component {
         <AppBar
           style = {style}
           titleStyle={titleStyle}
-          title="BLACK&WHITE"
+          title={<Span><Link to='/'>Your Study Cloud</Link></Span>}
           iconElementLeft={<div></div>}
           iconElementRight={navBar}
         />

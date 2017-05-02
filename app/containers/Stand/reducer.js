@@ -4,11 +4,22 @@ import {
   CHANGE_ADDER_STATE,
   CHANGE_OPERATION_VALUE,
   CHANGE_VARIABLE,
-  CHANGE_CHART
+  CHANGE_CHART,
+  WRITE_MODE,
+  SET_WORD,
+  PROGRAMM_MODE,
 } from './constants';
 
 let initialState = {
-    control: {
+    write:false,
+    hard:false,
+    programm: {
+      '0000':'',
+      '0001':'',
+      '0010':'',
+      '0011':'',
+      '0100':'',
+      '0101':'',
 
     },
     chart:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
@@ -185,6 +196,18 @@ export const stand = (state = initialState, action) => {
       return update(state, { operationsValue: {
             [action.pin]:{ $set:action.value }
           }
+      });
+    }
+    case PROGRAMM_MODE: {
+      return update(state, { hard: { $set:action.hard }})
+    }
+    case WRITE_MODE: {
+      return update(state, { write: { $set:action.write }})
+    }
+    case SET_WORD: {
+      return update(state, { programm: {
+          [action.address]:{ $set:action.word }
+        }
       });
     }
     default:

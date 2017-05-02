@@ -7,7 +7,6 @@ import DatePicker from 'material-ui/DatePicker';
 import {Line} from 'react-chartjs-2';
 import { Div } from './style.js';
 
-
 class Chart extends React.Component {
 
   state = {

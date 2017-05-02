@@ -5,9 +5,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 import ToggleVar from 'components/Toggle/index';
 import { changeRegisterState } from 'containers/Stand/actions';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+
 class VariableBlock extends React.Component {
-
-
   toggleRegisterPin(name,pinType,pin,checked) {
     this.props.dispatch(changeRegisterState({
       name:name,
@@ -22,7 +23,8 @@ class VariableBlock extends React.Component {
   render() {
     return (
       <divContainer>
-        <div>{this.props.header}</div>
+        <Subheader style={{textAlign: 'center',}}>{this.props.header}</Subheader>
+        <Divider style={{marginBottom:25}} />
         <Div>
           <ToggleVar
             label="0"

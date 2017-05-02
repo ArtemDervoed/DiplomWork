@@ -13,6 +13,7 @@ import User from 'containers/User/index.js';
 import Stand from 'containers/Stand/index.js';
 import Error from 'containers/Error/index.js';
 import Subjects from 'containers/Subjects/index.js';
+import Themes from 'containers/Themes/index.js';
 import Quiz from 'containers/Quiz/index.js';
 import Successful from 'containers/Successful/index.js';
 import App from 'containers/App/index.js';
@@ -40,6 +41,8 @@ ReactDOM.render(
       <Route path="/registration/successful" component={Successful}/>
       <Route path="/user" component={User}/>
       <Route path="/subjects" component={Subjects}/>
+      <Route path="/subjects/:id" component={Themes}/>
+      <Route path="/subjects/:id/themes/:id" component={Stand}/>
       <Route path="/stand" component={Stand}/>
       <Route path="/test" component={Quiz}/>
     </Router>

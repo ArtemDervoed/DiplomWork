@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Div, SubDiv, Col } from './style';
+import { Div, SubDiv, Col, Header, Margin } from './style';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PinCheckBox from 'components/PinCheckBox/index.js';
 import ToggleVar from 'components/Toggle/index';
 import { changeOperationValue } from 'containers/Stand/actions';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 
 class OperationValueBlock extends React.Component {
   toggleOperationValue(name,pinType,pin,checked) {
@@ -17,9 +19,9 @@ class OperationValueBlock extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div>Код операции</div>
-        <div>Адрес слова МК</div>
+      <Margin>
+        <Subheader style={{textAlign: 'center',}}>Код операции. Адрес слова МК</Subheader>
+        <Divider style={{marginBottom:50}} />
         <Div>
           <ToggleVar
             label="2^0"
@@ -46,7 +48,7 @@ class OperationValueBlock extends React.Component {
             toggled={this.props.stand.operationsValue['val_3']}
             toggle={this.toggleOperationValue.bind(this)}/>
         </Div>
-      </div>
+      </Margin>
     );
   }
 }

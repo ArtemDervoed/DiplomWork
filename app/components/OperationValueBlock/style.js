@@ -5,10 +5,18 @@ export const Div = styled.div`
   display: flex;
   justify-content: space-between;
   font-size:12px;
-  height: 60px; 
+  height: 20px;
 `;
-export const SubDiv = styled.div`
+export const Header = styled.div`
+  text-align: center;
+`;
 
+export const Margin = styled.div`
+  margin-left: 20px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-self:center;
 `;
 export const Col = styled.div`
 display: flex;

@@ -8,7 +8,9 @@ export const Div = styled.div`
 `;
 export const AdderRow = styled.div`
   padding:10px;
+  padding-bottom: 25px;
   border: 1px solid black;
+  margin-bottom: 35px;
 `;
 export const Subscrible = styled.span`
   font-size: 16px;

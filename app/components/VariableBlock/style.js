@@ -12,9 +12,9 @@ export const divContainer = styled.div`
   text-align:center;
 `;
 export const Col = styled.div`
-display: flex;
-flex-direction: column;
-padding:5px;
-border: 1px solid black;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding:5px;
+  border: 1px solid black;
+  justify-content: center;
 `;

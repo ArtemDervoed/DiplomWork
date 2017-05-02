@@ -11,6 +11,7 @@ export const Registers = styled.div`
   justify-content: flex-end;
   border: 1px solid black;
   padding: 10px;
+  margin-bottom: 35px;
 `;
 
 export const Col = styled.div`

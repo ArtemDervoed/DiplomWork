@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Div, SubDiv, Col } from './style';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 import {
   changeChart
 } from 'containers/Stand/actions';
@@ -11,7 +13,7 @@ const styles = {
     maxWidth: 250,
   },
   radioButton: {
-    marginBottom: 16,
+    marginTop: 20,
   },
 };
 const impulses = {
@@ -40,7 +42,11 @@ class ControlPanel extends React.Component {
 }
   render() {
     return (
+      <div>
+        <Subheader style={{textAlign: 'center',}}>Синхроимпульсы</Subheader>
+        <Divider />
         <RadioButtonGroup
+        style={{display:'flex', flexDirection: 'column', alignSelf: 'center', marginLeft: 30}}
         onChange={this.changeCI.bind(this)}
         name="Синхроимпульсы">
           <RadioButton
@@ -63,7 +69,8 @@ class ControlPanel extends React.Component {
             label="Cи4"
             style={styles.radioButton}
           />
-          </RadioButtonGroup>
+        </RadioButtonGroup>
+      </div>
     );
   }
 }

@@ -11,12 +11,16 @@ import OperationValueBlock from 'components/OperationValueBlock/index';
 import ControlPanel from 'components/ControlPanel/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
+import Toggle from 'material-ui/Toggle';
 import {
   changeRegisterState,
   changeAdderState,
-  changeChart
+  changeChart,
+  writeMode,
+  workMode,
+  setWord,
 } from 'containers/Stand/actions';
-import { OPERATIONS } from './constants';
+import { OPERATIONS, PROGRAMM_OPERATIONS } from './constants';
 import {
   AdderBlock,
   VariablesRow,
@@ -30,7 +34,9 @@ const style = {
   minHeight: 500,
   width: '99%',
   margin: '1% auto',
-  backgroundColor: 'white'
+  backgroundColor: 'white',
+  maxWidth: 1500,
+
 };
 
 class Stand extends React.Component {
@@ -57,58 +63,107 @@ class Stand extends React.Component {
     const operation = this.getOperationsCode();
     const registersterA = this.getOutsRgister(this.props.stand.registers.a);
     const registersterB = this.getOutsRgister(this.props.stand.registers.b);
-    if (operation === OPERATIONS.SUMM) {
-      let addersInputA = ''
-      let addersInputB = ''
-      let result = '';
-      let adders = this.props.stand.adders;
-      for(var key in adders) {
-        if(adders.hasOwnProperty(key)) {
-           result+= +adders[key].output.s;
-           addersInputA+= +adders[key].input.a;
-           addersInputB+= +adders[key].input.b;
+    if(!this.props.stand.hard)  {
+      if (operation === OPERATIONS.SUMM) {
+        let addersInputA = ''
+        let addersInputB = ''
+        let result = '';
+        let adders = this.props.stand.adders;
+        for(var key in adders) {
+          if(adders.hasOwnProperty(key)) {
+             result+= +adders[key].output.s;
+             addersInputA+= +adders[key].input.a;
+             addersInputB+= +adders[key].input.b;
+          }
+        }
+        if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
+          alert('Значения на выходах регистров не соответсвуют входам сумматоров');
+        }
+        for (var i = 0; i < result.length; i++) {
+          this.props.dispatch(changeRegisterState({
+            name:'c',
+            pinType: 'input',
+            pin: 'd_' + +i,
+            value:(result[i] == 1) ? true:false,
+            }
+          ));
         }
       }
-      if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
-        alert('Значения на выходах регистров не соответсвуют входам сумматоров');
-      }
-      for (var i = 0; i < result.length; i++) {
-        this.props.dispatch(changeRegisterState({
-          name:'c',
-          pinType: 'input',
-          pin: 'd_' + +i,
-          value:(result[i] == 1) ? true:false,
+      if (operation === OPERATIONS.NAND) {
+        let result = '';
+        let adders = this.props.stand.adders;
+        for(var key in adders) {
+          if(adders.hasOwnProperty(key)) {
+             result+= +adders[key].output.s;
           }
-        ));
-      }
-    }
-    if (operation === OPERATIONS.NAND) {
-      let result = '';
-      let adders = this.props.stand.adders;
-      for(var key in adders) {
-        if(adders.hasOwnProperty(key)) {
-           result+= +adders[key].output.s;
+        }
+        for (var i = 0; i < result.length; i++) {
+          this.props.dispatch(changeRegisterState({
+            name:'c',
+            pinType: 'input',
+            pin: 'd_' + +i,
+            value:(result[i] == 1) ? true:false,
+            }
+          ));
         }
       }
-      for (var i = 0; i < result.length; i++) {
-        this.props.dispatch(changeRegisterState({
-          name:'c',
-          pinType: 'input',
-          pin: 'd_' + +i,
-          value:(result[i] == 1) ? true:false,
-          }
-        ));
+      if (operation === OPERATIONS.AND) {
+
+      }
+      if (operation === OPERATIONS.OR) {
+
+      }
+      if (operation === OPERATIONS.NOTA) {
+
       }
     }
-    if (operation === OPERATIONS.AND) {
-
+    if(this.props.stand.write === true && this.props.stand.hard === true) {
+      let word = '';
+      const variableB = this.props.stand.registers.b.input;
+      for(var key in variableB) {
+        if(variableB.hasOwnProperty(key)) {
+           word+= +variableB[key];
+        }
+      }
+      const address = this.props.stand.operationsValue;
+      let addressValue = ''
+      for(var key in address) {
+        if(address.hasOwnProperty(key)) {
+           addressValue+= +address[key];
+        }
+      }
+      if (parseInt(addressValue.split('').reverse().join(''), 2) < 6) {
+        this.props.dispatch(setWord({address:addressValue.split('').reverse().join(''), word:word}))
+      }
     }
-    if (operation === OPERATIONS.OR) {
-
+    if(this.props.stand.write === false && this.props.stand.hard === true) {
+      let programm = ''
+      const alu  = this.props.stand.programm
+      for(var key in alu) {
+        if(alu.hasOwnProperty(key)) {
+          programm+= alu[key];
+        }
+      }
+      if (PROGRAMM_OPERATIONS.SUMM === programm) {
+        let resultOperationInt = parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2);
+        for (var i = 0; i < resultOperationInt.toString(2).split('').reverse().join('').length; i++) {
+          this.props.dispatch(changeRegisterState({
+            name:'c',
+            pinType: 'input',
+            pin: 'd_' + +i,
+            value:(resultOperationInt.toString(2).split('').reverse().join('')[i] == 1) ? true:false,
+            }
+          ));
+        }
+      }
     }
-    if (operation === OPERATIONS.NOTA) {
+  }
+  onWriteModeToggle(event, isInputChecked) {
+    this.props.dispatch(writeMode(isInputChecked));
+  }
+  onModeToggle(event, isInputChecked) {
+    this.props.dispatch(workMode(isInputChecked));
 
-    }
   }
   render() {
     return (
@@ -121,31 +176,48 @@ class Stand extends React.Component {
             <AddersBlock />
             <RegistersBlock />
             <ConfigureBlock>
+            <div style={{
+              display:'flex',
+              flexDirection:'column',
+              alignSelf:'center',
+              margin: 'auto 50px'
+            }}>
+              <Toggle
+                label={'Микропрограммный режим'}
+                programm='false'
+                onToggle={this.onModeToggle.bind(this)}
+              />
+              <Toggle
+                label={'Запись'}
+                mode='write'
+                onToggle={this.onWriteModeToggle.bind(this)}
+              />
+              <RaisedButton
+                label="Пуск"
+                primary={true}
+                onClick={this.writeResult.bind(this)}
+                style={{width:138, marginBottom:20}}
+              />
+              <Chart signal={this.props.stand.chart}/>
+            </div>
             <ControlPanel/>
             <OperationValueBlock
               name="operationsValue"
               />
-            <RaisedButton
-              label="Пуск"
-              primary={true}
-              onClick={this.writeResult.bind(this)}
-              />
-              <Chart signal={this.props.stand.chart}/>
-
               <VariablesRow>
-                <VariableBlock
-                  name="a"
-                  header="Регистр А"
-                  />
                 <VariableBlock
                   header="Регистр B"
                   name="b"
                   />
-              </VariablesRow>
+                <VariableBlock
+                  name="a"
+                  header="Регистр А"
+                  />
+                </VariablesRow>
+
             </ConfigureBlock>
           </Paper>
         </MuiThemeProvider>
-
         <Footer/>
       </div>
     );

@@ -9,10 +9,8 @@ export const Div = styled.div`
 `;
 export const Section = styled.div`
   text-align:center;
-  display:flex;
 `;
 export const Container = styled.div`
-  border: 1px solid black;
   align-self: flex-start;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 `;

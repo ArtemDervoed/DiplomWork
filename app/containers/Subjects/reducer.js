@@ -1,14 +1,17 @@
 import {
-  SEND_LOGIN,
+  FETCH_SUBJECTS,
+  FETCH_SUBJECT_THEMES
 } from './constants';
 
-export const sendLogin = (state = {
-  isAuthenticated: false,
-  mail:'',
+export const subjects = (state = {
+  subjects: {},
+  themes: {}
 }, action) => {
   switch (action.type) {
-    case SEND_LOGIN:
-      return {...state, role: action.role};
+    case FETCH_SUBJECTS:
+      return {...state, subjects: action.subjects};
+    case FETCH_SUBJECT_THEMES:
+      return {...state, themes: action.themes};
     default:
       return state;
   }

@@ -1,8 +1,3 @@
-/*
- *
- * Login actions
- *
- */
 import fetch from 'isomorphic-fetch';
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
@@ -11,7 +6,8 @@ import {
   LOGOUT,
   LOGIN,
   REGISTRATION,
-  GO_TO_USER
+  GO_TO_USER,
+  GO_TO_HOME,
 } from './constants';
 const domen = 'https://serene-hamlet-19929.herokuapp.com';
 export const logout = () => dispatch => {
@@ -22,6 +18,12 @@ export const logout = () => dispatch => {
   dispatch({
     type: LOGOUT,
     isAuthenticated: false,
+  });
+  browserHistory.push('/');
+};
+export const goToHome = () => dispatch => {
+  dispatch({
+    type: GO_TO_HOME,
   });
   browserHistory.push('/');
 };
