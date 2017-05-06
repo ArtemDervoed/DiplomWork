@@ -15,7 +15,9 @@ import Toggle from 'material-ui/Toggle';
 import {
   changeRegisterState,
   changeAdderState,
+  setAluAddress,
   changeChart,
+  setAluWord,
   writeMode,
   workMode,
   setWord,
@@ -59,26 +61,57 @@ class Stand extends React.Component {
     }
     return output;
   }
-  writeResult() {
-    const operation = this.getOperationsCode();
+  chekResult(programm) {
     const registersterA = this.getOutsRgister(this.props.stand.registers.a);
     const registersterB = this.getOutsRgister(this.props.stand.registers.b);
+    const registersterC = this.getOutsRgister(this.props.stand.registers.c);
+    if (PROGRAMM_OPERATIONS.AND === programm) {
+      let resultAnd = '';
+      for ( let i = 0; i < 8; i++) {
+        resultAnd+= (registersterA.split('').reverse().join('')[i] & registersterB.split('').reverse().join('')[i] === 1) ? '1': '0';
+      }
+      console.log(resultAnd);
+      if (resultAnd === registersterC) {
+        alert("Все ок")
+      }
+    }
+    if (PROGRAMM_OPERATIONS.SUMM === programm) {
+      if (parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2) === parseInt(registersterC.split('').reverse().join(''),2)) {
+        alert("Все ок")
+      }
+    }
+
+  }
+  setAluState() {
+    this.props.dispatch(setAluWord({address:'0000', word:this.props.stand.programm['0000']}));
+    this.props.dispatch(setAluWord({address:'0001', word:this.props.stand.programm['0001']}));
+    this.props.dispatch(setAluWord({address:'0010', word:this.props.stand.programm['0010']}));
+    this.props.dispatch(setAluAddress({address:'0010', word:this.props.stand.programm['0010']}));
+  }
+  checkRegistersAndAdders() {
+    let addersInputA = ''
+    let addersInputB = ''
+    let result = '';
+    let adders = this.props.stand.adders;
+    for(var key in adders) {
+      if(adders.hasOwnProperty(key)) {
+         result+= +adders[key].output.s;
+         addersInputA+= +adders[key].input.a;
+         addersInputB+= +adders[key].input.b;
+      }
+    }
+
+    const registersterA = this.getOutsRgister(this.props.stand.registers.a);
+    const registersterB = this.getOutsRgister(this.props.stand.registers.b);
+    if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
+      alert('Значения на выходах регистров не соответсвуют входам сумматоров');
+    }
+  }
+  writeResult() {
+    const operation = this.getOperationsCode();
     if(!this.props.stand.hard)  {
       if (operation === OPERATIONS.SUMM) {
-        let addersInputA = ''
-        let addersInputB = ''
-        let result = '';
-        let adders = this.props.stand.adders;
-        for(var key in adders) {
-          if(adders.hasOwnProperty(key)) {
-             result+= +adders[key].output.s;
-             addersInputA+= +adders[key].input.a;
-             addersInputB+= +adders[key].input.b;
-          }
-        }
-        if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
-          alert('Значения на выходах регистров не соответсвуют входам сумматоров');
-        }
+      this.checkRegistersAndAdders();
         for (var i = 0; i < result.length; i++) {
           this.props.dispatch(changeRegisterState({
             name:'c',
@@ -106,15 +139,7 @@ class Stand extends React.Component {
             }
           ));
         }
-      }
-      if (operation === OPERATIONS.AND) {
-
-      }
-      if (operation === OPERATIONS.OR) {
-
-      }
-      if (operation === OPERATIONS.NOTA) {
-
+        this.checkRegistersAndAdders();
       }
     }
     if(this.props.stand.write === true && this.props.stand.hard === true) {
@@ -146,7 +171,7 @@ class Stand extends React.Component {
       }
       if (PROGRAMM_OPERATIONS.SUMM === programm) {
         let resultOperationInt = parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2);
-        for (var i = 0; i < resultOperationInt.toString(2).split('').reverse().join('').length; i++) {
+        for (var i = 0; i < 8; i++) {
           this.props.dispatch(changeRegisterState({
             name:'c',
             pinType: 'input',
@@ -156,6 +181,20 @@ class Stand extends React.Component {
           ));
         }
       }
+      if (PROGRAMM_OPERATIONS.AND === programm) {
+        let resultOperationInt = parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2);
+        for (var i = 0; i < 8; i++) {
+          this.props.dispatch(changeRegisterState({
+            name:'c',
+            pinType: 'input',
+            pin: 'd_' + +i,
+            value:((registersterA[i] & registersterB[i]) === 1)? true:false,
+            }
+          ));
+        }
+      }
+      this.setAluState();
+      this.chekResult(programm);
     }
   }
   onWriteModeToggle(event, isInputChecked) {

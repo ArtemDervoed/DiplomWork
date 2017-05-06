@@ -6,13 +6,12 @@ import SubjectsList from 'components/SubjectsList/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import {  } from './actions';
 
-class Themes extends React.Component {
+class Theme extends React.Component {
   onDiscover(event) {
 
   }
   onExplore(event) {
-    console.log(event.target.id);
-    console.log(this);
+
     this.props.dispatch(fetchSubjectThemes(event.target.id))
   }
   render() {
@@ -44,4 +43,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Themes);
+export default connect(mapStateToProps, mapDispatchToProps)(Theme);

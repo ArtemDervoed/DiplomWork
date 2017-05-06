@@ -9,6 +9,7 @@ import {
   REDIRECT_HOME
 } from './constants';
 import { browserHistory } from 'react-router';
+import {URL} from './../../app.js';
 
 export const firstName = response => dispatch => {
   return dispatch({type: FIRST_NAME, firstName: response })

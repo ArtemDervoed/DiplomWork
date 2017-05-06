@@ -7,12 +7,14 @@ import {
   REDIRECT_HOME
 } from './constants';
 import { browserHistory } from 'react-router';
+import {URL} from './../../app.js';
+
 let userId = JSON.parse(localStorage.getItem('user_id'));
 let token = JSON.parse(localStorage.getItem('auth_token'));
 
 export const firstName = response => dispatch => {
   let newFirstName = { first_name:response };
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/students/' + userId, {
+  return fetch(URL +'/api/students/' + userId, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -28,7 +30,7 @@ export const firstName = response => dispatch => {
 };
 export const lastName = response => dispatch => {
   let newLastName = { last_name:response };
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/students/' + userId, {
+  return fetch(URL +'/api/students/' + userId, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -44,7 +46,7 @@ export const lastName = response => dispatch => {
 };
 export const email = response => dispatch => {
   let newEmail = { email:response };
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/students/' + userId, {
+  return fetch(URL +'/api/students/' + userId, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -63,7 +65,7 @@ export const redirectHome = response => dispatch => {
   return dispatch({ type: REDIRECT_HOME })
 };
 export const fetchStudent = response => dispatch => {
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/student_profile', {
+  return fetch(URL +'/api/student_profile', {
     method: 'Get',
     headers: {
        Authorization: 'Token ' + token,

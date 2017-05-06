@@ -4,17 +4,29 @@ import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchSubjects, fetchSubjectThemes } from './actions';
+import { fetchSubjects, beginSubject, beginTheme, exploreTheme } from './actions';
 
 class Subjects extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchSubjects());
   }
-  onDiscover(event) {
-
+  onBeginSubject(subjectId) {
+    this.props.dispatch(beginSubject({
+      subjectId,
+    }));
+    this.props.dispatch(fetchSubjects());
   }
-  onExplore(event) {
-  this.props.dispatch(fetchSubjectThemes(event.target.id))
+  onBeginTheme(subjectId, themeId) {
+    this.props.dispatch(beginTheme({
+      subjectId,
+      themeId
+    }));
+  }
+  onExploreTheme(subjectId, themeId) {
+    this.props.dispatch(exploreTheme({
+      subjectId,
+      themeId
+    }));
   }
   render() {
     return (
@@ -25,8 +37,9 @@ class Subjects extends React.Component {
         <MuiThemeProvider>
         <SubjectsList
           subjects={this.props.subjects.subjects}
-          onDiscover={this.onDiscover.bind(this)}
-          onExplore={this.onExplore.bind(this)}
+          beginSubject={this.onBeginSubject.bind(this)}
+          beginTheme={this.onBeginTheme.bind(this)}
+          exploreTheme={this.onExploreTheme.bind(this)}
           />
         </MuiThemeProvider>
         <Footer/>

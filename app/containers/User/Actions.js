@@ -2,6 +2,8 @@ import {
   EDIT,
   FETCH_TEACHER,
 } from './constants';
+import {URL} from './../../app.js';
+
 export const edit = response => dispatch => {
   return dispatch({type: EDIT, data: response })
 };

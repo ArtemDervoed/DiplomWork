@@ -13,7 +13,7 @@ import User from 'containers/User/index.js';
 import Stand from 'containers/Stand/index.js';
 import Error from 'containers/Error/index.js';
 import Subjects from 'containers/Subjects/index.js';
-import Themes from 'containers/Themes/index.js';
+import Theme from 'containers/Theme/index.js';
 import Quiz from 'containers/Quiz/index.js';
 import Successful from 'containers/Successful/index.js';
 import App from 'containers/App/index.js';
@@ -30,6 +30,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 const initialState = {};
 const history = syncHistoryWithStore(browserHistory, store);
 injectTapEventPlugin();
+
+export const URL = 'https://tranquil-escarpment-14615.herokuapp.com';
 ReactDOM.render(
   <Provider store= {store}>
     <Router history={history}>
@@ -41,8 +43,7 @@ ReactDOM.render(
       <Route path="/registration/successful" component={Successful}/>
       <Route path="/user" component={User}/>
       <Route path="/subjects" component={Subjects}/>
-      <Route path="/subjects/:id" component={Themes}/>
-      <Route path="/subjects/:id/themes/:id" component={Stand}/>
+      <Route path="/subjects/:id/themes/:id" component={Theme}/>
       <Route path="/stand" component={Stand}/>
       <Route path="/test" component={Quiz}/>
     </Router>

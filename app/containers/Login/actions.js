@@ -6,7 +6,8 @@
 import fetch from 'isomorphic-fetch';
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
-const domen = 'https://serene-hamlet-19929.herokuapp.com';
+import {URL} from './../../app.js';
+
 import {
   SEND_LOGIN,
   REDIRECT_TO_HOME
@@ -22,7 +23,7 @@ export const login = response => dispatch => {
     email: response.email,
     password: response.password,
   });
-  return fetch(`${domen}/api/login`, {
+  return fetch(`${URL}/api/login`, {
     method: 'post',
     credentials: 'include',
     headers: {

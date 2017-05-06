@@ -14,6 +14,10 @@ export const WRITE_MODE = 'WRITE_MODE';
 export const PROGRAMM_MODE = 'PROGRAMM_MODE';
 // Set Word mk in alu
 export const SET_WORD = 'SET_WORD';
+//Set alu words
+export const SET_ALU_WORD = 'SET_ALU_WORD';
+//
+export const SET_ALU_ADDRESS = 'SET_ALU_ADDRESS';
 
 export const OPERATIONS = {
   SUMM: '1110',

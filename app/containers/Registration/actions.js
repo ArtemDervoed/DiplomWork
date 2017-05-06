@@ -1,14 +1,14 @@
 import fetch from 'isomorphic-fetch';
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
-const domen = 'https://serene-hamlet-19929.herokuapp.com';
+import {URL} from './../../app.js';
 import {
   SUBMIT,
   FETCH_GROUPS
 } from './constants';
 
 export const fetchGroups = response => dispatch => {
-  return fetch(`${domen}/api/groups`, {
+  return fetch(`${URL}/api/groups`, {
     method: 'Get',
   })
     .then(response => response.json())
@@ -18,7 +18,7 @@ export const fetchGroups = response => dispatch => {
 export const registration = response => dispatch => {
   let status = null;
     const data = JSON.stringify(response);
-    return fetch(`${domen}/api/registration`, {
+    return fetch(`${URL}/api/registration`, {
       credentials: 'include',
       headers: {
         'Accept': 'application/json',

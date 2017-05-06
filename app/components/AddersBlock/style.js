@@ -16,9 +16,15 @@ export const Subscrible = styled.span`
   font-size: 16px;
 `;
 export const Col = styled.div`
-display: flex;
-flex-direction: column;
-padding:5px;
-border: 1px solid black;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding:5px;
+  border: 1px solid black;
+  justify-content: center;
+`;
+export const Row = styled.div`
+  display: flex;
+  padding:10px;
+  align-self:center;
+  justify-content: center;
 `;

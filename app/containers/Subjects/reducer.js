@@ -1,6 +1,7 @@
 import {
   FETCH_SUBJECTS,
-  FETCH_SUBJECT_THEMES
+  BEGIN_SUBJECT,
+  BEGIN_THEME
 } from './constants';
 
 export const subjects = (state = {
@@ -10,8 +11,10 @@ export const subjects = (state = {
   switch (action.type) {
     case FETCH_SUBJECTS:
       return {...state, subjects: action.subjects};
-    case FETCH_SUBJECT_THEMES:
-      return {...state, themes: action.themes};
+    case BEGIN_SUBJECT:
+      return {...state};
+    case BEGIN_THEME:
+      return {...state};
     default:
       return state;
   }

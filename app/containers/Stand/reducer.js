@@ -8,6 +8,8 @@ import {
   WRITE_MODE,
   SET_WORD,
   PROGRAMM_MODE,
+  SET_ALU_WORD,
+  SET_ALU_ADDRESS,
 } from './constants';
 
 let initialState = {
@@ -21,6 +23,14 @@ let initialState = {
       '0100':'',
       '0101':'',
 
+    },
+    alu: {
+      attrib:{s_0:false,s_1:false,s_2:false,s_3:false,m:false,c_0:false,},
+      commands: {
+        '0000':{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
+        '0001':{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
+        '0010':{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
+      }
     },
     chart:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
     variables: {
@@ -207,6 +217,20 @@ export const stand = (state = initialState, action) => {
     case SET_WORD: {
       return update(state, { programm: {
           [action.address]:{ $set:action.word }
+        }
+      });
+    }
+    case SET_ALU_WORD: {
+      return update(state, { alu: {
+          commands: {
+            [action.address]:{ $set:action.word }
+          }
+        }
+      });
+    }
+    case SET_ALU_ADDRESS: {
+      return update(state, { alu: {
+          attrib:{s_0:{$set:true},s_1:{$set:false},s_2:{$set:false},s_3:{$set:true},m:{$set:false},c_0:{$set:true},},
         }
       });
     }

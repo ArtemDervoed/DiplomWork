@@ -15,7 +15,7 @@ export const SubDiv = styled.div`
 
 `;
 export const Row = styled.div`
-display: flex;
-padding:10px;
-align-self:center;
+  display: flex;
+  padding:10px;
+  align-self:center;
 `;

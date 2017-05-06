@@ -2,12 +2,32 @@ import {
   CHANGE_REGISTER_STATE,
   CHANGE_ADDER_STATE,
   CHANGE_OPERATION_VALUE,
+  SET_ALU_ADDRESS,
   CHANGE_VARIABLE,
   CHANGE_CHART,
   WRITE_MODE,
   SET_WORD,
   PROGRAMM_MODE,
+  SET_ALU_WORD
 } from './constants';
+import {URL} from './../../app.js';
+
+export const setAluWord = response => dispatch => {
+  let wordObj = {r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,}
+  for (let i = 0; i < response.word.length; i++) {
+     wordObj['r_'+ i] = (response.word[i] == 1) ? true:false;
+  }
+  dispatch({
+    type: SET_ALU_WORD,
+    address: response.address,
+    word: wordObj,
+  });
+}
+export const setAluAddress = response => dispatch => {
+  dispatch({
+    type: SET_ALU_ADDRESS,
+  });
+}
 
 export const writeMode = response => dispatch =>{
   dispatch({

@@ -1,5 +1,5 @@
 import {
-  SEND_LOGIN,
+  SEND_QUIZ,
   REDIRECT_TO_HOME
 } from './constants';
 
@@ -8,9 +8,7 @@ export const sendLogin = (state = {
   mail:'',
 }, action) => {
   switch (action.type) {
-    case SEND_LOGIN:
-      return {...state, role: action.role};
-    case REDIRECT_TO_HOME:
+    case SEND_QUIZ:
       return {...state};
     default:
       return state;

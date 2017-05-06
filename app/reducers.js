@@ -8,7 +8,7 @@ import { combineReducers } from 'redux';
 import { authorization } from 'components/header/reducer.js';
 import { student } from 'components/Student/reducer.js';
 import { subjects } from 'containers/Subjects/reducer.js';
-import { themes } from 'containers/Themes/reducer.js';
+import { themes } from 'containers/Theme/reducer.js';
 import { teacher } from 'components/Teacher/reducer.js';
 import { sendLogin } from 'containers/Login/reducer.js';
 import { topLayout } from 'components/TopLayout/reducer.js';

@@ -9,17 +9,6 @@ const style = {
   textAlign: 'center',
 };
 class ALU extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      attrib:{s_0:false,s_1:false,s_2:false,s_3:false,m:false,c_0:false,},
-      commands: {
-        first:{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
-        second:{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
-        third:{r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,},
-      }
-    }
-  }
   render() {
     return (
       <Div>
@@ -27,27 +16,27 @@ class ALU extends React.Component {
         <Divider />
         <Row>
           <PinCheckBox
-          checked={this.state.attrib.s_0}
+          checked={this.props.stand.alu.attrib.s_0}
           label="S0"
           />
           <PinCheckBox
-          checked={this.state.attrib.s_1}
+          checked={this.props.stand.alu.attrib.s_1}
           label="S1"
           />
           <PinCheckBox
-          checked={this.state.attrib.s_2}
+          checked={this.props.stand.alu.attrib.s_2}
           label="S2"
           />
           <PinCheckBox
-          checked={this.state.attrib.s_3}
+          checked={this.props.stand.alu.attrib.s_3}
           label="S3"
           />
           <PinCheckBox
-          checked={this.state.attrib.m}
+          checked={this.props.stand.alu.attrib.m}
           label="M"
           />
           <PinCheckBox
-          checked={this.state.attrib.c_0}
+          checked={this.props.stand.alu.attrib.c_0}
           label="C0"
           />
         </Row>
@@ -55,103 +44,103 @@ class ALU extends React.Component {
         <Divider />
         <Row>
           <PinCheckBox
-          checked={this.state.commands.first.r_0}
+          checked={this.props.stand.alu.commands['0000'].r_0}
           label="0"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_1}
+          checked={this.props.stand.alu.commands['0000'].r_1}
           label="1"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_2}
+          checked={this.props.stand.alu.commands['0000'].r_2}
           label="2"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_3}
+          checked={this.props.stand.alu.commands['0000'].r_3}
           label="3"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_4}
+          checked={this.props.stand.alu.commands['0000'].r_4}
           label="4"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_5}
+          checked={this.props.stand.alu.commands['0000'].r_5}
           label="5"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_6}
+          checked={this.props.stand.alu.commands['0000'].r_6}
           label="6"
           />
           <PinCheckBox
-          checked={this.state.commands.first.r_7}
+          checked={this.props.stand.alu.commands['0000'].r_7}
           label="7"
           />
         </Row>
         <Row>
           <PinCheckBox
-          checked={this.state.commands.second.r_0}
+          checked={this.props.stand.alu.commands['0001'].r_0}
           label="0"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_1}
+          checked={this.props.stand.alu.commands['0001'].r_1}
           label="1"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_2}
+          checked={this.props.stand.alu.commands['0001'].r_2}
           label="2"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_3}
+          checked={this.props.stand.alu.commands['0001'].r_3}
           label="3"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_4}
+          checked={this.props.stand.alu.commands['0001'].r_4}
           label="4"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_5}
+          checked={this.props.stand.alu.commands['0001'].r_5}
           label="5"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_6}
+          checked={this.props.stand.alu.commands['0001'].r_6}
           label="6"
           />
           <PinCheckBox
-          checked={this.state.commands.second.r_7}
+          checked={this.props.stand.alu.commands['0001'].r_7}
           label="7"
           />
         </Row>
         <Row>
           <PinCheckBox
-          checked={this.state.commands.third.r_0}
+          checked={this.props.stand.alu.commands['0010'].r_0}
           label="0"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_1}
+          checked={this.props.stand.alu.commands['0010'].r_1}
           label="1"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_2}
+          checked={this.props.stand.alu.commands['0010'].r_2}
           label="2"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_3}
+          checked={this.props.stand.alu.commands['0010'].r_3}
           label="3"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_4}
+          checked={this.props.stand.alu.commands['0010'].r_4}
           label="4"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_5}
+          checked={this.props.stand.alu.commands['0010'].r_5}
           label="5"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_6}
+          checked={this.props.stand.alu.commands['0010'].r_6}
           label="6"
           />
           <PinCheckBox
-          checked={this.state.commands.third.r_7}
+          checked={this.props.stand.alu.commands['0010'].r_7}
           label="7"
           />
         </Row>
