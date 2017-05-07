@@ -7,7 +7,7 @@ const style = {
   marginRight: 20,
   position:'relative',
   left:'100%',
-  top:15
+  top:30
 
 };
 class ThemeButton extends React.Component {
@@ -17,7 +17,7 @@ class ThemeButton extends React.Component {
   render() {
     return (
       <span>
-        <FloatingActionButton mini={true} secondary={true} style={style}>
+        <FloatingActionButton mini={true} secondary={false} style={style}>
           <ContentAdd onClick={this.onClick.bind(this)}/>
         </FloatingActionButton>
       </span>

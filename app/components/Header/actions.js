@@ -30,19 +30,19 @@ export const login = () => dispatch => {
     type: LOGIN,
     isAuthenticated: false,
   });
-  browserHistory.push('login');
+  browserHistory.push('/login');
 };
 export const registration = () => dispatch => {
   dispatch({
     type: REGISTRATION,
     isAuthenticated: false,
   });
-  browserHistory.push('registration');
+  browserHistory.push('/registration');
 };
 export const goToUserRoom = () => dispatch =>{
   dispatch({
     type: GO_TO_USER,
   });
-  browserHistory.push('user');
+  browserHistory.push('/user');
 
 }

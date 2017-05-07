@@ -10,6 +10,7 @@ import Subheader from 'material-ui/Subheader';
 import { Section, Div_container, Div_content, H1, Span } from './style.js';
 import ThemeButton from 'components/ThemeButton/index.js';
 import CheckBox from 'components/CheckBox/index.js';
+import ListItemText from 'components/ListItemText/index.js';
 export default class SubjectsList extends React.Component {
   state = {
     open: false,
@@ -28,20 +29,29 @@ export default class SubjectsList extends React.Component {
     return (
       <Section>
         <List>
-          <Subheader>Ваши предметы</Subheader>
+          <Subheader style={{fontSize:36, fontWeight:'bold'}}>{this.props.header}</Subheader>
           {
-            list.map(item => {
+            list.map((item) => {
               return (
                 <ListItem
-                  primaryText={item.name}
-                  secondaryText={item.description}
+                  primaryText={
+                    <ListItemText
+                      hasTeacher={true}
+                      name={item.name}
+                      description={item.description}
+                      status={item.status_for_current_user}
+                      lastName={item.teacher.last_name}
+                      firstName={item.teacher.first_name}
+                    />
+                  }
+
                   key={item.id}
                   leftIcon={
                     <CheckBox
                       subject={true}
                       theme={false}
                       status={item.status_for_current_user}
-                      style={{width:25}}
+                      style={{width:25, position:'relative', top:'20px'}}
                       subjectId={item.id}
                       disabled={(item.status_for_current_user === 'finished') ? true : false}
                       defaultChecked={(item.status_for_current_user === 'not_started') ? false : true}
@@ -51,10 +61,16 @@ export default class SubjectsList extends React.Component {
                     item.themes.map(theme => {
                       return (
                         <ListItem
-                          primaryText={<div style={{position:'relative',bottom:40}}>{theme.name}</div>}
-                          secondaryText={
-                            <div style={{position:'relative',bottom:40}}>{theme.description}</div>
-                          }
+                          primaryText={
+                            <ListItemText
+                            style={{position:'relative',bottom:40}}
+                              hasTeacher={false}
+                              name={theme.name}
+                              description={theme.description}
+                              status={theme.status_for_current_user}
+                              lastName=''
+                              firstName=''
+                            />}
                           key={theme.id}
                           leftIcon={
                             <CheckBox

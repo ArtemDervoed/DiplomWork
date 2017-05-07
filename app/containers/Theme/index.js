@@ -3,29 +3,34 @@ import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
+import ThemeDescription from 'components/ThemeDescription/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import {  } from './actions';
+import { fetchTheme, beginStand } from './actions';
+import { Section } from './style.js';
 
 class Theme extends React.Component {
-  onDiscover(event) {
-
+  componentDidMount() {
+    let subjectId = this.props.location.pathname.split('/')[2];
+    let themeId = this.props.location.pathname.split('/')[4];
+    this.props.dispatch(fetchTheme({subjectId, themeId}))
+  }
+  onBeginStand(event) {
+    this.props.dispatch(beginStand({location: event}))
   }
   onExplore(event) {
 
-    this.props.dispatch(fetchSubjectThemes(event.target.id))
   }
   render() {
+    let currentTheme = this.props.theme.theme;
     return (
       <div>
         <MuiThemeProvider>
           <Header/>
         </MuiThemeProvider>
         <MuiThemeProvider>
-        <SubjectsList
-          subjects={this.props.subjects.themes}
-          onDiscover={this.onDiscover.bind(this)}
-          onExplore={this.onExplore.bind(this)}
-        />
+          <Section>
+            <ThemeDescription beginStand={this.onBeginStand.bind(this)} data={currentTheme} />
+          </Section>
         </MuiThemeProvider>
         <Footer/>
       </div>

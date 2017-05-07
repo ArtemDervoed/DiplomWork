@@ -12,48 +12,7 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import StudentsTable from 'components/StudentsTable/index.js';
 // import { registration } from './actions.js';
 const subjects = [
-  {
-    key:0,
-    primaryText:"Операционные системы",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:1,
-    primaryText:"Организация ЭВМ",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:2,
-    primaryText:"Сети и телекоммуникации",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:3,
-    primaryText:"Конструкторско-технологическое обеспечение производства",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:4,
-    primaryText:"ООП",
-    leftIcon:<ContentSend />
-  }
-];
-const groups = [
-  {
-    key:0,
-    primaryText:"ИВТ1303",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:1,
-    primaryText:"ИВТ1304",
-     leftIcon:<ContentSend />
-  },
-  {
-    key:2,
-    primaryText:"ПИН1306",
-     leftIcon:<ContentSend />
-  }
+
 ];
 class User extends React.Component {
   constructor() {

@@ -37,7 +37,7 @@ class CheckBox extends Checkbox {
   render() {
     return (
       <Checkbox
-        style={{width:25}}
+        style={{width:25, right:40, top:30}}
         disabled={this.props.disabled}
         defaultChecked={this.state.defaultChecked}
         checked={this.state.cheked}

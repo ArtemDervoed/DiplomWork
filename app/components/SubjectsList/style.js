@@ -4,6 +4,7 @@ export const Section = styled.section`
   width: 60%;
   min-width: 1024px;
   margin: 100px auto;
+  min-height:500px;
 `;
 export const Div_container = styled.div`
   min-width: 1024px;

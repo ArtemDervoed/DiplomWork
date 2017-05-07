@@ -36,6 +36,7 @@ class Subjects extends React.Component {
         </MuiThemeProvider>
         <MuiThemeProvider>
         <SubjectsList
+          header="Список предметов"
           subjects={this.props.subjects.subjects}
           beginSubject={this.onBeginSubject.bind(this)}
           beginTheme={this.onBeginTheme.bind(this)}

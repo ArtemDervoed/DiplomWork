@@ -44,7 +44,7 @@ ReactDOM.render(
       <Route path="/user" component={User}/>
       <Route path="/subjects" component={Subjects}/>
       <Route path="/subjects/:id/themes/:id" component={Theme}/>
-      <Route path="/stand" component={Stand}/>
+      <Route path="/subjects/:id/themes/:id/stand" component={Stand}/>
       <Route path="/test" component={Quiz}/>
     </Router>
   </Provider>,
