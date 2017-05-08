@@ -55,7 +55,7 @@ export default class SubjectsList extends React.Component {
                       subjectId={item.id}
                       disabled={(item.status_for_current_user === 'finished') ? true : false}
                       defaultChecked={(item.status_for_current_user === 'not_started') ? false : true}
-                      onBeginSubject={this.onBeginSubject.bind(this)}
+                      onBegin={this.onBeginSubject.bind(this)}
                     />}
                   nestedItems={
                     item.themes.map(theme => {
@@ -78,11 +78,12 @@ export default class SubjectsList extends React.Component {
                               theme={true}
                               style={{width:25}}
                               item={item}
+                              status={theme.status_for_current_user}
                               subjectId={item.id}
                               themeId={theme.id}
                               disabled={(theme.status_for_current_user === 'finished') ? true : false}
                               defaultChecked={(theme.status_for_current_user === 'not_started') ? false : true}
-                              onBeginTheme={this.onBeginTheme.bind(this)}
+                              onBegin={this.onBeginTheme.bind(this)}
                             />
                             }
                           rightIcon={<ThemeButton

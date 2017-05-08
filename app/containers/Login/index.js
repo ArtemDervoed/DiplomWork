@@ -54,7 +54,7 @@ export class Login extends React.Component {
         }
       }; break;
       case 'password': {
-        if (value.length > 6) {
+        if (value.length > 5) {
           this.setState({
             password: {
               value: value,

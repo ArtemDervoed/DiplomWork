@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
@@ -9,19 +9,31 @@ import { fetchTheme, beginStand } from './actions';
 import { Section } from './style.js';
 
 class Theme extends React.Component {
+
   componentDidMount() {
     let subjectId = this.props.location.pathname.split('/')[2];
     let themeId = this.props.location.pathname.split('/')[4];
     this.props.dispatch(fetchTheme({subjectId, themeId}))
   }
-  onBeginStand(event) {
-    this.props.dispatch(beginStand({location: event}))
+  onBeginStand() {
+    this.props.dispatch(beginStand({location: this.props.location.pathname}))
   }
   onExplore(event) {
 
   }
   render() {
-    let currentTheme = this.props.theme.theme;
+    let currentTheme = {
+         id: this.props.theme.theme.id,
+         name: this.props.theme.theme.name,
+         description: this.props.theme.theme.description,
+         status: this.props.theme.theme.status_for_current_user,
+    }
+    let standSample = (this.props.theme.theme.stand_sample !== null) ? this.props.theme.theme.stand_sample : {
+      id: '',
+      name: '',
+      description: '',
+    } ;
+
     return (
       <div>
         <MuiThemeProvider>
@@ -29,7 +41,11 @@ class Theme extends React.Component {
         </MuiThemeProvider>
         <MuiThemeProvider>
           <Section>
-            <ThemeDescription beginStand={this.onBeginStand.bind(this)} data={currentTheme} />
+            <ThemeDescription
+              beginStand={this.onBeginStand.bind(this)}
+              currentTheme={currentTheme}
+              stand={standSample}
+               />
           </Section>
         </MuiThemeProvider>
         <Footer/>

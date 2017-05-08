@@ -13,7 +13,7 @@ class ThemeDescription extends React.Component {
     super(props);
   }
   beginStand() {
-    this.props.beginStand(this.props.routing.locationBeforeTransitions.pathname);
+    this.props.beginStand();
   }
   beginTest() {
 
@@ -22,37 +22,33 @@ class ThemeDescription extends React.Component {
 
   }
   render() {
-    let standSample = {
-      name:this.props.data.stand_sample.name || ' ',
-      description: this.props.data.stand_sample.description || ' ',
-    }
     return (
       <div>
         <Subheader>Текущая тема</Subheader>
         <Divider/>
         <Row>
           <Div>
-            <Header>{'Название темы: '}</Header>{(this.props.data.name!==null)?this.props.data.name:'' }
+            <Header>{'Название темы: '}</Header>{(this.props.currentTheme.name!==null)?this.props.currentTheme.name:'' }
           </Div>
         </Row>
         <Row>
           <Div>
-            <Header>{'Описание темы: '}</Header>{this.props.data.description}
+            <Header>{'Описание темы: '}</Header>{this.props.currentTheme.description}
           </Div>
         </Row>
         <Row>
-          <Div><Header>{'Статус темы: '}</Header>{(this.props.data.status_for_current_user === 'started') ? 'Начат': (this.props.data.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+          <Div><Header>{'Статус темы: '}</Header>{(this.props.currentTheme.status === 'started') ? 'Начат': (this.props.currentTheme.status === 'not_started') ? 'Не начат': 'Завершен'}</Div>
         </Row>
         <Subheader>Информация о стенде</Subheader>
         <Divider/>
         <Row>
           <Div>
-            <Header>{'Стенд: '}</Header>{standSample.name || ''}
+            <Header>{'Стенд: '}</Header>{this.props.stand.name}
           </Div>
         </Row>
         <Row>
           <Div>
-            <Header>{'Описание стенда: '}</Header>{standSample.description || ''}
+            <Header>{'Описание стенда: '}</Header>{this.props.stand.description}
           </Div>
         </Row>
         <Row>
@@ -63,7 +59,6 @@ class ThemeDescription extends React.Component {
     );
   }
 }
-
 const	mapStateToProps	=	state	=> ({
   ...state,
 });

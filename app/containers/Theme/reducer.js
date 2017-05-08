@@ -5,6 +5,9 @@ import {
 
 export const theme = (state = {
   theme: {
+    name:'',
+    description: '',
+    id:0,
     stand_sample:{
       name:'',
       description: '',
