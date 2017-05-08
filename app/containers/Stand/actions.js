@@ -8,7 +8,8 @@ import {
   WRITE_MODE,
   SET_WORD,
   PROGRAMM_MODE,
-  SET_ALU_WORD
+  SET_ALU_WORD,
+  FETCH_TASK
 } from './constants';
 import {URL} from './../../app.js';
 

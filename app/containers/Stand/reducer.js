@@ -10,6 +10,7 @@ import {
   PROGRAMM_MODE,
   SET_ALU_WORD,
   SET_ALU_ADDRESS,
+  FETCH_TASK,
 } from './constants';
 
 let initialState = {

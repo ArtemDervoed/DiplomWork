@@ -33,7 +33,6 @@ class Theme extends React.Component {
       name: '',
       description: '',
     } ;
-
     return (
       <div>
         <MuiThemeProvider>
@@ -44,7 +43,7 @@ class Theme extends React.Component {
             <ThemeDescription
               beginStand={this.onBeginStand.bind(this)}
               currentTheme={currentTheme}
-              stand={standSample}
+              currentStand={standSample}
                />
           </Section>
         </MuiThemeProvider>

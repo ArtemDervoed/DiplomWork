@@ -18,6 +18,8 @@ export const SET_WORD = 'SET_WORD';
 export const SET_ALU_WORD = 'SET_ALU_WORD';
 //
 export const SET_ALU_ADDRESS = 'SET_ALU_ADDRESS';
+// Fetch task
+export const FETCH_TASK = 'FETCH_TASK';
 
 export const OPERATIONS = {
   SUMM: '1110',

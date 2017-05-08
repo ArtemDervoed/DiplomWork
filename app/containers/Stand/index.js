@@ -12,6 +12,7 @@ import ControlPanel from 'components/ControlPanel/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import Toggle from 'material-ui/Toggle';
+import Divider from 'material-ui/Divider';
 import {
   changeRegisterState,
   changeAdderState,
@@ -219,13 +220,20 @@ class Stand extends React.Component {
               display:'flex',
               flexDirection:'column',
               alignSelf:'center',
-              margin: 'auto 50px'
+              margin: 'auto 30px',
+              width: 270,
+              alignItems: 'center',
+
             }}>
               <Toggle
                 label={'Микропрограммный режим'}
                 programm='false'
                 onToggle={this.onModeToggle.bind(this)}
               />
+              <Divider style={{
+                margin: '10px',
+
+              }}/>
               <Toggle
                 label={'Запись'}
                 mode='write'
@@ -233,8 +241,13 @@ class Stand extends React.Component {
               />
               <RaisedButton
                 label="Пуск"
-                primary={true}
+                secondary={true}
                 onClick={this.writeResult.bind(this)}
+                style={{width:138, marginBottom:20}}
+              />
+              <RaisedButton
+                label="Задание"
+                primary={true}
                 style={{width:138, marginBottom:20}}
               />
               <Chart signal={this.props.stand.chart}/>

@@ -34,9 +34,9 @@ class Chart extends React.Component {
 
     return (
       <div>
-        <RaisedButton label="Осацилограф" onTouchTap={this.handleOpen} />
+        <RaisedButton label="Осциллограф" onTouchTap={this.handleOpen} />
         <Dialog
-          title="Осацилограф"
+          title="Осциллограф"
           actions={actions}
           modal={false}
           open={this.state.open}

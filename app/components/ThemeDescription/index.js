@@ -22,6 +22,7 @@ class ThemeDescription extends React.Component {
 
   }
   render() {
+    console.log(this.props.stand);
     return (
       <div>
         <Subheader>Текущая тема</Subheader>
@@ -43,12 +44,12 @@ class ThemeDescription extends React.Component {
         <Divider/>
         <Row>
           <Div>
-            <Header>{'Стенд: '}</Header>{this.props.stand.name}
+            <Header>{'Стенд: '}</Header>{this.props.currentStand.name}
           </Div>
         </Row>
         <Row>
           <Div>
-            <Header>{'Описание стенда: '}</Header>{this.props.stand.description}
+            <Header>{'Описание стенда: '}</Header>{this.props.currentStand.description}
           </Div>
         </Row>
         <Row>
