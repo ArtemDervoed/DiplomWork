@@ -25,24 +25,39 @@ export const fetchTheme = payload => dispatch => {
 };
 
 export const beginStand = response => dispatch => {
-  //   return fetch(`${URL}/api${response.location}/stand`, {
-  //     credentials: 'include',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //       Authorization: 'Token ' + token,
-  //     },
-  //     method: 'Post',
-  //   })
-  // .then(request => {
-    browserHistory.push(`${response.location}/stand`);
- //  })
- //  .then(json => {
- //    console.log(json);
- //  //   dispatch({
- //  //     type: BEGIN_STAND,
- //  //     theme: json,
- //  //   })
- //  //
- // });
+  if (response.status === 'not_started') {
+      return fetch(`${URL}/api${response.location}/stand`, {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Token ' + token,
+        },
+        method: 'Post',
+      })
+    .then(request => {
+        browserHistory.push(`${response.location}/stand`);
+      return request.json();
+   });
+  }
+  if (response.status === 'not_passed') {
+    return fetch(`${URL}/api${response.location}/stand`, {
+      method: 'Get',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+         Authorization: 'Token ' + token,
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+          browserHistory.push(`${response.location}/stand`);
+        console.log(json);
+        // dispatch({
+        //   type: FETCH_SUBJECTS,
+        //   subjects: json,
+        // })
+      })
+  }
 };

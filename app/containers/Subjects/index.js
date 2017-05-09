@@ -4,16 +4,10 @@ import Header from 'components/Header/index';
 import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchSubjects, beginSubject, beginTheme, exploreTheme } from './actions';
+import { fetchSubjects, beginTheme, exploreTheme } from './actions';
 
 class Subjects extends React.Component {
   componentWillMount() {
-    this.props.dispatch(fetchSubjects());
-  }
-  onBeginSubject(subjectId) {
-    this.props.dispatch(beginSubject({
-      subjectId,
-    }));
     this.props.dispatch(fetchSubjects());
   }
   onBeginTheme(subjectId, themeId) {
@@ -38,7 +32,6 @@ class Subjects extends React.Component {
         <SubjectsList
           header="Список предметов"
           subjects={this.props.subjects.subjects}
-          beginSubject={this.onBeginSubject.bind(this)}
           beginTheme={this.onBeginTheme.bind(this)}
           exploreTheme={this.onExploreTheme.bind(this)}
           />

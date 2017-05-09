@@ -25,28 +25,6 @@ export const fetchSubjects = response => dispatch => {
     });
 };
 
-export const beginSubject = response => dispatch => {
-  let status = null;
-    const data = JSON.stringify({
-      subject_id:response.subjectId,
-    });
-    return fetch(`${URL}/api/studyings`, {
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Token ' + token,
-      },
-      method: 'Post',
-      body: data,
-    })
-  .then(response => {
-      dispatch({
-        type: BEGIN_SUBJECT,
-      });
-  })
-
-};
 
 export const beginTheme = response => dispatch => {
   let status = null;
@@ -54,7 +32,6 @@ export const beginTheme = response => dispatch => {
       subject_id:response.subjectId,
       theme_id:response.themeId,
     });
-    browserHistory.push(`/subjects/${response.subjectId}/themes/${response.themeId}`);
     return fetch(`${URL}/api/studied_themes`, {
       credentials: 'include',
       headers: {
@@ -65,10 +42,11 @@ export const beginTheme = response => dispatch => {
       method: 'Post',
       body: data,
     })
-  .then(response => {
+  .then(request => {
       dispatch({
         type: BEGIN_THEME,
       });
+      browserHistory.push(`/subjects/${response.subjectId}/themes/${response.themeId}`);
   })
 };
 export const exploreTheme = response => dispatch => {

@@ -44,23 +44,12 @@ export default class SubjectsList extends React.Component {
                       firstName={item.teacher.first_name}
                     />
                   }
-
                   key={item.id}
-                  leftIcon={
-                    <CheckBox
-                      subject={true}
-                      theme={false}
-                      status={item.status_for_current_user}
-                      style={{width:25, position:'relative', top:'20px'}}
-                      subjectId={item.id}
-                      disabled={(item.status_for_current_user === 'finished') ? true : false}
-                      defaultChecked={(item.status_for_current_user === 'not_started') ? false : true}
-                      onBegin={this.onBeginSubject.bind(this)}
-                    />}
                   nestedItems={
                     item.themes.map(theme => {
                       return (
                         <ListItem
+                          style={{paddingRight:100}}
                           primaryText={
                             <ListItemText
                             style={{position:'relative',bottom:40}}
@@ -74,8 +63,6 @@ export default class SubjectsList extends React.Component {
                           key={theme.id}
                           leftIcon={
                             <CheckBox
-                              subject={false}
-                              theme={true}
                               style={{width:25}}
                               item={item}
                               status={theme.status_for_current_user}

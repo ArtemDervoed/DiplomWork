@@ -8,13 +8,14 @@ export const Section = styled.section`
   position: relative;
   left: 0;
   top: 0;
+
   @media screen and (max-width: 1024px) {
     padding-bottom: 500px;
 `;
 export const Div_container = styled.div`
   min-width: 1024px;
   min-height: 500px;
-  background: url(${bgi});
+  background-image:url(${bgi});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -25,6 +26,7 @@ export const Div_container = styled.div`
   top: 0;
   padding-top: 17%;
   padding-left: 10%;
+
   `;
   export const Div_content = styled.div`
     `;

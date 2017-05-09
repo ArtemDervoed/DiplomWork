@@ -1,10 +1,8 @@
 import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
 
 const style = {
-  marginRight: 20,
   position:'relative',
   left:'100%',
   top:30
@@ -16,10 +14,8 @@ class ThemeButton extends React.Component {
   }
   render() {
     return (
-      <span>
-        <FloatingActionButton mini={true} secondary={false} style={style}>
-          <ContentAdd onClick={this.onClick.bind(this)}/>
-        </FloatingActionButton>
+      <span style={style}>
+          <FlatButton primary={true} label="Подробнее" onClick={this.onClick.bind(this)}/>
       </span>
     )
   }

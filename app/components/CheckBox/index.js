@@ -18,19 +18,10 @@ class CheckBox extends Checkbox {
     this.state.defaultChecked = this.props.defaultChecked
   }
   onCheck(event, isInputChecked) {
-    if (this.props.theme) {
       if (isInputChecked && this.props.status === 'not_started') {
         this.setState({cheked:true, defaultChecked: true})
         this.props.onBegin(this.props.subjectId, this.props.themeId);
       }
-    }
-    if (this.props.subject) {
-      if (isInputChecked && this.props.status === 'not_started') {
-        this.setState({cheked:true, defaultChecked: true})
-        this.props.onBegin(this.props.subjectId);
-      }
-    }
-
   }
   render() {
     return (

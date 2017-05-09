@@ -11,6 +11,12 @@ export const theme = (state = {
     stand_sample:{
       name:'',
       description: '',
+      id:0,
+      status_for_current_user: ''
+    },
+    theory: {
+      name:'',
+      document: { url: '' },
       id:0
     }
   },

@@ -13,16 +13,12 @@ class ThemeDescription extends React.Component {
     super(props);
   }
   beginStand() {
-    this.props.beginStand();
+    this.props.beginStand(this.props.currentStand.status_for_current_user);
   }
   beginTest() {
 
   }
-  readTheory() {
-
-  }
   render() {
-    console.log(this.props.stand);
     return (
       <div>
         <Subheader>Текущая тема</Subheader>
@@ -53,7 +49,20 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
+          <Div><Header>{'Статус стенда: '}</Header>{(this.props.currentStand.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+        </Row>
+        <Row>
           <FlatButton style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
+        </Row>
+        <Subheader>Теоретический материал</Subheader>
+        <Divider/>
+        <Row>
+          <Div>
+            <Header>{'Документ: '}</Header>{this.props.currentTheory.name}
+          </Div>
+        </Row>
+        <Row>
+          <FlatButton style={styles} label={<a style={{textDecoration:'none', color:'rgb(0, 188, 212)'}} href={'https://tranquil-escarpment-14615.herokuapp.com' + this.props.currentTheory.document.url}>Подробнее...</a>} primary={true} />
         </Row>
         <Divider/>
       </div>

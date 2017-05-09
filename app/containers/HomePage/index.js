@@ -12,7 +12,7 @@ import registration from './registration.jpg';
 import subjects from './subjects.jpg';
 import themes from './themes.jpg';
 import task from './task.jpg';
-import room from './room.jpg';
+import room  from './room.jpg';
 import Divider from 'material-ui/Divider';
 
 class HomePage extends React.PureComponent {

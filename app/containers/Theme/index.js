@@ -15,11 +15,18 @@ class Theme extends React.Component {
     let themeId = this.props.location.pathname.split('/')[4];
     this.props.dispatch(fetchTheme({subjectId, themeId}))
   }
-  onBeginStand() {
-    this.props.dispatch(beginStand({location: this.props.location.pathname}))
+  onBeginStand(standStatus) {
+    if (this.props.theme.theme.status_for_current_user === 'started') {
+      this.props.dispatch(beginStand({
+        location: this.props.location.pathname,
+        status: standStatus, 
+      }))
+    } else {
+      alert('Текущая тема не начата')
+    }
   }
-  onExplore(event) {
-
+  onReadTheory(documentPath) {
+    this.props.dispatch(readTheory(documentPath))
   }
   render() {
     let currentTheme = {
@@ -32,6 +39,12 @@ class Theme extends React.Component {
       id: '',
       name: '',
       description: '',
+      status_for_current_user: ''
+    } ;
+    let theory = (this.props.theme.theme.theory !== null) ? this.props.theme.theme.theory : {
+      id: '',
+      name: '',
+      document : {url: ''},
     } ;
     return (
       <div>
@@ -41,9 +54,11 @@ class Theme extends React.Component {
         <MuiThemeProvider>
           <Section>
             <ThemeDescription
+              readTheory={this.onReadTheory.bind(this)}
               beginStand={this.onBeginStand.bind(this)}
               currentTheme={currentTheme}
               currentStand={standSample}
+              currentTheory={theory}
                />
           </Section>
         </MuiThemeProvider>
