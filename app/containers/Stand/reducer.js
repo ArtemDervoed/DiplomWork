@@ -11,9 +11,22 @@ import {
   SET_ALU_WORD,
   SET_ALU_ADDRESS,
   FETCH_TASK,
+  GET_TASK,
 } from './constants';
 
 let initialState = {
+    task: {
+      id: '',
+      status: '',
+      task:{
+        id: '',
+        operand_1:'',
+        operand_2:'',
+        operation_code:'',
+        operation_type:'',
+        variant:'',
+      },
+    },
     write:false,
     hard:false,
     programm: {
@@ -23,7 +36,6 @@ let initialState = {
       '0011':'',
       '0100':'',
       '0101':'',
-
     },
     alu: {
       attrib:{s_0:false,s_1:false,s_2:false,s_3:false,m:false,c_0:false,},
@@ -234,6 +246,10 @@ export const stand = (state = initialState, action) => {
           attrib:{s_0:{$set:true},s_1:{$set:false},s_2:{$set:false},s_3:{$set:true},m:{$set:false},c_0:{$set:true},},
         }
       });
+    }
+    case GET_TASK: {
+      return update(state, { task: {$set:action.task} }
+      );
     }
     default:
       return state;

@@ -8,9 +8,9 @@ class Footer extends Component {
     return (
       <Div>
         <div>TsTU FIT IVT 2017</div>
-        <div><span>Created by</span><span>React</span></div>
-        <div><span>Created by</span><span>Redux</span></div>
-        <div><span>Created by</span><span>Rails</span></div>
+        <div><span>Powered by</span><span>React</span></div>
+        <div><span>Powered by</span><span>Redux</span></div>
+        <div><span>Powered by</span><span>Rails</span></div>
       </Div>
     );
   }

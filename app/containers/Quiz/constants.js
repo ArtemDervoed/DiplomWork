@@ -4,4 +4,4 @@
  *
  */
  export const SEND_QUIZ = 'SEND_QUIZ';
- export const REDIRECT_TO_HOME = 'REDIRECT_TO_HOME';
+ export const FETCH_QUIZ = 'FETCH_QUIZ';

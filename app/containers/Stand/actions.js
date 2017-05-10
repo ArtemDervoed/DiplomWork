@@ -9,9 +9,48 @@ import {
   SET_WORD,
   PROGRAMM_MODE,
   SET_ALU_WORD,
-  FETCH_TASK
+  FETCH_TASK,
+  GET_TASK,
+  PASS_STAND,
 } from './constants';
+import {browserHistory} from 'react-router';
 import {URL} from './../../app.js';
+
+const token = JSON.parse(localStorage.getItem('auth_token'));
+
+export const passStand = response => dispatch => {
+    let url = `${URL}/api${response.location}`;
+      return fetch(url, {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Token ' + token,
+        },
+        method: 'Post',
+      })
+    .then(request => {
+      browserHistory.push(`/subjects`);
+   });
+ }
+export const getTask = response => dispatch => {
+  return fetch(`${URL}/api${response.location}`, {
+    method: 'Get',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+       Authorization: 'Token ' + token,
+    },
+  })
+  .then(response => response.json())
+  .then(json => {
+    dispatch({
+      type: GET_TASK,
+      task: json,
+    })
+  })
+};
 
 export const setAluWord = response => dispatch => {
   let wordObj = {r_0:false,r_1:false,r_2:false,r_3:false,r_4:false,r_5:false,r_6:false,r_7:false,}

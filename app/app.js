@@ -45,7 +45,7 @@ ReactDOM.render(
       <Route path="/subjects" component={Subjects}/>
       <Route path="/subjects/:id/themes/:id" component={Theme}/>
       <Route path="/subjects/:id/themes/:id/stand" component={Stand}/>
-      <Route path="/test" component={Quiz}/>
+      <Route path="/subjects/:id/themes/:id/quiz" component={Quiz}/>
     </Router>
   </Provider>,
   document.getElementById('app')

@@ -16,8 +16,9 @@ class ThemeDescription extends React.Component {
     this.props.beginStand(this.props.currentStand.status_for_current_user);
   }
   beginTest() {
-
+    this.props.beginTest(this.props.currentTest.status_for_current_user);
   }
+
   render() {
     return (
       <div>
@@ -52,7 +53,20 @@ class ThemeDescription extends React.Component {
           <Div><Header>{'Статус стенда: '}</Header>{(this.props.currentStand.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
         </Row>
         <Row>
-          <FlatButton style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
+          <FlatButton disabled={(this.props.currentStand.status_for_current_user === 'passed'? true: false)} style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
+        </Row>
+        <Subheader>Теоретический материал</Subheader>
+        <Divider/>
+        <Row>
+          <Div>
+            <Header>{'Тест: '}</Header>{this.props.currentTest.name}
+          </Div>
+        </Row>
+        <Row>
+          <Div><Header>{'Статус теста: '}</Header>{(this.props.currentTest.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+        </Row>
+        <Row>
+          <FlatButton disabled={(this.props.currentTest.status_for_current_user === 'passed'? true: false)} onClick={this.beginTest.bind(this)}label="Начать тест" primary={true} />
         </Row>
         <Subheader>Теоретический материал</Subheader>
         <Divider/>
@@ -62,7 +76,7 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <FlatButton style={styles} label={<a style={{textDecoration:'none', color:'rgb(0, 188, 212)'}} href={'https://tranquil-escarpment-14615.herokuapp.com' + this.props.currentTheory.document.url}>Подробнее...</a>} primary={true} />
+          <FlatButton  style={styles} label={<a style={{textDecoration:'none', color:'rgb(0, 188, 212)'}} href={'https://tranquil-escarpment-14615.herokuapp.com' + this.props.currentTheory.document.url}>Подробнее...</a>} primary={true} />
         </Row>
         <Divider/>
       </div>

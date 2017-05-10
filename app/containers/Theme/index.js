@@ -5,7 +5,7 @@ import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
 import ThemeDescription from 'components/ThemeDescription/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchTheme, beginStand } from './actions';
+import { fetchTheme, beginStand, beginTest } from './actions';
 import { Section } from './style.js';
 
 class Theme extends React.Component {
@@ -19,7 +19,17 @@ class Theme extends React.Component {
     if (this.props.theme.theme.status_for_current_user === 'started') {
       this.props.dispatch(beginStand({
         location: this.props.location.pathname,
-        status: standStatus, 
+        status: standStatus,
+      }))
+    } else {
+      alert('Текущая тема не начата')
+    }
+  }
+  onBeginTest(testStatus) {
+    if (this.props.theme.theme.status_for_current_user === 'started') {
+      this.props.dispatch(beginTest({
+        location: this.props.location.pathname,
+        status: testStatus,
       }))
     } else {
       alert('Текущая тема не начата')
@@ -41,6 +51,10 @@ class Theme extends React.Component {
       description: '',
       status_for_current_user: ''
     } ;
+    let testSample = (this.props.theme.theme.quiz_sample !== null) ? this.props.theme.theme.quiz_sample : {
+      id: '',
+      name: '',
+    } ;
     let theory = (this.props.theme.theme.theory !== null) ? this.props.theme.theme.theory : {
       id: '',
       name: '',
@@ -56,8 +70,10 @@ class Theme extends React.Component {
             <ThemeDescription
               readTheory={this.onReadTheory.bind(this)}
               beginStand={this.onBeginStand.bind(this)}
+              beginTest={this.onBeginTest.bind(this)}
               currentTheme={currentTheme}
               currentStand={standSample}
+              currentTest={testSample}
               currentTheory={theory}
                />
           </Section>

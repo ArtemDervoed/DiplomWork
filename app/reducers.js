@@ -14,6 +14,7 @@ import { sendLogin } from 'containers/Login/reducer.js';
 import { topLayout } from 'components/TopLayout/reducer.js';
 import { registration } from 'containers/Registration/reducer.js';
 import { stand } from 'containers/Stand/reducer.js';
+import { quiz } from 'containers/Quiz/reducer.js';
 
 export default combineReducers({
   routing: routerReducer,
@@ -24,6 +25,7 @@ export default combineReducers({
   teacher,
   stand,
   theme,
+  quiz,
   subjects,
   topLayout,
 });

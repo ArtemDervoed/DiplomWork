@@ -8,10 +8,38 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextFieldInput from 'components/TextField/index.js';
 import QuestionResult from 'components/QuestionResult/index.js';
 import Question from 'components/Question/index.js'
+import {fetchQuiz, sendQuiz} from './actions.js';
 const style = {
   margin: 12,
 };
+
 export class Quiz extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      answers:new Set(),
+    };
+  }
+  addAnswer(value) {
+    this.setState({answers: this.state.answers.add(value)})
+  }
+  sendAnswers() {
+    let tottalAnswers = [];
+    this.state.answers.forEach(answer => {
+      tottalAnswers.push({ id:answer });
+    });
+    let location = this.props.location.pathname.split('/')
+    this.props.dispatch(sendQuiz({
+      location: '/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/check_quiz',
+      quizer: {
+        id:this.props.quiz.quiz.id,
+        answers:tottalAnswers,
+      }
+    }))
+  }
+  componentWillMount() {
+    this.props.dispatch(fetchQuiz({location: this.props.location.pathname}));
+  }
   render() {
     return (
       <div>
@@ -20,12 +48,8 @@ export class Quiz extends React.Component {
         </MuiThemeProvider>
         <MuiThemeProvider>
           <Section>
-            <Question/>
-            <Question/>
-            <Question/>
-            <Question/>
-            <Question/>
-            <RaisedButton label="Завершить" secondary={true} style={style} />
+            <Question quizSample={this.props.quiz.quiz.quiz_sample} addAnswer={this.addAnswer.bind(this)}/>
+            <RaisedButton label="Завершить" secondary={true} style={style} onClick={this.sendAnswers.bind(this)} />
             <QuestionResult/>
           </Section>
         </MuiThemeProvider>

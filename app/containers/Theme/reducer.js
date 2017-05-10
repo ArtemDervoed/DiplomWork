@@ -1,6 +1,7 @@
 import {
   FETCH_THEME,
-  BEGIN_STAND
+  BEGIN_STAND,
+  BEGIN_TEST
 } from './constants';
 
 export const theme = (state = {
@@ -18,6 +19,10 @@ export const theme = (state = {
       name:'',
       document: { url: '' },
       id:0
+    },
+    quiz_sample: {
+      name:'',
+      id:0
     }
   },
 }, action) => {
@@ -25,6 +30,8 @@ export const theme = (state = {
     case FETCH_THEME:
       return {...state, theme: action.theme};
     case BEGIN_STAND:
+      return {...state};
+    case BEGIN_TEST:
       return {...state};
     default:
       return state;

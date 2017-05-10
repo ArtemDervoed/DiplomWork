@@ -13,6 +13,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import Toggle from 'material-ui/Toggle';
 import Divider from 'material-ui/Divider';
+import DialogWindow from 'components/DialogWindow/index.js';
 import {
   changeRegisterState,
   changeAdderState,
@@ -20,8 +21,10 @@ import {
   changeChart,
   setAluWord,
   writeMode,
+  passStand,
   workMode,
   setWord,
+  getTask,
 } from 'containers/Stand/actions';
 import { OPERATIONS, PROGRAMM_OPERATIONS } from './constants';
 import {
@@ -43,6 +46,9 @@ const style = {
 };
 
 class Stand extends React.Component {
+  componentWillMount() {
+    this.props.dispatch(getTask({location: this.props.location.pathname}));
+  }
   getOperationsCode() {
     let operationsValue = '';
     let operations = this.props.stand.operationsValue;
@@ -66,19 +72,21 @@ class Stand extends React.Component {
     const registersterA = this.getOutsRgister(this.props.stand.registers.a);
     const registersterB = this.getOutsRgister(this.props.stand.registers.b);
     const registersterC = this.getOutsRgister(this.props.stand.registers.c);
+    let location = this.props.location.pathname.split('/')
     if (PROGRAMM_OPERATIONS.AND === programm) {
       let resultAnd = '';
       for ( let i = 0; i < 8; i++) {
         resultAnd+= (registersterA.split('').reverse().join('')[i] & registersterB.split('').reverse().join('')[i] === 1) ? '1': '0';
       }
-      console.log(resultAnd);
       if (resultAnd === registersterC) {
-        alert("Все ок")
+        alert("Все ок");
+        this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
       }
     }
     if (PROGRAMM_OPERATIONS.SUMM === programm) {
       if (parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2) === parseInt(registersterC.split('').reverse().join(''),2)) {
         alert("Все ок")
+        this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
       }
     }
 
@@ -89,47 +97,31 @@ class Stand extends React.Component {
     this.props.dispatch(setAluWord({address:'0010', word:this.props.stand.programm['0010']}));
     this.props.dispatch(setAluAddress({address:'0010', word:this.props.stand.programm['0010']}));
   }
-  checkRegistersAndAdders() {
-    let addersInputA = ''
-    let addersInputB = ''
-    let result = '';
-    let adders = this.props.stand.adders;
-    for(var key in adders) {
-      if(adders.hasOwnProperty(key)) {
-         result+= +adders[key].output.s;
-         addersInputA+= +adders[key].input.a;
-         addersInputB+= +adders[key].input.b;
-      }
-    }
-
-    const registersterA = this.getOutsRgister(this.props.stand.registers.a);
-    const registersterB = this.getOutsRgister(this.props.stand.registers.b);
-    if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
-      alert('Значения на выходах регистров не соответсвуют входам сумматоров');
-    }
-  }
   writeResult() {
+    let result = '';
     const operation = this.getOperationsCode();
     if(!this.props.stand.hard)  {
       if (operation === OPERATIONS.SUMM) {
-      this.checkRegistersAndAdders();
-        for (var i = 0; i < result.length; i++) {
-          this.props.dispatch(changeRegisterState({
-            name:'c',
-            pinType: 'input',
-            pin: 'd_' + +i,
-            value:(result[i] == 1) ? true:false,
-            }
-          ));
-        }
-      }
-      if (operation === OPERATIONS.NAND) {
+        let addersInputA = ''
+        let addersInputB = ''
         let result = '';
         let adders = this.props.stand.adders;
         for(var key in adders) {
           if(adders.hasOwnProperty(key)) {
              result+= +adders[key].output.s;
+             addersInputA+= +adders[key].input.a;
+             addersInputB+= +adders[key].input.b;
           }
+        }
+        const registersterA = this.getOutsRgister(this.props.stand.registers.a);
+        const registersterB = this.getOutsRgister(this.props.stand.registers.b);
+        if ((addersInputA !== registersterA) || (addersInputB !== registersterB)) {
+          alert('Значения на выходах регистров не соответсвуют входам сумматоров');
+        }
+        if ((addersInputA === registersterA) && (addersInputB === registersterB)) {
+          let location = this.props.location.pathname.split('/')
+          this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
+          alert('Красава!!!');
         }
         for (var i = 0; i < result.length; i++) {
           this.props.dispatch(changeRegisterState({
@@ -140,7 +132,6 @@ class Stand extends React.Component {
             }
           ));
         }
-        this.checkRegistersAndAdders();
       }
     }
     if(this.props.stand.write === true && this.props.stand.hard === true) {
@@ -245,11 +236,7 @@ class Stand extends React.Component {
                 onClick={this.writeResult.bind(this)}
                 style={{width:138, marginBottom:20}}
               />
-              <RaisedButton
-                label="Задание"
-                primary={true}
-                style={{width:138, marginBottom:20}}
-              />
+              <DialogWindow task={this.props.stand.task.task}/>
               <Chart signal={this.props.stand.chart}/>
             </div>
             <ControlPanel/>
