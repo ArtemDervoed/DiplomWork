@@ -8,9 +8,10 @@ import {
 } from './constants';
 import { browserHistory } from 'react-router';
 import {URL} from './../../app.js';
+import { getToken, getUserId } from '../../utils/token.js'
 
-let userId = JSON.parse(localStorage.getItem('user_id'));
-let token = JSON.parse(localStorage.getItem('auth_token'));
+let userId = getToken();
+let token = getToken();
 
 export const firstName = response => dispatch => {
   let newFirstName = { first_name:response };

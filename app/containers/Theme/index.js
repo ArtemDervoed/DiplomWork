@@ -5,7 +5,7 @@ import Footer from 'components/Footer/index';
 import SubjectsList from 'components/SubjectsList/index';
 import ThemeDescription from 'components/ThemeDescription/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { fetchTheme, beginStand, beginTest } from './actions';
+import { fetchTheme, beginStand, beginTest} from './actions';
 import { Section } from './style.js';
 
 class Theme extends React.Component {

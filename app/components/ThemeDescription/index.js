@@ -4,14 +4,11 @@ import { Div, Header, Row } from './style.js';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
-
+import {URL} from './../../app.js';
 const styles = {
   margin:10
 }
 class ThemeDescription extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   beginStand() {
     this.props.beginStand(this.props.currentStand.status_for_current_user);
   }
@@ -19,9 +16,27 @@ class ThemeDescription extends React.Component {
     this.props.beginTest(this.props.currentTest.status_for_current_user);
   }
   conversionStatus(status) {
-    return status + 'lol'
+    if (status === 'not_passed') {
+      return 'Не закончен';
+    }
+    if (status === 'not_started') {
+      return'Не начат';
+    }
+    if (status === 'passed') {
+      return 'Завершен';
+    }
+    if (status === 'failed') {
+      return 'Провален';
+    }
+    if (status === 'successfully') {
+      return 'Успешно';
+    }
+    return '';
   }
+
   render() {
+    let convertedStandStatus = this.conversionStatus(this.props.currentStand.status_for_current_user);
+    let convertedTestStatus = this.conversionStatus(this.props.currentTest.status_for_current_user);
     return (
       <div>
         <Subheader>Текущая тема</Subheader>
@@ -37,7 +52,7 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <Div><Header>{'Статус темы: '}</Header>{(this.props.currentTheme.status === 'started') ? 'Начат': (this.props.currentTheme.status === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+          <Div><Header>{'Статус темы: '}</Header>{(this.props.currentTheme.status === 'started') ? 'Начата': (this.props.currentTheme.status === 'not_started') ? 'Не начата': 'Завершена'}</Div>
         </Row>
         <Subheader>Информация о стенде</Subheader>
         <Divider/>
@@ -52,8 +67,7 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <Div><Header>{'Статус стенда: '}</Header>{
-            (this.props.currentStand.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+          <Div><Header>{'Статус стенда: '}</Header>{convertedStandStatus}</Div>
         </Row>
         <Row>
           <FlatButton disabled={(this.props.currentStand.status_for_current_user === 'passed')? true: false} style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
@@ -66,7 +80,7 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <Div><Header>{'Статус теста: '}</Header>{(this.props.currentTest.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+          <Div><Header>{'Статус теста: '}</Header>{convertedTestStatus}</Div>
         </Row>
         <Row>
             <FlatButton disabled={(this.props.currentTest.status_for_current_user === 'passed'? true: false)} onClick={this.beginTest.bind(this)}label="Начать тест" primary={true} />
@@ -79,7 +93,7 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <FlatButton  style={styles} label={<a style={{textDecoration:'none', color:'rgb(0, 188, 212)'}} href={'https://tranquil-escarpment-14615.herokuapp.com' + this.props.currentTheory.document.url}>Подробнее...</a>} primary={true} />
+          <FlatButton  style={styles} label={<a style={{textDecoration:'none', color:'rgb(0, 188, 212)'}} href={URL + this.props.currentTheory.document.url}>Подробнее...</a>} primary={true} />
         </Row>
         <Divider/>
       </div>

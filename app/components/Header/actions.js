@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
+import { logOutUser } from '../../utils/token.js'
 import {
   LOGOUT,
   LOGIN,
@@ -9,10 +10,7 @@ import {
   GO_TO_HOME,
 } from './constants';
 export const logout = () => dispatch => {
-  localStorage.removeItem('auth_token');
-  localStorage.removeItem('user');
-  localStorage.removeItem('user_id');
-  localStorage.removeItem('is_authenticated');
+  logOutUser();
   dispatch({
     type: LOGOUT,
     isAuthenticated: false,

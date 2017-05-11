@@ -26,6 +26,7 @@ class QuestionResult extends React.Component {
 
  handleClose = () => {
    this.setState({open: false});
+   this.props.closeTest();
 
  };
 

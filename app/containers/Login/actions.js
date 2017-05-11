@@ -1,13 +1,8 @@
-/*
- *
- * Login actions
- *
- */
 import fetch from 'isomorphic-fetch';
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 import {URL} from './../../app.js';
-
+import { loginUser } from '../../utils/token.js'
 import {
   SEND_LOGIN,
   REDIRECT_TO_HOME
@@ -38,10 +33,12 @@ export const login = response => dispatch => {
   })
   .then(json => {
     if (status === 200) {
-      localStorage.setItem('is_authenticated', JSON.stringify(true));
-      localStorage.setItem('auth_token', JSON.stringify(json.auth_token));
-      localStorage.setItem('user', JSON.stringify(response.role));
-      localStorage.setItem('user_id', JSON.stringify(json.user_id));
+      loginUser({
+        isAuthenticated: true,
+        authToken: json.auth_token,
+        role: response.role,
+        userId: json.user_id,
+      })
       dispatch({
         type: SEND_LOGIN,
         role: response.role,

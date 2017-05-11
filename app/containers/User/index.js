@@ -14,6 +14,9 @@ import StudentsTable from 'components/StudentsTable/index.js';
 const subjects = [
 
 ];
+const groups = [
+
+];
 class User extends React.Component {
   constructor() {
     super();

@@ -10,6 +10,7 @@ import {
 } from './constants';
 import { browserHistory } from 'react-router';
 import {URL} from './../../app.js';
+import { getToken, getUserId } from '../../utils/token.js'
 
 export const firstName = response => dispatch => {
   return dispatch({type: FIRST_NAME, firstName: response })
@@ -31,9 +32,9 @@ export const redirectHome = response => dispatch => {
   return dispatch({ type: REDIRECT_HOME })
 };
 export const fetchTeacher = response => dispatch => {
-  let userId = JSON.parse(localStorage.getItem('user_id'));
-  let token = JSON.parse(localStorage.getItem('auth_token'));
-  return fetch('https://serene-hamlet-19929.herokuapp.com/api/teacher_profile', {
+  let userId = getToken();
+  let token = getToken();
+  return fetch(URL+'/api/teacher_profile', {
     method: 'Get',
     headers: {
        Authorization: 'Token ' + token,
@@ -48,6 +49,5 @@ export const fetchTeacher = response => dispatch => {
         lastName: json.last_name,
         phoneNumber: json.phone_number,
         scienceDegree: json.science_degree })
-        console.log(json);
     });
 };

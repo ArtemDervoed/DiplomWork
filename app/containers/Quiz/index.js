@@ -20,6 +20,9 @@ export class Quiz extends React.Component {
       answers:new Set(),
     };
   }
+  closeTest() {
+    this.props.dispatch(closeTest());
+  }
   addAnswer(value) {
     this.setState({answers: this.state.answers.add(value)})
   }
@@ -49,7 +52,7 @@ export class Quiz extends React.Component {
         <MuiThemeProvider>
           <Section>
             <Question quizSample={this.props.quiz.quiz.quiz_sample} addAnswer={this.addAnswer.bind(this)}/>
-            <QuestionResult sendAnswers={this.sendAnswers.bind(this)} closeTest={closeTest}/>
+            <QuestionResult sendAnswers={this.sendAnswers.bind(this)} closeTest={this.closeTest.bind(this)}/>
           </Section>
         </MuiThemeProvider>
         <Footer/>
