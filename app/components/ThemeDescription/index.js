@@ -18,7 +18,9 @@ class ThemeDescription extends React.Component {
   beginTest() {
     this.props.beginTest(this.props.currentTest.status_for_current_user);
   }
-
+  conversionStatus(status) {
+    return status + 'lol'
+  }
   render() {
     return (
       <div>
@@ -50,10 +52,11 @@ class ThemeDescription extends React.Component {
           </Div>
         </Row>
         <Row>
-          <Div><Header>{'Статус стенда: '}</Header>{(this.props.currentStand.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
+          <Div><Header>{'Статус стенда: '}</Header>{
+            (this.props.currentStand.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
         </Row>
         <Row>
-          <FlatButton disabled={(this.props.currentStand.status_for_current_user === 'passed'? true: false)} style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
+          <FlatButton disabled={(this.props.currentStand.status_for_current_user === 'passed')? true: false} style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
         </Row>
         <Subheader>Теоретический материал</Subheader>
         <Divider/>
@@ -66,7 +69,7 @@ class ThemeDescription extends React.Component {
           <Div><Header>{'Статус теста: '}</Header>{(this.props.currentTest.status_for_current_user === 'not_passed') ? 'Начат': (this.props.currentStand.status_for_current_user === 'not_started') ? 'Не начат': 'Завершен'}</Div>
         </Row>
         <Row>
-          <FlatButton disabled={(this.props.currentTest.status_for_current_user === 'passed'? true: false)} onClick={this.beginTest.bind(this)}label="Начать тест" primary={true} />
+            <FlatButton disabled={(this.props.currentTest.status_for_current_user === 'passed'? true: false)} onClick={this.beginTest.bind(this)}label="Начать тест" primary={true} />
         </Row>
         <Subheader>Теоретический материал</Subheader>
         <Divider/>

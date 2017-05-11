@@ -70,7 +70,7 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        <Subheader style={styles.subheader}>{this.props.quizSample.name}</Subheader>
+        <Subheader style={{fontSize:24}}>{this.props.quizSample.name}</Subheader>
         {
           this.props.quizSample.questions.map((question, index) => {
             if (question.multi_answer) {

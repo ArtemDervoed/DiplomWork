@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextFieldInput from 'components/TextField/index.js';
 import QuestionResult from 'components/QuestionResult/index.js';
 import Question from 'components/Question/index.js'
-import {fetchQuiz, sendQuiz} from './actions.js';
+import {fetchQuiz, sendQuiz, closeTest} from './actions.js';
 const style = {
   margin: 12,
 };
@@ -49,8 +49,7 @@ export class Quiz extends React.Component {
         <MuiThemeProvider>
           <Section>
             <Question quizSample={this.props.quiz.quiz.quiz_sample} addAnswer={this.addAnswer.bind(this)}/>
-            <RaisedButton label="Завершить" secondary={true} style={style} onClick={this.sendAnswers.bind(this)} />
-            <QuestionResult/>
+            <QuestionResult sendAnswers={this.sendAnswers.bind(this)} closeTest={closeTest}/>
           </Section>
         </MuiThemeProvider>
         <Footer/>

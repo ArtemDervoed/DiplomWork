@@ -9,6 +9,9 @@ import {
 
 const token = JSON.parse(localStorage.getItem('auth_token'));
 
+export const closeTest = response => dispatch => {
+  browserHistory.push('/subjects')
+}
 export const sendQuiz = response => dispatch => {
   let url = `${URL}/api${response.location}`;
 
@@ -26,7 +29,10 @@ export const sendQuiz = response => dispatch => {
     return request.json();
  })
  .then(json => {
-   console.log(json);
+   dispatch({
+     type: SEND_QUIZ,
+     result: json,
+   })
 })
 }
 export const fetchQuiz = response => dispatch => {
