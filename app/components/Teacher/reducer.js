@@ -9,11 +9,12 @@ import {
 } from './constants';
 
 export const teacher = (state = {
-  firstName:'',
-  lastName:'',
-  email:'',
+  firstName: '',
+  lastName: '',
+  email: '',
   scienceDegree: '',
-  phoneNumber: '' }, action) => {
+  phoneNumber: '',
+  subjects: []}, action) => {
   switch (action.type) {
     case FIRST_NAME:
       return {...state, firstName: action.firstName};
@@ -31,7 +32,8 @@ export const teacher = (state = {
         lastName: action.lastName,
         email: action.email,
         phoneNumber: action.phoneNumber,
-        scienceDegree: action.scienceDegree, };
+        scienceDegree: action.scienceDegree,
+        subjects: action.subjects };
     default:
       return state;
   }

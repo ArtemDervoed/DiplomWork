@@ -48,6 +48,7 @@ export const fetchTeacher = response => dispatch => {
         firstName: json.first_name,
         lastName: json.last_name,
         phoneNumber: json.phone_number,
-        scienceDegree: json.science_degree })
+        scienceDegree: json.science_degree,
+        subjects: json.subjects })
     });
 };

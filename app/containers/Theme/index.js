@@ -45,21 +45,24 @@ class Theme extends React.Component {
          description: this.props.theme.theme.description,
          status: this.props.theme.theme.status_for_current_user,
     }
-    let standSample = (this.props.theme.theme.stand_sample !== null) ? this.props.theme.theme.stand_sample : {
+
+    let standSample = (this.props.theme.theme.stand_sample !== null && this.props.theme.theme.stand_sample !== undefined) ? this.props.theme.theme.stand_sample : {
       id: '',
       name: '',
       description: '',
       status_for_current_user: ''
     } ;
-    let testSample = (this.props.theme.theme.quiz_sample !== null) ? this.props.theme.theme.quiz_sample : {
+
+    let testSample = (this.props.theme.theme.quiz_sample !== null && this.props.theme.theme.quiz_sample !== undefined) ? this.props.theme.theme.quiz_sample : {
       id: '',
       name: '',
     } ;
-    let theory = (this.props.theme.theme.theory !== null) ? this.props.theme.theme.theory : {
+    let theory = (this.props.theme.theme.theory !== null && this.props.theme.theme.theory !== undefined) ? this.props.theme.theme.theory : {
       id: '',
       name: '',
       document : {url: ''},
     } ;
+        console.log(theory);
     return (
       <div>
         <MuiThemeProvider>

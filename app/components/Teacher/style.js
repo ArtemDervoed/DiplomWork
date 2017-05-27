@@ -6,3 +6,6 @@ export const H3 = styled.h3`
 export const ButttonsRow = styled.div`
   display: flex;
 `;
+export const Column = styled.div`
+  width: 50%;
+`;

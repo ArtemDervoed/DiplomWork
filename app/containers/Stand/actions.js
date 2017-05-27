@@ -30,7 +30,6 @@ export const passStand = response => dispatch => {
         method: 'Post',
       })
     .then(request => {
-      browserHistory.push(`/subjects`);
    });
  }
 export const getTask = response => dispatch => {

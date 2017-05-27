@@ -45,9 +45,9 @@ class Chart extends React.Component {
         <Div>
           <Line
             data={ {
-              labels: [0,1,2,3,4,5,6,7,8,9,10],
+              labels: [0+'мкс',1+'мкс',2+'мкс',3+'мкс',4+'мкс',5+'мкс',6+'мкс',7+'мкс',8+'мкс',9+'мкс',10+'мкс',11+'мкс'],
               datasets: [{
-              label: "RgC",
+              label: "Регистр С",
               type: 'line',
               fill: false,
               lineTension: 0,
@@ -88,9 +88,9 @@ class Chart extends React.Component {
                       display: true
                     },
                     labels: {
-                      show: false
+                      show: true,
                     }
-                  }
+                  },
                 ],
                 yAxes: [
                   {
@@ -102,7 +102,7 @@ class Chart extends React.Component {
                       display: true
                     },
                     labels: {
-                      show: true
+                      show: true,
                     }
                   }
                 ]

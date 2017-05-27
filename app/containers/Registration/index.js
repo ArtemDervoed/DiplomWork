@@ -10,7 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { Section, H1 } from './style.js';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import RaisedButton from 'material-ui/RaisedButton';
-import { registration, fetchGroups } from './actions.js';
+import { registration, fetchGroups, fetchscienceDegree } from './actions.js';
 import Subheader from 'material-ui/Subheader';
 const style = {
   margin: 12,
@@ -27,12 +27,14 @@ export class Registration extends React.Component {
       group:{value:'', valid:false, errorText:'',},
       phoneNumber:{value:'', valid:false, errorText:'',},
       scienceDegree:{value:'', valid:false, errorText:'',},
+      key:{value:'', valid:false, errorText:'',},
       password:{value:'', valid:false, errorText:'',},
       passwordConfirmation:{value:'', valid:false, errorText:'',},
     };
   }
   componentDidMount() {
     this.props.dispatch(fetchGroups());
+    this.props.dispatch(fetchscienceDegree());
   }
   handleChange = (value) => {
     this.setState({
@@ -169,6 +171,25 @@ export class Registration extends React.Component {
           });
         }
       }; break;
+      case 'key': {
+
+        if (value.length > 0) {
+          this.setState({
+            key: {
+              value: value,
+              errorText: '',
+              valid: true,
+            },
+          });
+        } else {
+          this.setState({
+            key: {
+              errorText: 'Пустое поле',
+              valid: false,
+            },
+          });
+        }
+      }; break;
       default:
         return state;
     }
@@ -194,11 +215,13 @@ export class Registration extends React.Component {
         last_name: (this.state.lastName.valid) ? this.state.lastName.value : false,
         first_name:(this.state.firstName.valid) ? this.state.firstName.value : false,
         email: (this.state.email.valid) ? this.state.email.value : false,
-        science_degree: (this.state.scienceDegree.valid) ? this.state.scienceDegree.value : false,
+        science_degree_id: (this.state.scienceDegree.valid) ? this.state.scienceDegree.value : false,
         phone_number: (this.state.phoneNumber.valid) ? this.state.phoneNumber.value : false,
+        registration_key: (this.state.key.valid) ? this.state.key.value : false,
         password: (this.state.password.valid) ? this.state.password.value : false,
         password_confirmation: (this.state.passwordConfirmation.valid) ? this.state.passwordConfirmation.value : false,
       };
+      console.log(user.registration_key);
     }
     for (var field in user) {
       if (user.hasOwnProperty(field)) {
@@ -222,6 +245,12 @@ export class Registration extends React.Component {
         valid: true
       }
     });
+    this.setState({
+      scienceDegree: {
+        value: value,
+        valid: true
+      }
+    });
   }
   render() {
     let property = ''
@@ -238,11 +267,18 @@ export class Registration extends React.Component {
           />
           <TextFieldInput
             fullWidth={true}
-            errorText={this.state.scienceDegree.errorText}
-            name="scienceDegree"
-            hintText="Ученая степень"
-            floatingLabelText="Ученая степень"
+            errorText={this.state.key.errorText}
+            hintText="Ключ"
+            name="key"
+            floatingLabelText="Секретный ключ"
             onChange={this.onChangeField.bind(this)}
+          />
+          <DropDownMenuList
+           injectValue={this.injectValue.bind(this)}
+           ref="scienceDegree"
+           header="Ученая степень"
+           data={this.props.registration.scienceDegree}
+           onChange={this.onChangeField}
           />
         </div>
       )

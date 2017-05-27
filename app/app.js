@@ -31,7 +31,7 @@ const initialState = {};
 const history = syncHistoryWithStore(browserHistory, store);
 injectTapEventPlugin();
 
-export const URL = 'https://tranquil-escarpment-14615.herokuapp.com';
+export const URL = 'https://thawing-fortress-99145.herokuapp.com';
 ReactDOM.render(
   <Provider store= {store}>
     <Router history={history}>

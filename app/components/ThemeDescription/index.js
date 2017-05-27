@@ -6,7 +6,8 @@ import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import {URL} from './../../app.js';
 const styles = {
-  margin:10
+  margin:10,
+  header:{ fontSize: 20}
 }
 class ThemeDescription extends React.Component {
   beginStand() {
@@ -31,7 +32,7 @@ class ThemeDescription extends React.Component {
     if (status === 'successfully') {
       return 'Успешно';
     }
-    return '';
+    return 'Отсутствует';
   }
 
   render() {
@@ -39,7 +40,7 @@ class ThemeDescription extends React.Component {
     let convertedTestStatus = this.conversionStatus(this.props.currentTest.status_for_current_user);
     return (
       <div>
-        <Subheader>Текущая тема</Subheader>
+        <Subheader style={styles.header}>Текущая тема</Subheader>
         <Divider/>
         <Row>
           <Div>
@@ -54,7 +55,7 @@ class ThemeDescription extends React.Component {
         <Row>
           <Div><Header>{'Статус темы: '}</Header>{(this.props.currentTheme.status === 'started') ? 'Начата': (this.props.currentTheme.status === 'not_started') ? 'Не начата': 'Завершена'}</Div>
         </Row>
-        <Subheader>Информация о стенде</Subheader>
+        <Subheader style={styles.header} >Информация о стенде</Subheader>
         <Divider/>
         <Row>
           <Div>
@@ -72,11 +73,11 @@ class ThemeDescription extends React.Component {
         <Row>
           <FlatButton disabled={(this.props.currentStand.status_for_current_user === 'passed')? true: false} style={styles} onClick={this.beginStand.bind(this)}  label="Начать выполнение работы" primary={true} />
         </Row>
-        <Subheader>Теоретический материал</Subheader>
+        <Subheader style={styles.header} >Теоретический материал</Subheader>
         <Divider/>
         <Row>
           <Div>
-            <Header>{'Тест: '}</Header>{this.props.currentTest.name}
+            <Header>{'Тест: '}</Header>{(this.props.currentTest.name!==null)?this.props.currentTest.name:''}
           </Div>
         </Row>
         <Row>
@@ -89,7 +90,7 @@ class ThemeDescription extends React.Component {
         <Divider/>
         <Row>
           <Div>
-            <Header>{'Документ: '}</Header>{this.props.currentTheory.name}
+            <Header>{'Документ: '}</Header>{(this.props.currentTheory.name!==null)?this.props.currentTheory.name:''}
           </Div>
         </Row>
         <Row>

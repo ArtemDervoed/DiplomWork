@@ -2,6 +2,7 @@ import React from 'react';
 import styled  from 'styled-components';
 
 export const Section = styled.div`
+  owerflow: hidden;
   width: 90%;
   margin: 50px auto;
   background-color: rgba(0,0,0,0.05);
@@ -21,6 +22,7 @@ export const H1 = styled.h1`
   font-family: LatoBold;
   color: rgba(0,0,0,0.45);
   text-align: center;
+  font-size: 3em;
   margin-top: 0px;
 `;
 export const Content = styled.div`

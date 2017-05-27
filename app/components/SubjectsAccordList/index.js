@@ -26,7 +26,7 @@ class SubjectsAccordList extends React.Component {
       open: item.state.open,
     });
   };
-  
+
   render() {
     let studyings = this.props.studyings;
     return (

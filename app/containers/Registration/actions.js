@@ -4,7 +4,8 @@ import {browserHistory} from 'react-router';
 import {URL} from './../../app.js';
 import {
   SUBMIT,
-  FETCH_GROUPS
+  FETCH_GROUPS,
+  FETCH_SCIENCE_DEGREE,
 } from './constants';
 
 export const fetchGroups = response => dispatch => {
@@ -14,6 +15,15 @@ export const fetchGroups = response => dispatch => {
     .then(response => response.json())
     .then(json => dispatch({type: FETCH_GROUPS, payload: json}));
 };
+
+export const fetchscienceDegree = response => dispatch => {
+  return fetch(`${URL}/api/science_degrees`, {
+    method: 'Get',
+  })
+    .then(response => response.json())
+    .then(json => dispatch({type: FETCH_SCIENCE_DEGREE, payload: json}));
+};
+
 
 export const registration = response => dispatch => {
   let status = null;

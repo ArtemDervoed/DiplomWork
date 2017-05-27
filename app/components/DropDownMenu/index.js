@@ -19,7 +19,7 @@ class DropDownMenuList extends React.Component {
         <SelectField floatingLabelText={this.props.header} value={this.state.value} onChange={this.handleChange}>
         {
           this.props.data.map((item) => {
-            return <MenuItem key={item.id} primaryText={item.name} value={item.id}  />
+            return <MenuItem key={item.id} primaryText={item.name || item.nomination} value={item.id}  />
           })
         }
         </SelectField>

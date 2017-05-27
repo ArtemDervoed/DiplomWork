@@ -5,7 +5,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
 import { firstName, lastName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome } from './actions.js';
-import { H3, ButttonsRow } from './style.js';
+import StudentsTable from 'components/StudentsTable/index.js';
+import TeacherSubjectsList from 'components/TeacherSubjectsList/index.js';
+import { H3, ButttonsRow, Column } from './style.js';
 const style = {
   margin: 12,
 };
@@ -17,6 +19,9 @@ const buttonStyle = {
 };
 
 export class Teacher extends React.Component {
+  onSubjectClick(event) {
+    console.log(event);
+  }
   applyFirstName(newVale) {
     this.dispatch(firstName(newVale));
   }
@@ -39,66 +44,80 @@ export class Teacher extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{width: '100%'}}>
         <H3>Информация о пользовтеле:</H3>
-        <MuiThemeProvider>
-          <InfoRow
-            title="Новое имя"
-            floatingLabelText="Новое имя"
-            hintText="Новое имя"
-            header="Имя"
-            data={this.props.teacher.firstName}
-            applyNewValue={this.applyFirstName}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            hintText="Новая фамилия"
-            title="Новая фамилия"
-            floatingLabelText="Новая фамилия"
-            header="Фамилия"
-            data={this.props.teacher.lastName}
-            applyNewValue={this.applyLastName}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            hintText="Новый email"
-            floatingLabelText="Новый email"
-            title="Новый email"
-            header="Email"
-            data={this.props.teacher.email}
-            applyNewValue={this.applyEmail}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            hintText="Новый номер телефона"
-            floatingLabelText="Новый номер телефона"
-            title="Новый номер телефона"
-            header="Номер телефона"
-            data={this.props.teacher.phoneNumber}
-            applyNewValue={this.applyPhoneNumber}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <InfoRow
-            hintText="Новая ученая степень"
-            floatingLabelText="Новая ученая степень"
-            title="Новая ученая степень"
-            header="Ученая степень"
-            data={this.props.teacher.scienceDegree}
-            applyNewValue={this.applyScienceDegree}/>
-        </MuiThemeProvider>
-        <MuiThemeProvider>
-          <ButttonsRow>
-            <FlatButton
-              label="Сохранить"
-              secondary={false}
-              style={buttonStyle}
-              />
-            <FlatButton
-              label="Отмена"
-              secondary={false}
-              style={buttonStyle}/>
-          </ButttonsRow>
-        </MuiThemeProvider>
+        <ButttonsRow>
+        <Column>
+          <MuiThemeProvider>
+            <InfoRow
+              title="Новое имя"
+              floatingLabelText="Новое имя"
+              hintText="Новое имя"
+              header="Имя"
+              data={this.props.teacher.firstName}
+              applyNewValue={this.applyFirstName}/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <InfoRow
+              hintText="Новая фамилия"
+              title="Новая фамилия"
+              floatingLabelText="Новая фамилия"
+              header="Фамилия"
+              data={this.props.teacher.lastName}
+              applyNewValue={this.applyLastName}/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <InfoRow
+              hintText="Новый email"
+              floatingLabelText="Новый email"
+              title="Новый email"
+              header="Email"
+              data={this.props.teacher.email}
+              applyNewValue={this.applyEmail}/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <InfoRow
+              hintText="Новый номер телефона"
+              floatingLabelText="Новый номер телефона"
+              title="Новый номер телефона"
+              header="Номер телефона"
+              data={this.props.teacher.phoneNumber}
+              applyNewValue={this.applyPhoneNumber}/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <InfoRow
+              hintText="Новая ученая степень"
+              floatingLabelText="Новая ученая степень"
+              title="Новая ученая степень"
+              header="Ученая степень"
+              data={this.props.teacher.scienceDegree}
+              applyNewValue={this.applyScienceDegree}/>
+          </MuiThemeProvider>
+          <MuiThemeProvider>
+            <ButttonsRow>
+              <FlatButton
+                label="Сохранить"
+                secondary={false}
+                style={buttonStyle}
+                />
+              <FlatButton
+                label="Отмена"
+                secondary={false}
+                style={buttonStyle}/>
+            </ButttonsRow>
+          </MuiThemeProvider>
+        </Column>
+        <Column>
+          <MuiThemeProvider>
+            <TeacherSubjectsList
+              onSubjectClick={this.onSubjectClick.bind(this)}
+              subjects={this.props.teacher.subjects}
+              header="Список предметов"
+            />
+          </MuiThemeProvider>
+        </Column>
+        </ButttonsRow>
+        <StudentsTable />
       </div>
     );
   }

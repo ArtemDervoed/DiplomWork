@@ -79,13 +79,13 @@ class Stand extends React.Component {
         resultAnd+= (registersterA.split('').reverse().join('')[i] & registersterB.split('').reverse().join('')[i] === 1) ? '1': '0';
       }
       if (resultAnd === registersterC) {
-        alert("Все ок");
+        alert("Стенд собран правильно");
         this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
       }
     }
     if (PROGRAMM_OPERATIONS.SUMM === programm) {
       if (parseInt(registersterA.split('').reverse().join(''),2) + parseInt(registersterB.split('').reverse().join(''),2) === parseInt(registersterC.split('').reverse().join(''),2)) {
-        alert("Все ок")
+        alert("Стенд собран правильно");
         this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
       }
     }
@@ -121,7 +121,7 @@ class Stand extends React.Component {
         if ((addersInputA === registersterA) && (addersInputB === registersterB)) {
           let location = this.props.location.pathname.split('/')
           this.props.dispatch(passStand({location:'/'+location[1]+'/'+location[2]+'/'+location[3]+'/'+location[4] + '/pass_stand'}));
-          alert('Красава!!!');
+          alert("Стенд собран правильно");
         }
         for (var i = 0; i < result.length; i++) {
           this.props.dispatch(changeRegisterState({

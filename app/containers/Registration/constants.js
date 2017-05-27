@@ -1,2 +1,3 @@
 export const SUBMIT = 'SUBMIT';
 export const FETCH_GROUPS = 'FETCH_GROUPS';
+export const FETCH_SCIENCE_DEGREE = 'FETCH_SCIENCE_DEGREE';

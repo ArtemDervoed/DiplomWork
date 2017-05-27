@@ -9,14 +9,7 @@ import Student from 'components/Student/index.js';
 import Teacher from 'components/Teacher/index.js';
 import DataList from 'components/List/index.js';
 import ContentSend from 'material-ui/svg-icons/content/send';
-import StudentsTable from 'components/StudentsTable/index.js';
-// import { registration } from './actions.js';
-const subjects = [
 
-];
-const groups = [
-
-];
 class User extends React.Component {
   constructor() {
     super();
@@ -37,16 +30,13 @@ class User extends React.Component {
   }
   render() {
     let user = null;
-    let inputData = null;
     let header = '';
     if (JSON.parse(localStorage.getItem('user')) === 'student') {
       user = <Student userInfo={this.userInfo}/>
-      inputData = subjects;
       header ='Предметы'
     }
     if (JSON.parse(localStorage.getItem('user')) === 'teacher') {
       user = <Teacher userInfo={this.userInfo}/>
-      inputData = groups;
       header ='Группы'
     }
     return (
@@ -57,7 +47,9 @@ class User extends React.Component {
         <Section>
           <H1>Личный кабинет</H1>
           <Content>
-            {user}
+          {
+            user
+          }
           </Content>
         </Section>
         <Footer/>
