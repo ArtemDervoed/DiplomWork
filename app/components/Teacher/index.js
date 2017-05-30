@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import InfoRow from 'components/InfoRow/index.js';
-import { firstName, lastName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome } from './actions.js';
+import { firstName, lastName, email, phoneNumber, scienceDegree, fetchTeacher, redirectHome, fetchGroup } from './actions.js';
 import StudentsTable from 'components/StudentsTable/index.js';
 import TeacherSubjectsList from 'components/TeacherSubjectsList/index.js';
 import { H3, ButttonsRow, Column } from './style.js';
@@ -19,8 +19,8 @@ const buttonStyle = {
 };
 
 export class Teacher extends React.Component {
-  onSubjectClick(event) {
-    console.log(event);
+  onSubjectClick(subjectId, groupId) {
+    this.props.dispatch(fetchGroup({subjectId, groupId}))
   }
   applyFirstName(newVale) {
     this.dispatch(firstName(newVale));

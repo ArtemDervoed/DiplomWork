@@ -5,7 +5,8 @@ import {
   PHONE_NUMBER,
   SCIENCE_DEGREE,
   FETCH_TEACHER,
-  REDIRECT_HOME
+  REDIRECT_HOME,
+  FETCH_GROUP
 } from './constants';
 
 export const teacher = (state = {
@@ -14,7 +15,9 @@ export const teacher = (state = {
   email: '',
   scienceDegree: '',
   phoneNumber: '',
-  subjects: []}, action) => {
+  subjects: [],
+  group: [],
+}, action) => {
   switch (action.type) {
     case FIRST_NAME:
       return {...state, firstName: action.firstName};

@@ -14,7 +14,7 @@ import ThemeButton from 'components/ThemeButton/index.js';
 
 export default class TeacherSubjectsList extends React.Component {
   onThemeClick(event) {
-    this.props.onSubjectClick(event.subjectId)
+    this.props.onSubjectClick(event.subjectId, event.themeId)
   }
   render() {
     let list = (Array.isArray(this.props.subjects)) ? this.props.subjects : [];
@@ -32,7 +32,6 @@ export default class TeacherSubjectsList extends React.Component {
                   nestedItems={
                     item.groups.map(group => {
                       return (
-
                           <ListItem
                             style={{paddingRight:100}}
                             primaryText={group.name}
@@ -40,7 +39,7 @@ export default class TeacherSubjectsList extends React.Component {
                             key={group.id}
                             rightIcon={
                                 <ThemeButton
-                                subjectId={group.id}
+                                subjectId={item.id}
                                 themeId={group.id}
                                 onThemeClick={this.onThemeClick.bind(this)}
                                 />

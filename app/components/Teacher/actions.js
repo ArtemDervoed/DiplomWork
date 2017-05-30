@@ -6,7 +6,8 @@ import {
   SCIENCE_DEGREE,
   UNIVERSITY,
   FETCH_TEACHER,
-  REDIRECT_HOME
+  REDIRECT_HOME,
+  FETCH_GROUP
 } from './constants';
 import { browserHistory } from 'react-router';
 import {URL} from './../../app.js';
@@ -50,5 +51,28 @@ export const fetchTeacher = response => dispatch => {
         phoneNumber: json.phone_number,
         scienceDegree: json.science_degree,
         subjects: json.subjects })
+    });
+};
+
+export const fetchGroup = response => dispatch => {
+  let userId = getToken();
+  let token = getToken();
+  const data = JSON.stringify({subject_id: response.subjectId})
+  console.log(response.subjectId);
+  return fetch(`${URL}/api/groups/${response.groupId}/statistic?subject_id=${response.subjectId}`, {
+    method: 'Post',
+    credentials: 'include',
+    headers: {
+       Authorization: 'Token ' + token,
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .then(json => {
+      dispatch({
+        type: FETCH_GROUP,
+        group: json,
+       })
     });
 };
